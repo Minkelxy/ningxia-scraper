@@ -1,0 +1,57 @@
+{
+  "noteId": "s0078aee8836",
+  "source_id": "xhs:s0078aee8836",
+  "fetchedAt": "2026-04-13",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s0078aee8836",
+  "sourcePlatform": "xhs",
+  "authorNickname": "中卫民宿小哥 3142",
+  "title": "[半人工占位] 沙湖景区攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "带娃去沙湖景区攻略：小朋友最喜欢坐羊皮筏子，吃手抓羊肉可以让孩子接触自然。吃饭尽量鼓楼附近快捷酒店附近解决，省时省力。一定要带墨镜+驱蚊液。",
+  "publishedAt": "2026-04-12",
+  "topics": [
+    "沙湖",
+    "石嘴山沙湖"
+  ],
+  "geoHint": {
+    "cityName": "固原市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 1311,
+  "collectCount": 979,
+  "commentCount": 317,
+  "images": [
+    {
+      "sha256": "176cde4b932614435ba5b34685a8b58707ae72ed5e73fcb6d4ac374e82731169",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0078aee8836-0.webp",
+      "localPath": "/images/full/s0078aee8836/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    },
+    {
+      "sha256": "5317263502c6060dda9689f1027e5b44108311417b6b47ad595c100a22ffbf78",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0078aee8836-1.webp",
+      "localPath": "/images/full/s0078aee8836/img-002.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "a77537bbcb20b47e0b649738fe2adec0",
+    "bodySimhash": "7b42e58e2becb846",
+    "firstImagePerceptualHash": [
+      "176cde4b93261443",
+      "5317263502c6060d"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

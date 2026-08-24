@@ -1,0 +1,57 @@
+{
+  "noteId": "s011ff03a46d",
+  "source_id": "xhs:s011ff03a46d",
+  "fetchedAt": "2026-04-27",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s011ff03a46d",
+  "sourcePlatform": "xhs",
+  "authorNickname": "中卫民宿小哥 2532",
+  "title": "[半人工占位] 火石寨攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "带娃去火石寨攻略：小朋友最喜欢酒庄品酒，喝八宝茶可以让孩子接触自然。吃饭尽量鼓楼附近快捷酒店附近解决，省时省力。一定要带帽子+防晒衣。",
+  "publishedAt": "2026-04-25",
+  "topics": [
+    "火石寨",
+    "西吉火石寨"
+  ],
+  "geoHint": {
+    "cityName": "中卫市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 4030,
+  "collectCount": 407,
+  "commentCount": 236,
+  "images": [
+    {
+      "sha256": "e3ff922b99c185476c432905f820e0287e0d78f59930badf05f8023b1365ca10",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s011ff03a46d-0.webp",
+      "localPath": "/images/full/s011ff03a46d/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    },
+    {
+      "sha256": "fba0401a2d9b6fd6e4513dde5f991a51878ad5442dab5454ae1b71b90baffb27",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s011ff03a46d-1.webp",
+      "localPath": "/images/full/s011ff03a46d/img-002.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "260f597dd25378f7d4d9812761b22134",
+    "bodySimhash": "1fcae4861bad1945",
+    "firstImagePerceptualHash": [
+      "e3ff922b99c18547",
+      "fba0401a2d9b6fd6"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

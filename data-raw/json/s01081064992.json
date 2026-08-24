@@ -1,0 +1,57 @@
+{
+  "noteId": "s01081064992",
+  "source_id": "xhs:s01081064992",
+  "fetchedAt": "2026-03-28",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s01081064992",
+  "sourcePlatform": "xhs",
+  "authorNickname": "中卫民宿小哥 9748",
+  "title": "[半人工占位] 六盘山景区攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "三天两夜六盘山景区深度游路线：第一天爬沙丘，第二天喝八宝茶，第三天看实景演出。如果是国庆前去，记得带舒适的运动鞋。预算人均60元吃到撑就够，别在景区门口买东西。",
+  "publishedAt": "2026-03-26",
+  "topics": [
+    "六盘山国家森林公园",
+    "六盘山"
+  ],
+  "geoHint": {
+    "cityName": "石嘴山市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 283,
+  "collectCount": 1129,
+  "commentCount": 147,
+  "images": [
+    {
+      "sha256": "d0e7182d182672d7f921448af2b6c466a958753e8f2b909f519b642bf84d857c",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s01081064992-0.webp",
+      "localPath": "/images/full/s01081064992/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    },
+    {
+      "sha256": "02219c581d5349e89c176465b95ed6b3f1c6fa9e6b912be0d99831df0da7cef7",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s01081064992-1.webp",
+      "localPath": "/images/full/s01081064992/img-002.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": "六盘山景区实拍",
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "a617280b649a86ed68aa7ee95a78b5bf",
+    "bodySimhash": "bc83b49ea175457b",
+    "firstImagePerceptualHash": [
+      "d0e7182d182672d7",
+      "02219c581d5349e8"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

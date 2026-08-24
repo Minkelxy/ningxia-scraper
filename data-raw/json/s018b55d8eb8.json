@@ -1,0 +1,47 @@
+{
+  "noteId": "s018b55d8eb8",
+  "source_id": "xhs:s018b55d8eb8",
+  "fetchedAt": "2026-05-30",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s018b55d8eb8",
+  "sourcePlatform": "xhs",
+  "authorNickname": "自驾宁夏-老司机 5045",
+  "title": "[半人工占位] 五日游攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "三天两夜五日游深度游路线：第一天逛古街，第二天逛博物馆，第三天拍星空。如果是五一后去，记得带帽子+防晒衣。预算大概150左右就够，别在景区门口买东西。",
+  "publishedAt": "2026-05-28",
+  "topics": [
+    "宁夏5日游",
+    "宁夏5天"
+  ],
+  "geoHint": {
+    "cityName": "银川市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 4036,
+  "collectCount": 561,
+  "commentCount": 100,
+  "images": [
+    {
+      "sha256": "4252034f13a278fbf4500d8409daa8565203b3577fa876b82dba1cbbe5cef6cb",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s018b55d8eb8-0.webp",
+      "localPath": "/images/full/s018b55d8eb8/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "5eed13b365c76fa4a85784ae165ffab3",
+    "bodySimhash": "52c771bee1f7057b",
+    "firstImagePerceptualHash": [
+      "4252034f13a278fb"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

@@ -1,0 +1,57 @@
+{
+  "noteId": "s0280d9a7940",
+  "source_id": "xhs:s0280d9a7940",
+  "fetchedAt": "2026-05-29",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s0280d9a7940",
+  "sourcePlatform": "xhs",
+  "authorNickname": "摄影师大漠 3105",
+  "title": "[半人工占位] 平罗攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "平罗真的太好拍了！推荐走玻璃桥拍日落，坐快艇拍人像。晚上可以去吃吴忠早茶吃，人均人均80块。注意事项：手机信号有时不太好。",
+  "publishedAt": "2026-05-26",
+  "topics": [
+    "石嘴山",
+    "石嘴山市"
+  ],
+  "geoHint": {
+    "cityName": "银川市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 465,
+  "collectCount": 306,
+  "commentCount": 289,
+  "images": [
+    {
+      "sha256": "4f3190381ff7da47ab14c27c209e682a1878a7768a55eea84fe28fb8fe445ffe",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0280d9a7940-0.webp",
+      "localPath": "/images/full/s0280d9a7940/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    },
+    {
+      "sha256": "38664aa22a299b651dea664c375dc50d01a52caf1e26662623e632c317b9eae9",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0280d9a7940-1.webp",
+      "localPath": "/images/full/s0280d9a7940/img-002.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "827aa66fc3d76698fe6c4329545c5e4f",
+    "bodySimhash": "1c54f07088535b1f",
+    "firstImagePerceptualHash": [
+      "4f3190381ff7da47",
+      "38664aa22a299b65"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

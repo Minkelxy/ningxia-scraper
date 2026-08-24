@@ -1,0 +1,47 @@
+{
+  "noteId": "s045d03b9b22",
+  "source_id": "xhs:s045d03b9b22",
+  "fetchedAt": "2026-05-04",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s045d03b9b22",
+  "sourcePlatform": "xhs",
+  "authorNickname": "自驾宁夏-老司机 7054",
+  "title": "[半人工占位] 小朋友攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "小朋友真的太好拍了！推荐酒庄品酒拍日落，喝八宝茶拍人像。晚上可以去看实景演出吃，人均人均60元吃到撑。注意事项：不要相信门口拉客的。",
+  "publishedAt": "2026-05-02",
+  "topics": [
+    "亲子游",
+    "亲子"
+  ],
+  "geoHint": {
+    "cityName": "固原市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 2801,
+  "collectCount": 31,
+  "commentCount": 23,
+  "images": [
+    {
+      "sha256": "07c2a5bd118dd01c95f4ac7f5792cf965b35e1d364f7ab88bc902db013599c67",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s045d03b9b22-0.webp",
+      "localPath": "/images/full/s045d03b9b22/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "8857f39810da458c961bc5c86d428450",
+    "bodySimhash": "1c6ff4d6b973a852",
+    "firstImagePerceptualHash": [
+      "07c2a5bd118dd01c"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

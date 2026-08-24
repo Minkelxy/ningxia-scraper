@@ -1,0 +1,47 @@
+{
+  "noteId": "s037ff03a46d",
+  "source_id": "xhs:s037ff03a46d",
+  "fetchedAt": "2026-06-07",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s037ff03a46d",
+  "sourcePlatform": "xhs",
+  "authorNickname": "家庭旅行笔记 3176",
+  "title": "[半人工占位] 西吉火石寨攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "西吉火石寨真的太好拍了！推荐爬沙丘拍日落，采枸杞拍人像。晚上可以去逛夜市吃，人均200元以内。注意事项：周末人多，一定要早到。",
+  "publishedAt": "2026-06-06",
+  "topics": [
+    "火石寨",
+    "西吉火石寨"
+  ],
+  "geoHint": {
+    "cityName": "固原市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 2937,
+  "collectCount": 333,
+  "commentCount": 133,
+  "images": [
+    {
+      "sha256": "6ae07a6da0dbb5085cd1b3a33c93343f3069d19729910a1fde332f3fb6d25f24",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s037ff03a46d-0.webp",
+      "localPath": "/images/full/s037ff03a46d/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "46fe427425892855d14c4dd84df47655",
+    "bodySimhash": "0ad7a446ed58b209",
+    "firstImagePerceptualHash": [
+      "6ae07a6da0dbb508"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

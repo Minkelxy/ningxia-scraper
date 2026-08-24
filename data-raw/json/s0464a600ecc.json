@@ -1,0 +1,57 @@
+{
+  "noteId": "s0464a600ecc",
+  "source_id": "xhs:s0464a600ecc",
+  "fetchedAt": "2026-07-01",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s0464a600ecc",
+  "sourcePlatform": "xhs",
+  "authorNickname": "星空摄影爱好者 4154",
+  "title": "[半人工占位] 自驾攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "三天两夜自驾深度游路线：第一天酒庄品酒，第二天采枸杞，第三天吃吴忠早茶。如果是国庆前去，记得带厚外套（早晚凉）。预算200元以内就够，别在景区门口买东西。",
+  "publishedAt": "2026-06-30",
+  "topics": [
+    "自驾游",
+    "自驾"
+  ],
+  "geoHint": {
+    "cityName": "石嘴山市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 4761,
+  "collectCount": 355,
+  "commentCount": 366,
+  "images": [
+    {
+      "sha256": "200b2fc2e57001b962fe5f9c139810a5644d0054db3130ce8d5294dbe231eabf",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0464a600ecc-0.webp",
+      "localPath": "/images/full/s0464a600ecc/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    },
+    {
+      "sha256": "01075e3aaee5c671a345dbaffcee6de3e1369adaeb2191ead949849373bb4cf8",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0464a600ecc-1.webp",
+      "localPath": "/images/full/s0464a600ecc/img-002.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "f61dd1b352934a6030f560f13534dea9",
+    "bodySimhash": "08869004a2741232",
+    "firstImagePerceptualHash": [
+      "200b2fc2e57001b9",
+      "01075e3aaee5c671"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

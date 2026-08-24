@@ -1,0 +1,57 @@
+{
+  "noteId": "s025f5cf30d7",
+  "source_id": "xhs:s025f5cf30d7",
+  "fetchedAt": "2026-02-27",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s025f5cf30d7",
+  "sourcePlatform": "xhs",
+  "authorNickname": "摄影师大漠 9269",
+  "title": "[半人工占位] 中卫蒿子面攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "三天两夜中卫蒿子面深度游路线：第一天坐羊皮筏子，第二天看日落，第三天吃吴忠早茶。如果是五一后去，记得带墨镜+驱蚊液。预算人均60元吃到撑就够，别在景区门口买东西。",
+  "publishedAt": "2026-02-25",
+  "topics": [
+    "蒿子面",
+    "蒿籽面"
+  ],
+  "geoHint": {
+    "cityName": "固原市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 3295,
+  "collectCount": 189,
+  "commentCount": 135,
+  "images": [
+    {
+      "sha256": "20730c7628e25b755a41a069a568db7f35c725f9f408d8293c046822d1f75e9b",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s025f5cf30d7-0.webp",
+      "localPath": "/images/full/s025f5cf30d7/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": "中卫蒿子面实拍",
+      "license": "for-reference-only"
+    },
+    {
+      "sha256": "1221ad1125c1cb8afe19303c20bb36816b64ad1a7f2cfaf51c21d794540b35fd",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s025f5cf30d7-1.webp",
+      "localPath": "/images/full/s025f5cf30d7/img-002.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "d74f38d656b906e5ae023cf5fd6a6ba4",
+    "bodySimhash": "5847723ea055015b",
+    "firstImagePerceptualHash": [
+      "20730c7628e25b75",
+      "1221ad1125c1cb8a"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

@@ -1,0 +1,47 @@
+{
+  "noteId": "s0419a551f94",
+  "source_id": "xhs:s0419a551f94",
+  "fetchedAt": "2026-04-11",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s0419a551f94",
+  "sourcePlatform": "xhs",
+  "authorNickname": "银川小吃货 2357",
+  "title": "[半人工占位] 2天1晚攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "三天两夜2天1晚深度游路线：第一天坐羊皮筏子，第二天采枸杞，第三天吃吴忠早茶。如果是9月中下旬去，记得带帽子+防晒衣。预算200元以内就够，别在景区门口买东西。",
+  "publishedAt": "2026-04-10",
+  "topics": [
+    "宁夏2日游",
+    "宁夏2天"
+  ],
+  "geoHint": {
+    "cityName": "固原市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 962,
+  "collectCount": 1679,
+  "commentCount": 26,
+  "images": [
+    {
+      "sha256": "c39b3f5fd57a3339ff5681f53780d654f6bf8ff63472e01e4b05d256e26cb5b1",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0419a551f94-0.webp",
+      "localPath": "/images/full/s0419a551f94/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "1273abdf1dcec3b5dea509f65d67d57c",
+    "bodySimhash": "9846b03ea0755173",
+    "firstImagePerceptualHash": [
+      "c39b3f5fd57a3339"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

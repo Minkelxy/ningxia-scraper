@@ -1,0 +1,21 @@
+# Git LFS for images - prevent repo bloat
+*.webp filter=lfs diff=lfs merge=lfs -text
+*.jpeg filter=lfs diff=lfs merge=lfs -text
+*.jpg  filter=lfs diff=lfs merge=lfs -text
+*.png  filter=lfs diff=lfs merge=lfs -text
+*.gif  filter=lfs diff=lfs merge=lfs -text
+*.avif filter=lfs diff=lfs merge=lfs -text
+# Text handling
+*.ts    text eol=lf
+*.tsx   text eol=lf
+*.md    text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.json  text eol=lf
+*.py    text eol=lf
+*.csv   text eol=lf
+*.sh    text eol=lf
+# Binary detection
+*.ndjson text eol=lf
+images/full/** filter=lfs diff=lfs merge=lfs -text
+images/thumbs/** filter=lfs diff=lfs merge=lfs -text

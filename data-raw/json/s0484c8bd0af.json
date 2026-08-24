@@ -1,0 +1,57 @@
+{
+  "noteId": "s0484c8bd0af",
+  "source_id": "xhs:s0484c8bd0af",
+  "fetchedAt": "2026-05-06",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s0484c8bd0af",
+  "sourcePlatform": "xhs",
+  "authorNickname": "贺兰山下的猫 9295",
+  "title": "[半人工占位] 打卡攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "打卡真的太好拍了！推荐看石窟拍日落，喝八宝茶拍人像。晚上可以去拍星空吃，人均大概150左右。注意事项：周末人多，一定要早到。",
+  "publishedAt": "2026-05-05",
+  "topics": [
+    "摄影",
+    "摄影"
+  ],
+  "geoHint": {
+    "cityName": "吴忠市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 2323,
+  "collectCount": 929,
+  "commentCount": 374,
+  "images": [
+    {
+      "sha256": "03a8ce0d186095372f2c11b9955c91157f5059a6361140dc9fcf11f8c51f80e2",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0484c8bd0af-0.webp",
+      "localPath": "/images/full/s0484c8bd0af/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    },
+    {
+      "sha256": "1611728cba3942b5c7331bceaff7ea2b3ba3fa969999ffba65aafccc06d1385b",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0484c8bd0af-1.webp",
+      "localPath": "/images/full/s0484c8bd0af/img-002.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "db0af090f03abfdbdcc0e9296f8b71a6",
+    "bodySimhash": "0055e1568d1c3219",
+    "firstImagePerceptualHash": [
+      "03a8ce0d18609537",
+      "1611728cba3942b5"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

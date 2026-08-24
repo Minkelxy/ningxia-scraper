@@ -1,0 +1,57 @@
+{
+  "noteId": "s013f9d5c13d",
+  "source_id": "xhs:s013f9d5c13d",
+  "fetchedAt": "2026-05-29",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s013f9d5c13d",
+  "sourcePlatform": "xhs",
+  "authorNickname": "自驾宁夏-老司机 4483",
+  "title": "[半人工占位] 西夏陵攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "西夏陵真的太好拍了！推荐酒庄品酒拍日落，逛博物馆拍人像。晚上可以去爬贺兰山吃，人均人均60元吃到撑。注意事项：不要相信门口拉客的。",
+  "publishedAt": "2026-05-28",
+  "topics": [
+    "西夏陵",
+    "西夏王陵"
+  ],
+  "geoHint": {
+    "cityName": "石嘴山市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 1685,
+  "collectCount": 317,
+  "commentCount": 23,
+  "images": [
+    {
+      "sha256": "fef27a5f68cf6f5a77a26880827314d94f862f9f3536d57d6938994331714e80",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s013f9d5c13d-0.webp",
+      "localPath": "/images/full/s013f9d5c13d/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    },
+    {
+      "sha256": "b08b91b519d3b7b726f3b57a46d983ed1d06e4736fbf86b3bd0b8cebabbd3474",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s013f9d5c13d-1.webp",
+      "localPath": "/images/full/s013f9d5c13d/img-002.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": "西夏陵实拍",
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "283915648e921cac81940d88ffc06de6",
+    "bodySimhash": "02efbc9699536913",
+    "firstImagePerceptualHash": [
+      "fef27a5f68cf6f5a",
+      "b08b91b519d3b7b7"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

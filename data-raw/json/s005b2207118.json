@@ -1,0 +1,57 @@
+{
+  "noteId": "s005b2207118",
+  "source_id": "xhs:s005b2207118",
+  "fetchedAt": "2026-03-31",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s005b2207118",
+  "sourcePlatform": "xhs",
+  "authorNickname": "西北追风日记 8257",
+  "title": "[半人工占位] 中卫市攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "我周末去了中卫市，整体体验很治愈，给大家分享一下。早上走玻璃桥，中午看日落，下午看实景演出，景色非常舒服。交通方面市区有旅游专线，单程8元，住宿推荐景区门口民宿，性价比不错。",
+  "publishedAt": "2026-03-30",
+  "topics": [
+    "中卫",
+    "中卫市"
+  ],
+  "geoHint": {
+    "cityName": "固原市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 3621,
+  "collectCount": 1162,
+  "commentCount": 83,
+  "images": [
+    {
+      "sha256": "111dce0d360723a4a0285ff4132c0614031de95824f537a8fd58a7fa1af302a6",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s005b2207118-0.webp",
+      "localPath": "/images/full/s005b2207118/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    },
+    {
+      "sha256": "34a99b415d71dc3d9d941365869f1dd7ad85f6efc3c62e325cc663177fff9e60",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s005b2207118-1.webp",
+      "localPath": "/images/full/s005b2207118/img-002.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "33bbdbd7875d75357147ad8c27b2a797",
+    "bodySimhash": "018497edf3cb8875",
+    "firstImagePerceptualHash": [
+      "111dce0d360723a4",
+      "34a99b415d71dc3d"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

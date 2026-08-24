@@ -1,0 +1,47 @@
+{
+  "noteId": "s0037e610bf3",
+  "source_id": "xhs:s0037e610bf3",
+  "fetchedAt": "2026-03-12",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s0037e610bf3",
+  "sourcePlatform": "xhs",
+  "authorNickname": "人文旅行者A 9176",
+  "title": "[半人工占位] 吴忠旅游攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "自驾吴忠旅游经验：从银川出发约1小时40分，沿途吃吴忠早茶。建议9月中下旬出发，避开正午阳光。加油要提前加满，山路信号差。",
+  "publishedAt": "2026-03-10",
+  "topics": [
+    "吴忠",
+    "吴忠市"
+  ],
+  "geoHint": {
+    "cityName": "石嘴山市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 1245,
+  "collectCount": 1580,
+  "commentCount": 444,
+  "images": [
+    {
+      "sha256": "68505f0c265f95e919e3c3f591ec30bc2761280c8fb37ec5cc37ed83c052fd62",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0037e610bf3-0.webp",
+      "localPath": "/images/full/s0037e610bf3/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": "吴忠旅游实拍",
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "c654c20274f60fcbc648b1e5499be345",
+    "bodySimhash": "4bd1c2438020dc73",
+    "firstImagePerceptualHash": [
+      "68505f0c265f95e9"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

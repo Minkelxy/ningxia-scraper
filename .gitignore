@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+package-lock.json.bak
+
+# Build output
+dist/
+*.log
+
+# Caches
+.cache/
+.turbo/
+.vitest/
+coverage/
+
+# Playwright / browser state
+playwright/user-data-dir/
+.playwright/
+test-results/
+
+# Secrets & login state
+config/secrets/
+*.cookie
+*.session
+.env
+.env.local
+
+# Thumbnails (not required, generated locally)
+images/thumbs/
+
+# Batch run reports
+_batch_report.json
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json

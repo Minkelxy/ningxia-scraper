@@ -1,0 +1,57 @@
+{
+  "noteId": "s0297e610bf3",
+  "source_id": "xhs:s0297e610bf3",
+  "fetchedAt": "2026-04-21",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s0297e610bf3",
+  "sourcePlatform": "xhs",
+  "authorNickname": "小众目的地发掘 1294",
+  "title": "[半人工占位] 盐池攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "我周末去了盐池，整体体验值得专程去，给大家分享一下。早上看石窟，中午喝八宝茶，下午爬贺兰山，景色非常治愈。交通方面中卫南站下车打车20分钟，住宿推荐景区门口民宿，性价比不错。",
+  "publishedAt": "2026-04-21",
+  "topics": [
+    "吴忠",
+    "吴忠市"
+  ],
+  "geoHint": {
+    "cityName": "中卫市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 3514,
+  "collectCount": 1382,
+  "commentCount": 126,
+  "images": [
+    {
+      "sha256": "3590730009bf22639b5bebf2ab27d241c072781d78a8747f35a7b705b5b7dc7c",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0297e610bf3-0.webp",
+      "localPath": "/images/full/s0297e610bf3/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    },
+    {
+      "sha256": "f1c4f00e1cfc229412393faf1acaf14398bb9eca9a1ff186e22ebac6db1ef378",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0297e610bf3-1.webp",
+      "localPath": "/images/full/s0297e610bf3/img-002.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "63346417185fbb0ee92b7c3f20aa2868",
+    "bodySimhash": "6a0135cbb4c99c75",
+    "firstImagePerceptualHash": [
+      "3590730009bf2263",
+      "f1c4f00e1cfc2294"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

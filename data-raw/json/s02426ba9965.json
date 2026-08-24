@@ -1,0 +1,57 @@
+{
+  "noteId": "s02426ba9965",
+  "source_id": "xhs:s02426ba9965",
+  "fetchedAt": "2026-05-31",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s02426ba9965",
+  "sourcePlatform": "xhs",
+  "authorNickname": "古镇探访者 2792",
+  "title": "[半人工占位] 国强手抓攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "自驾国强手抓经验：从银川出发约1小时40分，沿途吃吴忠早茶。建议国庆前出发，避开正午阳光。加油要提前加满，山路信号差。",
+  "publishedAt": "2026-05-30",
+  "topics": [
+    "手抓羊肉",
+    "手抓"
+  ],
+  "geoHint": {
+    "cityName": "固原市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 3245,
+  "collectCount": 1173,
+  "commentCount": 6,
+  "images": [
+    {
+      "sha256": "1608956f5c8a4b4763bd4fba7deec92a9e3e6636c46007de2b40e86beab6eee0",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s02426ba9965-0.webp",
+      "localPath": "/images/full/s02426ba9965/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    },
+    {
+      "sha256": "c48b126f9bbdcfd98be5e49471d53514c9cbd393aac0706dd223872fb63398b6",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s02426ba9965-1.webp",
+      "localPath": "/images/full/s02426ba9965/img-002.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "de06b01eb6977f7ef59d45ebbe2f947e",
+    "bodySimhash": "495142415060cc77",
+    "firstImagePerceptualHash": [
+      "1608956f5c8a4b47",
+      "c48b126f9bbdcfd9"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

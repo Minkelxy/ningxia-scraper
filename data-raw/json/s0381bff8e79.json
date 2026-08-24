@@ -1,0 +1,47 @@
+{
+  "noteId": "s0381bff8e79",
+  "source_id": "xhs:s0381bff8e79",
+  "fetchedAt": "2026-04-25",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s0381bff8e79",
+  "sourcePlatform": "xhs",
+  "authorNickname": "宁夏旅行研究所 7727",
+  "title": "[半人工占位] 须弥山石窟攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "须弥山石窟真的太好拍了！推荐排队坐骆驼拍日落，坐快艇拍人像。晚上可以去看实景演出吃，人均人均80块。注意事项：别穿浅色衣服，容易脏。",
+  "publishedAt": "2026-04-24",
+  "topics": [
+    "须弥山石窟",
+    "须弥山"
+  ],
+  "geoHint": {
+    "cityName": "吴忠市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 3744,
+  "collectCount": 1803,
+  "commentCount": 4,
+  "images": [
+    {
+      "sha256": "8711e987312dfd098cb23938709c6c424b09da0b287fc031ee1cc7dfea50850b",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0381bff8e79-0.webp",
+      "localPath": "/images/full/s0381bff8e79/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": "须弥山石窟实拍",
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "c4e382ec079ee5c6f386a7e2a08a78ac",
+    "bodySimhash": "185f98f6cb53381a",
+    "firstImagePerceptualHash": [
+      "8711e987312dfd09"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

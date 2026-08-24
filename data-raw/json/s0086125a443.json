@@ -1,0 +1,47 @@
+{
+  "noteId": "s0086125a443",
+  "source_id": "xhs:s0086125a443",
+  "fetchedAt": "2026-04-23",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s0086125a443",
+  "sourcePlatform": "xhs",
+  "authorNickname": "黄河边的小马哥 4082",
+  "title": "[半人工占位] 西部影城攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "三天两夜西部影城深度游路线：第一天登城墙，第二天吃手抓羊肉，第三天逛夜市。如果是国庆前去，记得带帽子+防晒衣。预算人均80块就够，别在景区门口买东西。",
+  "publishedAt": "2026-04-21",
+  "topics": [
+    "镇北堡西部影城",
+    "西部影城"
+  ],
+  "geoHint": {
+    "cityName": "吴忠市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 4129,
+  "collectCount": 297,
+  "commentCount": 342,
+  "images": [
+    {
+      "sha256": "719762ddc7e8f82a5f93b0b3ae6fab05ba5ff102eb9304792bdf8b9334be9f38",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0086125a443-0.webp",
+      "localPath": "/images/full/s0086125a443/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": "西部影城实拍",
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "7fd1e3a76e9d5e5ea29f75e15a54b00b",
+    "bodySimhash": "5cc730be69655373",
+    "firstImagePerceptualHash": [
+      "719762ddc7e8f82a"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

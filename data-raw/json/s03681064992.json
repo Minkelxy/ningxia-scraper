@@ -1,0 +1,57 @@
+{
+  "noteId": "s03681064992",
+  "source_id": "xhs:s03681064992",
+  "fetchedAt": "2026-08-19",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s03681064992",
+  "sourcePlatform": "xhs",
+  "authorNickname": "人文旅行者A 6458",
+  "title": "[半人工占位] 小南川攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "带娃去小南川攻略：小朋友最喜欢爬沙丘，吃手抓羊肉可以让孩子接触自然。吃饭尽量黄河边上的连锁酒店附近解决，省时省力。一定要带厚外套（早晚凉）。",
+  "publishedAt": "2026-08-16",
+  "topics": [
+    "六盘山国家森林公园",
+    "六盘山"
+  ],
+  "geoHint": {
+    "cityName": "固原市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 3318,
+  "collectCount": 819,
+  "commentCount": 10,
+  "images": [
+    {
+      "sha256": "254627ceb8e24f0299d00e6a0eda72c98d4975138d90eeae819d1222bbf569e3",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s03681064992-0.webp",
+      "localPath": "/images/full/s03681064992/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    },
+    {
+      "sha256": "9ba046e34ea32a4f7965d2d018097d6156dc9822431a70f226703ca87df5e7a3",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s03681064992-1.webp",
+      "localPath": "/images/full/s03681064992/img-002.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": "小南川实拍",
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "5ee2d91de7acbae41df2be1bb47610ea",
+    "bodySimhash": "7b40e60e8bec1046",
+    "firstImagePerceptualHash": [
+      "254627ceb8e24f02",
+      "9ba046e34ea32a4f"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

@@ -1,0 +1,122 @@
+name: Weekly Takedown & Blacklist Audit
+
+on:
+  schedule:
+    # 每周一 03:00 UTC = 每周一 11:00 北京时间
+    - cron: "0 3 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  audit:
+    name: 下架与黑名单审计
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: 1. Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: false
+
+      - name: 2. Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: 3. Install Dependencies
+        shell: bash
+        run: npm ci --ignore-scripts
+
+      - name: 4. 运行 validate-dataset 获取审计项
+        id: validate
+        shell: bash
+        run: |
+          set -o pipefail
+          npx tsx scripts/validate-dataset.ts --format json | tee /tmp/validate.json
+          node -e "
+            const r = require('/tmp/validate.json');
+            const problems = r.problems || [];
+            const takedown   = problems.filter(p => p.code === 'TAKEDOWN_REQUESTED_BUT_FILES_STILL_PRESENT').length;
+            const blacklist  = problems.filter(p => p.code === 'AUTHOR_BLACKLIST').length;
+            const manifest   = problems.filter(p => p.code === 'MANIFEST_ENTRY_MISSING').length;
+            console.log('takedown_missing='   + takedown);
+            console.log('blacklist_authors='  + blacklist);
+            console.log('manifest_missing='   + manifest);
+            console.log('rawJson=' + (r.counts?.rawJson ?? 0));
+            console.log('removed=' + (r.counts?.removed ?? 0));
+            console.log('total_errors=' + (r.ok ? 0 : problems.filter(p=>p.severity==='error').length));
+          " | tee -a "$GITHUB_OUTPUT"
+
+      - name: 5. 读取 provenance/takedown.csv / manifest.csv / blacklist 摘要
+        id: summary
+        if: always()
+        shell: bash
+        run: |
+          echo "blacklist_count=$(wc -l < config/author-blacklist.txt 2>/dev/null | tr -d ' ')" | tee -a "$GITHUB_OUTPUT"
+          echo "takedown_rows=$(wc -l < provenance/takedown.csv 2>/dev/null | tr -d ' ')" | tee -a "$GITHUB_OUTPUT"
+          echo "manifest_rows=$(wc -l < provenance/manifest.csv 2>/dev/null | tr -d ' ')" | tee -a "$GITHUB_OUTPUT"
+
+      - name: 6. 生成 Summary 报告
+        if: always()
+        shell: bash
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<EOF
+          ## 📋 每周下架与黑名单审计报告
+
+          | 项目 | 数量 |
+          |------|------|
+          | 📚 素材库笔记总数 | ${{ steps.validate.outputs.rawJson }} |
+          | 🗑️ 已下架笔记数 | ${{ steps.validate.outputs.removed }} |
+          | ⚠️ 「已下架但图片/索引文件仍残留」项数 | ${{ steps.validate.outputs.takedown_missing }} |
+          | 🚫 命中黑名单作者数 | ${{ steps.validate.outputs.blacklist_authors }} |
+          | 🗂️ manifest 缺项 | ${{ steps.validate.outputs.manifest_missing }} |
+          | 👥 黑名单作者条目行数 | ${{ steps.summary.outputs.blacklist_count }} |
+          | 📄 takedown 申请记录行数 | ${{ steps.summary.outputs.takedown_rows }} |
+          | 📦 manifest 行数 | ${{ steps.summary.outputs.manifest_rows }} |
+
+          ### 合规状态
+          - 总错误数（validate-dataset severity=error）：**${{ steps.validate.outputs.total_errors }}**
+
+          EOF
+          if [[ "${{ steps.validate.outputs.total_errors }}" -gt 0 || \
+                "${{ steps.validate.outputs.takedown_missing }}" -gt 0 || \
+                "${{ steps.validate.outputs.blacklist_authors }}" -gt 0 ]]; then
+            cat >> "$GITHUB_STEP_SUMMARY" <<EOF
+
+          ### ❌ 需要跟进的动作
+          - 若「已下架但文件仍残留」> 0：使用 \`scripts/mark-removed.ts --noteId <id>\` 再执行一次
+          - 若「命中黑名单作者」> 0：在 issue tracker 生成下架申请 Issue，确认后对全部对应笔记执行 mark-removed
+          - 若「manifest 缺项」> 0：检查对应 noteId 是否在 provenance/manifest.csv 正确登记（ADD / REMOVED）
+          EOF
+          else
+            echo "### ✅ 本周审计无异常" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: 7. 有异常时开 Issue 通知维护者
+        if: |
+          (steps.validate.outputs.total_errors > 0) ||
+          (steps.validate.outputs.takedown_missing > 0) ||
+          (steps.validate.outputs.blacklist_authors > 0)
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const today = new Date().toISOString().slice(0, 10);
+            const body = `## 🔔 每周下架与黑名单审计：有异常需跟进\n` +
+              `- 🗑️ 下架残留: **${{ steps.validate.outputs.takedown_missing }}**\n` +
+              `- 🚫 黑名单作者命中: **${{ steps.validate.outputs.blacklist_authors }}**\n` +
+              `- 🗂️ manifest 缺项: **${{ steps.validate.outputs.manifest_missing }}**\n` +
+              `- 🧾 validate-dataset 总错误数: **${{ steps.validate.outputs.total_errors }}**\n\n` +
+              `Run URL: ${context.payload.repository?.html_url ?? ''}/actions/runs/${{ github.run_id }}\n\n` +
+              `请维护者在 3 个工作日内处理，对应笔记完成下架/补 manifest/解除黑名单误报。`;
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `[Weekly Audit] 下架/黑名单异常 ${today}`,
+              body,
+              labels: ["takedown-request", "audit", "maintenance"],
+            });

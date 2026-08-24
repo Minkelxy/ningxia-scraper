@@ -1,0 +1,60 @@
+# License · 许可证
+
+本仓库包含**两种不同的内容**，使用两种不同许可证。**使用前请区分你要使用的是「代码」还是「素材数据/图片」**。
+
+---
+
+## PART 1 · 代码部分 (Script Code / Schema / Tooling)
+
+> 适用范围：`scripts/*.ts`、`src/schema/*.ts`、`tests/*.ts`、配置文件、CI 配置、ESLint/TSConfig 等。
+
+### MIT License
+
+Copyright (c) 2026 Minkelxy & Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## PART 2 · 素材部分 (Data / Images / Content from Xiaohongshu)
+
+> 适用范围：`data/`、`data-raw/`、`images/full/`、`provenance/manifest.csv` 中的所有内容。
+> 这些内容均来自小红书（Xiaohongshu / RED）公开可见的用户生成内容 (UGC)。
+
+### ⚠️ CONTENT ONLY FOR REFERENCE · NO REDISTRIBUTION WITHOUT AUTHOR CONSENT
+
+1. **版权归属**：所有笔记正文、标题、配图、话题标签的**完整著作权归原作者所有**。本仓库仅作为「素材候选索引库」收录，不主张任何权利。
+
+2. **仅限内部参考使用**：您可以仅为「宁夏旅游主题信息整理、编辑改写参考、事实核验」之目的，在本仓库与 sister 主项目（Minkelxy/ningxia-tourism）的范围内使用这些内容。
+
+3. **禁止再分发 / 商用**：
+   - ❌ 不得将数据或图片**二次发布**到任何公开平台（包括但不限于：自己的博客、公众号、小红书、微博、抖音、其他 GitHub 仓库）。
+   - ❌ 不得用于任何**商业目的**（广告、付费内容、付费咨询、产品推销、AI 训练数据集出售等）。
+   - ❌ 不得将内容**喂给大语言模型做训练**并发布或出售衍生模型。
+   - ❌ 不得声称您**拥有**这些内容的任何权利。
+
+4. **下架与删除**：若您是原作者，不希望内容出现在本仓库 —— 提交 [下架 Issue](.github/ISSUE_TEMPLATE/takedown-request.yml) 即可，我们承诺 24–48 小时内物理删除图片并过滤所有导出。
+
+5. **免责声明**：
+   - 本仓库维护者尽最大努力标注 provenance，但不对内容的**真实性、准确性、时效性**做任何保证。使用者（主项目编辑）必须二次核对所有信息。
+   - 若因使用本素材库的内容（无论直接间接）导致任何纠纷或损失，维护者不承担责任。
+
+---
+
+**总结一句话**：代码你可以自由用；素材你只能在「本项目内部参考 + 人工改写后发布」框架下用，**不能搬出去或卖钱**。

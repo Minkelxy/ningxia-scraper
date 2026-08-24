@@ -1,0 +1,47 @@
+{
+  "noteId": "s0338aee8836",
+  "source_id": "xhs:s0338aee8836",
+  "fetchedAt": "2026-06-10",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s0338aee8836",
+  "sourcePlatform": "xhs",
+  "authorNickname": "摄影师大漠 9425",
+  "title": "[半人工占位] 沙湖生态旅游区攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "沙湖生态旅游区真的太好拍了！推荐逛古街拍日落，采枸杞拍人像。晚上可以去拍星空吃，人均大概150左右。注意事项：周末人多，一定要早到。",
+  "publishedAt": "2026-06-09",
+  "topics": [
+    "沙湖",
+    "石嘴山沙湖"
+  ],
+  "geoHint": {
+    "cityName": "中卫市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 3585,
+  "collectCount": 431,
+  "commentCount": 332,
+  "images": [
+    {
+      "sha256": "3be084b29cc2bef890c1fe422cef580c6bd21a9a2dbf423cdfa84b917f8f776e",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0338aee8836-0.webp",
+      "localPath": "/images/full/s0338aee8836/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "6512e4aaf38f39be07dac55930e5c393",
+    "bodySimhash": "0ac3f056c95e331f",
+    "firstImagePerceptualHash": [
+      "3be084b29cc2bef8"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

@@ -1,0 +1,47 @@
+{
+  "noteId": "s05026ba9965",
+  "source_id": "xhs:s05026ba9965",
+  "fetchedAt": "2026-05-12",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s05026ba9965",
+  "sourcePlatform": "xhs",
+  "authorNickname": "小众目的地发掘 9062",
+  "title": "[半人工占位] 宁夏手抓羊肉攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "带娃去宁夏手抓羊肉攻略：小朋友最喜欢登城墙，逛博物馆可以让孩子接触自然。吃饭尽量市区商圈附近公寓附近解决，省时省力。一定要带舒适的运动鞋。",
+  "publishedAt": "2026-05-11",
+  "topics": [
+    "手抓羊肉",
+    "手抓"
+  ],
+  "geoHint": {
+    "cityName": "石嘴山市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 2583,
+  "collectCount": 423,
+  "commentCount": 228,
+  "images": [
+    {
+      "sha256": "d7231d002e50dddf1fd169dad90de23d3de1b8b62a792b80e65edcd0b28ad19f",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s05026ba9965-0.webp",
+      "localPath": "/images/full/s05026ba9965/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "9dd69092de0b276fce6f0a62aa2a7777",
+    "bodySimhash": "ff41e4929bac5346",
+    "firstImagePerceptualHash": [
+      "d7231d002e50dddf"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

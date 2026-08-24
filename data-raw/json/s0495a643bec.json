@@ -1,0 +1,47 @@
+{
+  "noteId": "s0495a643bec",
+  "source_id": "xhs:s0495a643bec",
+  "fetchedAt": "2026-04-17",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s0495a643bec",
+  "sourcePlatform": "xhs",
+  "authorNickname": "黄河边的小马哥 1252",
+  "title": "[半人工占位] 牛肉面攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "三天两夜牛肉面深度游路线：第一天排队坐骆驼，第二天喝八宝茶，第三天看实景演出。如果是清明假期去，记得带墨镜+驱蚊液。预算人均80块就够，别在景区门口买东西。",
+  "publishedAt": "2026-04-15",
+  "topics": [
+    "吴忠早茶",
+    "吴忠早茶文化"
+  ],
+  "geoHint": {
+    "cityName": "石嘴山市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 3861,
+  "collectCount": 1296,
+  "commentCount": 106,
+  "images": [
+    {
+      "sha256": "435bc7661da759c3de10df438fa185de048d73a9867284a26654f019512db039",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0495a643bec-0.webp",
+      "localPath": "/images/full/s0495a643bec/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "ceb5334c3b63cb788b87cf0238004e1c",
+    "bodySimhash": "184670bea0751473",
+    "firstImagePerceptualHash": [
+      "435bc7661da759c3"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

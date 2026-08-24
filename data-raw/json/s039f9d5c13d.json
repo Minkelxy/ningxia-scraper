@@ -1,0 +1,47 @@
+{
+  "noteId": "s039f9d5c13d",
+  "source_id": "xhs:s039f9d5c13d",
+  "fetchedAt": "2026-07-19",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s039f9d5c13d",
+  "sourcePlatform": "xhs",
+  "authorNickname": "贺兰山下的猫 7882",
+  "title": "[半人工占位] 西夏王陵攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "自驾西夏王陵经验：从银川出发约1小时40分，沿途吃吴忠早茶。建议7-8月暑假出发，避开正午阳光。加油要提前加满，山路信号差。",
+  "publishedAt": "2026-07-16",
+  "topics": [
+    "西夏陵",
+    "西夏王陵"
+  ],
+  "geoHint": {
+    "cityName": "吴忠市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 4816,
+  "collectCount": 1352,
+  "commentCount": 490,
+  "images": [
+    {
+      "sha256": "589c30e309768201809637d09527c803d56b0d35be8f2c4dcec0515c159e477c",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s039f9d5c13d-0.webp",
+      "localPath": "/images/full/s039f9d5c13d/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "c5cb2a50517fdab496e8fc40618030cc",
+    "bodySimhash": "4df1c343f160e473",
+    "firstImagePerceptualHash": [
+      "589c30e309768201"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

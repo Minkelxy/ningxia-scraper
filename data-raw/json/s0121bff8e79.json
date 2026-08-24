@@ -1,0 +1,47 @@
+{
+  "noteId": "s0121bff8e79",
+  "source_id": "xhs:s0121bff8e79",
+  "fetchedAt": "2026-04-20",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s0121bff8e79",
+  "sourcePlatform": "xhs",
+  "authorNickname": "贺兰山下的猫 8213",
+  "title": "[半人工占位] 石窟攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "石窟真的太好拍了！推荐看石窟拍日落，坐快艇拍人像。晚上可以去拍星空吃，人均200元以内。注意事项：不要相信门口拉客的。",
+  "publishedAt": "2026-04-19",
+  "topics": [
+    "须弥山石窟",
+    "须弥山"
+  ],
+  "geoHint": {
+    "cityName": "固原市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 3314,
+  "collectCount": 1981,
+  "commentCount": 249,
+  "images": [
+    {
+      "sha256": "21b0cc9f6f29be72a20e63c51181902d38d833f06b3074ec25b731f9227166be",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0121bff8e79-0.webp",
+      "localPath": "/images/full/s0121bff8e79/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "0e8bda42d18fd59fe25922b6ee52d84b",
+    "bodySimhash": "0a53a35e891af20f",
+    "firstImagePerceptualHash": [
+      "21b0cc9f6f29be72"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

@@ -1,0 +1,57 @@
+{
+  "noteId": "s0159a551f94",
+  "source_id": "xhs:s0159a551f94",
+  "fetchedAt": "2026-07-14",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s0159a551f94",
+  "sourcePlatform": "xhs",
+  "authorNickname": "家庭旅行笔记 3117",
+  "title": "[半人工占位] 银川2天攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "自驾银川2天经验：从银川出发约4小时，沿途逛夜市。建议9月中下旬出发，避开正午阳光。加油要提前加满，山路信号差。",
+  "publishedAt": "2026-07-13",
+  "topics": [
+    "宁夏2日游",
+    "宁夏2天"
+  ],
+  "geoHint": {
+    "cityName": "固原市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 2161,
+  "collectCount": 115,
+  "commentCount": 386,
+  "images": [
+    {
+      "sha256": "088fbfca0d6aeb0c93e485391a6c51ca08050e4cb084641fcccce8376a364a07",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0159a551f94-0.webp",
+      "localPath": "/images/full/s0159a551f94/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    },
+    {
+      "sha256": "ada12e419fa5b54a379d9e4ca69784ea68633e0939280637461b31388f3b2b15",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0159a551f94-1.webp",
+      "localPath": "/images/full/s0159a551f94/img-002.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "a16e6f2cb0094138cde15869cf4a21ee",
+    "bodySimhash": "fdf16763e0e1fc22",
+    "firstImagePerceptualHash": [
+      "088fbfca0d6aeb0c",
+      "ada12e419fa5b54a"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

@@ -1,0 +1,47 @@
+{
+  "noteId": "s014bc867d52",
+  "source_id": "xhs:s014bc867d52",
+  "fetchedAt": "2026-08-03",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s014bc867d52",
+  "sourcePlatform": "xhs",
+  "authorNickname": "草原上的背包客 9432",
+  "title": "[半人工占位] 宁夏1天攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "三天两夜宁夏1天深度游路线：第一天逛古街，第二天骑马，第三天吃吴忠早茶。如果是清明假期去，记得带帽子+防晒衣。预算200元以内就够，别在景区门口买东西。",
+  "publishedAt": "2026-08-02",
+  "topics": [
+    "宁夏1日游",
+    "宁夏1天"
+  ],
+  "geoHint": {
+    "cityName": "吴忠市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 1679,
+  "collectCount": 778,
+  "commentCount": 217,
+  "images": [
+    {
+      "sha256": "c46911b179f7862ad8e5cdc7dc036f65f28f33548d016f39f781df6057087089",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s014bc867d52-0.webp",
+      "localPath": "/images/full/s014bc867d52/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "1122698acbd1aa956f679175bcb69062",
+    "bodySimhash": "9a07b03ea07517f3",
+    "firstImagePerceptualHash": [
+      "c46911b179f7862a"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

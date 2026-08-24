@@ -1,0 +1,47 @@
+{
+  "noteId": "s043c329fe6f",
+  "source_id": "xhs:s043c329fe6f",
+  "fetchedAt": "2026-06-07",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s043c329fe6f",
+  "sourcePlatform": "xhs",
+  "authorNickname": "周末去哪儿-宁夏站 7111",
+  "title": "[半人工占位] 四天三夜攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "三天两夜四天三夜深度游路线：第一天看石窟，第二天坐快艇，第三天爬贺兰山。如果是9月中下旬去，记得带帽子+防晒衣。预算200元以内就够，别在景区门口买东西。",
+  "publishedAt": "2026-06-05",
+  "topics": [
+    "宁夏4日游",
+    "宁夏4天"
+  ],
+  "geoHint": {
+    "cityName": "吴忠市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 168,
+  "collectCount": 1543,
+  "commentCount": 184,
+  "images": [
+    {
+      "sha256": "3f0df9c900d672c62b49ef42c8c4f01f05a417bebc1a15490467259a30ee6631",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s043c329fe6f-0.webp",
+      "localPath": "/images/full/s043c329fe6f/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "fd5829de6cb7ddbbb18c1a206ddcbd42",
+    "bodySimhash": "58c5301ea3615863",
+    "firstImagePerceptualHash": [
+      "3f0df9c900d672c6"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

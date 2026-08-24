@@ -1,0 +1,47 @@
+{
+  "noteId": "s0010a5a5caa",
+  "source_id": "xhs:s0010a5a5caa",
+  "fetchedAt": "2026-08-13",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s0010a5a5caa",
+  "sourcePlatform": "xhs",
+  "authorNickname": "西北追风日记 8197",
+  "title": "[半人工占位] 银川市攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "自驾银川市经验：从银川出发约2.5小时，沿途拍星空。建议国庆前出发，避开正午阳光。加油要提前加满，山路信号差。",
+  "publishedAt": "2026-08-12",
+  "topics": [
+    "银川",
+    "银川市"
+  ],
+  "geoHint": {
+    "cityName": "吴忠市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 313,
+  "collectCount": 994,
+  "commentCount": 276,
+  "images": [
+    {
+      "sha256": "f49dea323a2d5a0892b458091855d4fe51a19eaf6e35d31c5b08005c36a8c43a",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0010a5a5caa-0.webp",
+      "localPath": "/images/full/s0010a5a5caa/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "88f95d7f54a3311acaff21838daae3ea",
+    "bodySimhash": "4de1e3c33100dc72",
+    "firstImagePerceptualHash": [
+      "f49dea323a2d5a08"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

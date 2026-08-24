@@ -1,0 +1,47 @@
+{
+  "noteId": "s030f02ab255",
+  "source_id": "xhs:s030f02ab255",
+  "fetchedAt": "2026-03-02",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s030f02ab255",
+  "sourcePlatform": "xhs",
+  "authorNickname": "人文旅行者A 3619",
+  "title": "[半人工占位] 隆德攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "我周末去了隆德，整体体验出乎意料的好，给大家分享一下。早上爬沙丘，中午骑马，下午逛夜市，景色非常舒服。交通方面市区有旅游专线，单程8元，住宿推荐市区商圈附近公寓，性价比不错。",
+  "publishedAt": "2026-03-01",
+  "topics": [
+    "固原",
+    "固原市"
+  ],
+  "geoHint": {
+    "cityName": "石嘴山市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 4639,
+  "collectCount": 1265,
+  "commentCount": 454,
+  "images": [
+    {
+      "sha256": "8b064caf436504d09e4c357cd3338178ad2d0e0f3c2b9d6039fadfbadecdb3a3",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s030f02ab255-0.webp",
+      "localPath": "/images/full/s030f02ab255/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "72817cb3a86cd1d15538d685aa73a865",
+    "bodySimhash": "868485e5cbcc8c76",
+    "firstImagePerceptualHash": [
+      "8b064caf436504d0"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

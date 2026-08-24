@@ -1,0 +1,47 @@
+{
+  "noteId": "s0204a600ecc",
+  "source_id": "xhs:s0204a600ecc",
+  "fetchedAt": "2026-06-13",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s0204a600ecc",
+  "sourcePlatform": "xhs",
+  "authorNickname": "宁夏旅行研究所 5201",
+  "title": "[半人工占位] 大环线攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "自驾大环线经验：从银川出发约1小时40分，沿途爬贺兰山。建议清明假期出发，避开正午阳光。加油要提前加满，山路信号差。",
+  "publishedAt": "2026-06-13",
+  "topics": [
+    "自驾游",
+    "自驾"
+  ],
+  "geoHint": {
+    "cityName": "吴忠市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 559,
+  "collectCount": 1494,
+  "commentCount": 427,
+  "images": [
+    {
+      "sha256": "602c7705f605624e7975535aa9e8dda7b1c36e45b76069b7e9549a0320e5e467",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0204a600ecc-0.webp",
+      "localPath": "/images/full/s0204a600ecc/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "8e332f42a696e817d58f0d77ea81409f",
+    "bodySimhash": "4df1e343f821dc73",
+    "firstImagePerceptualHash": [
+      "602c7705f605624e"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

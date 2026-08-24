@@ -1,0 +1,47 @@
+{
+  "noteId": "s026c045bbbf",
+  "source_id": "xhs:s026c045bbbf",
+  "fetchedAt": "2026-07-31",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s026c045bbbf",
+  "sourcePlatform": "xhs",
+  "authorNickname": "家庭旅行笔记 6269",
+  "title": "[半人工占位] 烩羊杂攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "烩羊杂真的太好拍了！推荐爬沙丘拍日落，逛博物馆拍人像。晚上可以去吃吴忠早茶吃，人均人均60元吃到撑。注意事项：别穿浅色衣服，容易脏。",
+  "publishedAt": "2026-07-30",
+  "topics": [
+    "烩肉",
+    "烩小吃"
+  ],
+  "geoHint": {
+    "cityName": "固原市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 1710,
+  "collectCount": 59,
+  "commentCount": 128,
+  "images": [
+    {
+      "sha256": "9ecf890d216ca8f00f2582d3e2ba8d8e3536c394a35978510b62587fb92c338e",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s026c045bbbf-0.webp",
+      "localPath": "/images/full/s026c045bbbf/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": "烩羊杂实拍",
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "d4690b4229ce9eb3a0f0020faf68f8b9",
+    "bodySimhash": "1afff076cbd2e8dd",
+    "firstImagePerceptualHash": [
+      "9ecf890d216ca8f0"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

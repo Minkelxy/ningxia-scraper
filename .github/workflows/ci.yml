@@ -1,0 +1,129 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "scripts/**"
+      - "tests/**"
+      - "config/**"
+      - "data/**"
+      - ".github/workflows/ci.yml"
+      - "package.json"
+      - "package-lock.json"
+      - "tsconfig.json"
+      - "vitest.config.ts"
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "scripts/**"
+      - "tests/**"
+      - "config/**"
+      - "data/**"
+      - ".github/workflows/ci.yml"
+      - "package.json"
+      - "package-lock.json"
+      - "tsconfig.json"
+      - "vitest.config.ts"
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  build-and-validate:
+    name: Build · Test · Validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: 1. Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: false
+
+      - name: 2. Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: 3. Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 4. Install Dependencies
+        shell: bash
+        run: |
+          npm ci --ignore-scripts
+          python3 -m pip install --quiet --user pyyaml
+
+      - name: 5. Unit & Integration Tests (vitest)
+        shell: bash
+        run: npm test -- --run --reporter=default
+
+      - name: 6. Lint (type-check only; no eslint for minimal gate)
+        shell: bash
+        run: npx tsc --noEmit -p tsconfig.json
+
+      - name: 7. Validate Dataset (Schema + Consistency + Provenance + Blacklist)
+        id: validate
+        shell: bash
+        run: |
+          set -o pipefail
+          npx tsx scripts/validate-dataset.ts --format json | tee /tmp/validate.json
+          NOTE_COUNT=$(node -e "const r=require('/tmp/validate.json'); process.stdout.write(String(r.counts?.rawJson ?? 0))")
+          TOPIC_COV=$(npx tsx scripts/export-topics.ts --coverage 2>/dev/null | grep -oP '覆盖率: +\K[0-9]+' || echo 0)
+          echo "note_count=$NOTE_COUNT" >> "$GITHUB_OUTPUT"
+          echo "topic_coverage=$TOPIC_COV" >> "$GITHUB_OUTPUT"
+
+      - name: 8. Gate — ≥50 notes · ≥96% topic coverage
+        shell: bash
+        run: |
+          n=${{ steps.validate.outputs.note_count }}
+          c=${{ steps.validate.outputs.topic_coverage }}
+          echo "笔记数=$n  话题覆盖率=$c%"
+          if [[ "$n" -lt 50 ]]; then
+            echo "❌ 笔记数 < 50，未达标。可能需要先运行 scripts/seed-data.ts 或补充采集。" >&2
+            exit 1
+          fi
+          if [[ "$c" -lt 96 ]]; then
+            echo "❌ 话题覆盖率 < 96%（期望 ≥ 25/26 类目）。请调整种子或补充采集。" >&2
+            exit 1
+          fi
+          echo "✅ 规模门禁通过：notes=$n coverage=$c%"
+
+      - name: 9. list-top.py smoke check
+        shell: bash
+        run: |
+          python3 scripts/list-top.py --help >/dev/null
+          python3 scripts/list-top.py -n 3 | tee /tmp/top3.log
+          lines=$(wc -l < /tmp/top3.log | tr -d ' ')
+          # 至少有 header + separator + 1 data = 3 行输出
+          if [[ "$lines" -lt 3 ]]; then
+            echo "❌ list-top.py 输出行数过少：$lines" >&2
+            exit 1
+          fi
+
+      - name: 10. Generate topic coverage artifact
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p /tmp/reports
+          npx tsx scripts/export-topics.ts --out-dir /tmp/reports || true
+
+      - name: 11. Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: /tmp/reports/
+          retention-days: 14

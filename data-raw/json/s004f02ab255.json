@@ -1,0 +1,57 @@
+{
+  "noteId": "s004f02ab255",
+  "source_id": "xhs:s004f02ab255",
+  "fetchedAt": "2026-03-26",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s004f02ab255",
+  "sourcePlatform": "xhs",
+  "authorNickname": "古镇探访者 5419",
+  "title": "[半人工占位] 隆德攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "带娃去隆德攻略：小朋友最喜欢坐羊皮筏子，吃手抓羊肉可以让孩子接触自然。吃饭尽量鼓楼附近快捷酒店附近解决，省时省力。一定要带墨镜+驱蚊液。",
+  "publishedAt": "2026-03-23",
+  "topics": [
+    "固原",
+    "固原市"
+  ],
+  "geoHint": {
+    "cityName": "固原市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 2069,
+  "collectCount": 612,
+  "commentCount": 429,
+  "images": [
+    {
+      "sha256": "90294d8f7c892c4b8e2003ae1c3340a9dccec34c89e9db5d90ebc92c4e2ed426",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s004f02ab255-0.webp",
+      "localPath": "/images/full/s004f02ab255/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    },
+    {
+      "sha256": "c45b9085a50dfb7a5eeae9fe034b7ae67675b5b63ee57e213b49510c792b96af",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s004f02ab255-1.webp",
+      "localPath": "/images/full/s004f02ab255/img-002.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": "隆德实拍",
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "72817cb3a86cd1d15538d685aa73a865",
+    "bodySimhash": "7f42e58e8becb046",
+    "firstImagePerceptualHash": [
+      "90294d8f7c892c4b",
+      "c45b9085a50dfb7a"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

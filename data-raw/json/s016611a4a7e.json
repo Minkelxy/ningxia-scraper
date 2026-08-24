@@ -1,0 +1,57 @@
+{
+  "noteId": "s016611a4a7e",
+  "source_id": "xhs:s016611a4a7e",
+  "fetchedAt": "2026-03-09",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s016611a4a7e",
+  "sourcePlatform": "xhs",
+  "authorNickname": "宁夏旅行研究所 8574",
+  "title": "[半人工占位] 3天2晚攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "自驾3天2晚经验：从银川出发约4小时，沿途拍星空。建议国庆前出发，避开正午阳光。加油要提前加满，山路信号差。",
+  "publishedAt": "2026-03-07",
+  "topics": [
+    "宁夏3日游",
+    "宁夏3天"
+  ],
+  "geoHint": {
+    "cityName": "银川市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 4060,
+  "collectCount": 838,
+  "commentCount": 420,
+  "images": [
+    {
+      "sha256": "8c39308d5d8657e64273cb47564bb11c6ffc776145869448fcc90270e8034616",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s016611a4a7e-0.webp",
+      "localPath": "/images/full/s016611a4a7e/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    },
+    {
+      "sha256": "8d046e93afb8820a78cfcdbfffe88ea6cab86bd9e064e3b8043686e877991d7d",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s016611a4a7e-1.webp",
+      "localPath": "/images/full/s016611a4a7e/img-002.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "f7752b213d59d2d55fed5b1a33361141",
+    "bodySimhash": "49e3e3c33001dc7a",
+    "firstImagePerceptualHash": [
+      "8c39308d5d8657e6",
+      "8d046e93afb8820a"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

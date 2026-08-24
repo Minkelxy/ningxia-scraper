@@ -1,0 +1,47 @@
+{
+  "noteId": "s0211097bac5",
+  "source_id": "xhs:s0211097bac5",
+  "fetchedAt": "2026-06-10",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s0211097bac5",
+  "sourcePlatform": "xhs",
+  "authorNickname": "摄影师大漠 5656",
+  "title": "[半人工占位] 登山攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "自驾登山经验：从银川出发约4小时，沿途吃吴忠早茶。建议9月中下旬出发，避开正午阳光。加油要提前加满，山路信号差。",
+  "publishedAt": "2026-06-07",
+  "topics": [
+    "徒步露营",
+    "徒步"
+  ],
+  "geoHint": {
+    "cityName": "中卫市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 3478,
+  "collectCount": 1822,
+  "commentCount": 265,
+  "images": [
+    {
+      "sha256": "6a1a51b426c9d8b9a45bb8256481290c85d9d7c74d1d650ec2511cfa9372d56c",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0211097bac5-0.webp",
+      "localPath": "/images/full/s0211097bac5/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "dc3ab043e771ba71062f79141eb28c53",
+    "bodySimhash": "59716761a061fc32",
+    "firstImagePerceptualHash": [
+      "6a1a51b426c9d8b9"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

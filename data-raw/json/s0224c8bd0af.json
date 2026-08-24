@@ -1,0 +1,47 @@
+{
+  "noteId": "s0224c8bd0af",
+  "source_id": "xhs:s0224c8bd0af",
+  "fetchedAt": "2026-06-30",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s0224c8bd0af",
+  "sourcePlatform": "xhs",
+  "authorNickname": "小众目的地发掘 1842",
+  "title": "[半人工占位] 机位攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "三天两夜机位深度游路线：第一天登城墙，第二天看日落，第三天拍星空。如果是清明假期去，记得带舒适的运动鞋。预算人均60元吃到撑就够，别在景区门口买东西。",
+  "publishedAt": "2026-06-29",
+  "topics": [
+    "摄影",
+    "摄影"
+  ],
+  "geoHint": {
+    "cityName": "银川市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 1121,
+  "collectCount": 1245,
+  "commentCount": 240,
+  "images": [
+    {
+      "sha256": "1260e8983b4859d4b97cb2a0ed0b7a6bbbf012b8a9d644a68c68d19e5959db16",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0224c8bd0af-0.webp",
+      "localPath": "/images/full/s0224c8bd0af/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "1dd0dae4d1fa2ecbb386b7aa1ab96ac4",
+    "bodySimhash": "bcc7b2bea975417b",
+    "firstImagePerceptualHash": [
+      "1260e8983b4859d4"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

@@ -1,0 +1,47 @@
+{
+  "noteId": "s0346125a443",
+  "source_id": "xhs:s0346125a443",
+  "fetchedAt": "2026-03-03",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s0346125a443",
+  "sourcePlatform": "xhs",
+  "authorNickname": "周末去哪儿-宁夏站 4619",
+  "title": "[半人工占位] 大话西游攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "自驾大话西游经验：从银川出发约3小时车程，沿途逛夜市。建议国庆前出发，避开正午阳光。加油要提前加满，山路信号差。",
+  "publishedAt": "2026-03-01",
+  "topics": [
+    "镇北堡西部影城",
+    "西部影城"
+  ],
+  "geoHint": {
+    "cityName": "中卫市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 4506,
+  "collectCount": 831,
+  "commentCount": 408,
+  "images": [
+    {
+      "sha256": "08a78887deccc49ffe3231b8455d49d4fbef3fb9bc89c95f3c00547feaf9a12c",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0346125a443-0.webp",
+      "localPath": "/images/full/s0346125a443/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "7afeb79d4ca43ea3e5bc41aaba9b45a4",
+    "bodySimhash": "69f161c3c523fc72",
+    "firstImagePerceptualHash": [
+      "08a78887deccc49f"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

@@ -1,0 +1,47 @@
+{
+  "noteId": "s0270a5a5caa",
+  "source_id": "xhs:s0270a5a5caa",
+  "fetchedAt": "2026-03-19",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s0270a5a5caa",
+  "sourcePlatform": "xhs",
+  "authorNickname": "人文旅行者A 1750",
+  "title": "[半人工占位] 银川攻略攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "三天两夜银川攻略深度游路线：第一天排队坐骆驼，第二天骑马，第三天拍星空。如果是清明假期去，记得带帽子+防晒衣。预算大概150左右就够，别在景区门口买东西。",
+  "publishedAt": "2026-03-18",
+  "topics": [
+    "银川",
+    "银川市"
+  ],
+  "geoHint": {
+    "cityName": "固原市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 2935,
+  "collectCount": 941,
+  "commentCount": 344,
+  "images": [
+    {
+      "sha256": "09719f59c1e7cbb5b02885a6fd940ccfaa62d71eefb872469533a2eb23a6c9e0",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0270a5a5caa-0.webp",
+      "localPath": "/images/full/s0270a5a5caa/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "e2fbad8fdbacfcaa02e596a5c0884b12",
+    "bodySimhash": "16cd719eb9f5557b",
+    "firstImagePerceptualHash": [
+      "09719f59c1e7cbb5"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

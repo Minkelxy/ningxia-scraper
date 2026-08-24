@@ -1,0 +1,106 @@
+# 格式：每行一条记录：<yyyy-mm-dd>T<hh:mm>|<keyword>|<url>
+# 用于记录「打算手动打开并保存 HTML」的搜索/笔记 URL 池；
+# 仅保存 URL 与搜索时间，不包含原文。
+
+2026-07-26T10:26|宁夏 0a5a5caa|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%200a5a5caa&source=web_search_result_notes
+2026-07-30T02:29|宁夏 银川|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E9%93%B6%E5%B7%9D&source=web_search_result_notes
+2026-08-16T16:04|宁夏 0d9a7940|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%200d9a7940&source=web_search_result_notes
+2026-08-06T21:22|宁夏 石嘴山|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E7%9F%B3%E5%98%B4%E5%B1%B1&source=web_search_result_notes
+2026-08-18T12:57|宁夏 7e610bf3|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%207e610bf3&source=web_search_result_notes
+2026-08-16T16:32|宁夏 吴忠|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E5%90%B4%E5%BF%A0&source=web_search_result_notes
+2026-08-07T00:10|宁夏 f02ab255|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20f02ab255&source=web_search_result_notes
+2026-07-31T12:32|宁夏 固原|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E5%9B%BA%E5%8E%9F&source=web_search_result_notes
+2026-07-25T07:26|宁夏 b2207118|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20b2207118&source=web_search_result_notes
+2026-08-14T19:24|宁夏 中卫|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E4%B8%AD%E5%8D%AB&source=web_search_result_notes
+2026-08-13T05:25|宁夏 197cf5e3|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20197cf5e3&source=web_search_result_notes
+2026-07-30T15:12|宁夏 沙坡头|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E6%B2%99%E5%9D%A1%E5%A4%B4&source=web_search_result_notes
+2026-08-05T23:06|宁夏 8aee8836|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%208aee8836&source=web_search_result_notes
+2026-08-01T02:39|宁夏 沙湖|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E6%B2%99%E6%B9%96&source=web_search_result_notes
+2026-08-07T13:53|宁夏 6125a443|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%206125a443&source=web_search_result_notes
+2026-07-26T07:50|宁夏 镇北堡西部影城|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E9%95%87%E5%8C%97%E5%A0%A1%E8%A5%BF%E9%83%A8%E5%BD%B1%E5%9F%8E&source=web_search_result_notes
+2026-08-09T12:34|宁夏 5a1ad92d|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%205a1ad92d&source=web_search_result_notes
+2026-08-18T04:46|宁夏 水洞沟|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E6%B0%B4%E6%B4%9E%E6%B2%9F&source=web_search_result_notes
+2026-08-08T11:07|宁夏 81064992|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%2081064992&source=web_search_result_notes
+2026-08-05T08:22|宁夏 六盘山国家森林公园|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E5%85%AD%E7%9B%98%E5%B1%B1%E5%9B%BD%E5%AE%B6%E6%A3%AE%E6%9E%97%E5%85%AC%E5%9B%AD&source=web_search_result_notes
+2026-07-25T06:05|宁夏 ff03a46d|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20ff03a46d&source=web_search_result_notes
+2026-07-27T05:45|宁夏 火石寨|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E7%81%AB%E7%9F%B3%E5%AF%A8&source=web_search_result_notes
+2026-08-17T17:23|宁夏 1bff8e79|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%201bff8e79&source=web_search_result_notes
+2026-08-06T23:24|宁夏 须弥山石窟|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E9%A1%BB%E5%BC%A5%E5%B1%B1%E7%9F%B3%E7%AA%9F&source=web_search_result_notes
+2026-08-13T15:51|宁夏 f9d5c13d|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20f9d5c13d&source=web_search_result_notes
+2026-08-04T11:30|宁夏 西夏陵|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E8%A5%BF%E5%A4%8F%E9%99%B5&source=web_search_result_notes
+2026-08-02T00:36|宁夏 bc867d52|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20bc867d52&source=web_search_result_notes
+2026-08-01T15:42|宁夏 宁夏1日游|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E5%AE%81%E5%A4%8F1%E6%97%A5%E6%B8%B8&source=web_search_result_notes
+2026-08-03T08:42|宁夏 9a551f94|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%209a551f94&source=web_search_result_notes
+2026-08-13T22:40|宁夏 宁夏2日游|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E5%AE%81%E5%A4%8F2%E6%97%A5%E6%B8%B8&source=web_search_result_notes
+2026-08-23T09:25|宁夏 611a4a7e|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20611a4a7e&source=web_search_result_notes
+2026-08-09T08:41|宁夏 宁夏3日游|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E5%AE%81%E5%A4%8F3%E6%97%A5%E6%B8%B8&source=web_search_result_notes
+2026-08-03T00:51|宁夏 c329fe6f|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20c329fe6f&source=web_search_result_notes
+2026-08-19T18:36|宁夏 宁夏4日游|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E5%AE%81%E5%A4%8F4%E6%97%A5%E6%B8%B8&source=web_search_result_notes
+2026-08-11T22:49|宁夏 b55d8eb8|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20b55d8eb8&source=web_search_result_notes
+2026-08-23T05:18|宁夏 宁夏5日游|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E5%AE%81%E5%A4%8F5%E6%97%A5%E6%B8%B8&source=web_search_result_notes
+2026-07-28T18:59|宁夏 d03b9b22|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20d03b9b22&source=web_search_result_notes
+2026-07-30T07:59|宁夏 亲子游|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E4%BA%B2%E5%AD%90%E6%B8%B8&source=web_search_result_notes
+2026-08-21T04:10|宁夏 4a600ecc|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%204a600ecc&source=web_search_result_notes
+2026-07-27T07:44|宁夏 自驾游|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E8%87%AA%E9%A9%BE%E6%B8%B8&source=web_search_result_notes
+2026-08-22T01:50|宁夏 1097bac5|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%201097bac5&source=web_search_result_notes
+2026-08-16T11:20|宁夏 徒步露营|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E5%BE%92%E6%AD%A5%E9%9C%B2%E8%90%A5&source=web_search_result_notes
+2026-07-31T02:59|宁夏 4c8bd0af|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%204c8bd0af&source=web_search_result_notes
+2026-07-28T03:19|宁夏 摄影|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E6%91%84%E5%BD%B1&source=web_search_result_notes
+2026-08-20T14:50|宁夏 5a643bec|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%205a643bec&source=web_search_result_notes
+2026-07-30T03:49|宁夏 吴忠早茶|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E5%90%B4%E5%BF%A0%E6%97%A9%E8%8C%B6&source=web_search_result_notes
+2026-08-10T17:30|宁夏 26ba9965|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%2026ba9965&source=web_search_result_notes
+2026-08-03T20:39|宁夏 手抓羊肉|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E6%89%8B%E6%8A%93%E7%BE%8A%E8%82%89&source=web_search_result_notes
+2026-08-15T01:49|宁夏 f5cf30d7|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20f5cf30d7&source=web_search_result_notes
+2026-07-29T13:45|宁夏 蒿子面|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E8%92%BF%E5%AD%90%E9%9D%A2&source=web_search_result_notes
+2026-08-08T02:32|宁夏 c045bbbf|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20c045bbbf&source=web_search_result_notes
+2026-08-21T06:49|宁夏 烩肉|https://www.xiaohongshu.com/search_result?keyword=%E5%AE%81%E5%A4%8F%20%E7%83%A9%E8%82%89&source=web_search_result_notes
+2026-08-20T15:42|银川市|https://www.xiaohongshu.com/explore/s0010a5a5caa
+2026-08-11T06:30|石嘴山市|https://www.xiaohongshu.com/explore/s0020d9a7940
+2026-08-14T15:40|吴忠旅游|https://www.xiaohongshu.com/explore/s0037e610bf3
+2026-08-13T18:52|隆德|https://www.xiaohongshu.com/explore/s004f02ab255
+2026-08-08T23:23|中卫市|https://www.xiaohongshu.com/explore/s005b2207118
+2026-08-13T02:06|中卫|https://www.xiaohongshu.com/explore/s006197cf5e3
+2026-08-18T22:03|沙湖景区|https://www.xiaohongshu.com/explore/s0078aee8836
+2026-08-23T03:21|西部影城|https://www.xiaohongshu.com/explore/s0086125a443
+2026-08-14T19:34|水洞沟景区|https://www.xiaohongshu.com/explore/s0095a1ad92d
+2026-08-17T09:51|六盘山景区|https://www.xiaohongshu.com/explore/s01081064992
+2026-08-12T10:10|火石寨|https://www.xiaohongshu.com/explore/s011ff03a46d
+2026-08-14T11:41|石窟|https://www.xiaohongshu.com/explore/s0121bff8e79
+2026-08-20T23:49|西夏陵|https://www.xiaohongshu.com/explore/s013f9d5c13d
+2026-08-20T15:41|宁夏1天|https://www.xiaohongshu.com/explore/s014bc867d52
+2026-08-23T14:11|银川2天|https://www.xiaohongshu.com/explore/s0159a551f94
+2026-08-14T10:45|3天2晚|https://www.xiaohongshu.com/explore/s016611a4a7e
+2026-08-17T18:02|宁夏4日游|https://www.xiaohongshu.com/explore/s017c329fe6f
+2026-08-06T21:00|五日游|https://www.xiaohongshu.com/explore/s018b55d8eb8
+2026-08-07T22:54|遛娃|https://www.xiaohongshu.com/explore/s019d03b9b22
+2026-08-22T12:26|大环线|https://www.xiaohongshu.com/explore/s0204a600ecc
+2026-08-15T19:47|登山|https://www.xiaohongshu.com/explore/s0211097bac5
+2026-08-11T22:57|机位|https://www.xiaohongshu.com/explore/s0224c8bd0af
+2026-08-05T05:26|吴忠早茶文化|https://www.xiaohongshu.com/explore/s0235a643bec
+2026-08-13T07:23|国强手抓|https://www.xiaohongshu.com/explore/s02426ba9965
+2026-08-15T23:44|中卫蒿子面|https://www.xiaohongshu.com/explore/s025f5cf30d7
+2026-08-08T03:57|烩羊杂|https://www.xiaohongshu.com/explore/s026c045bbbf
+2026-08-14T10:35|银川攻略|https://www.xiaohongshu.com/explore/s0270a5a5caa
+2026-08-23T11:50|平罗|https://www.xiaohongshu.com/explore/s0280d9a7940
+2026-08-22T00:25|盐池|https://www.xiaohongshu.com/explore/s0297e610bf3
+2026-08-08T07:57|隆德|https://www.xiaohongshu.com/explore/s030f02ab255
+2026-08-20T00:50|中卫|https://www.xiaohongshu.com/explore/s031b2207118
+2026-08-11T19:38|沙坡头旅游区|https://www.xiaohongshu.com/explore/s032197cf5e3
+2026-08-16T22:10|沙湖生态旅游区|https://www.xiaohongshu.com/explore/s0338aee8836
+2026-08-16T21:06|大话西游|https://www.xiaohongshu.com/explore/s0346125a443
+2026-08-05T00:59|旧石器|https://www.xiaohongshu.com/explore/s0355a1ad92d
+2026-08-04T14:51|小南川|https://www.xiaohongshu.com/explore/s03681064992
+2026-08-08T08:08|西吉火石寨|https://www.xiaohongshu.com/explore/s037ff03a46d
+2026-08-06T22:23|须弥山石窟|https://www.xiaohongshu.com/explore/s0381bff8e79
+2026-08-09T19:25|西夏王陵|https://www.xiaohongshu.com/explore/s039f9d5c13d
+2026-08-13T18:04|宁夏1天|https://www.xiaohongshu.com/explore/s040bc867d52
+2026-08-13T14:35|2天1晚|https://www.xiaohongshu.com/explore/s0419a551f94
+2026-08-09T04:35|三日游|https://www.xiaohongshu.com/explore/s042611a4a7e
+2026-08-07T01:30|四天三夜|https://www.xiaohongshu.com/explore/s043c329fe6f
+2026-08-16T19:21|宁夏5日游|https://www.xiaohongshu.com/explore/s044b55d8eb8
+2026-08-14T00:35|小朋友|https://www.xiaohongshu.com/explore/s045d03b9b22
+2026-08-10T01:43|自驾|https://www.xiaohongshu.com/explore/s0464a600ecc
+2026-08-05T05:06|徒步露营|https://www.xiaohongshu.com/explore/s0471097bac5
+2026-08-15T04:12|打卡|https://www.xiaohongshu.com/explore/s0484c8bd0af
+2026-08-14T20:26|牛肉面|https://www.xiaohongshu.com/explore/s0495a643bec
+2026-08-19T09:25|宁夏手抓羊肉|https://www.xiaohongshu.com/explore/s05026ba9965

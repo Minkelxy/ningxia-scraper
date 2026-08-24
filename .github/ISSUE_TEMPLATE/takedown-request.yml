@@ -1,0 +1,88 @@
+name: "🛑 下架请求 · Takedown Request"
+description: "您是小红书笔记原作者，不希望笔记出现在本素材库？提交此表单，我们 24–48 小时内处理。"
+title: "[Takedown] 下架请求 - "
+labels: ["takedown", "compliance"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 感谢您维护创作者权益 🌹
+
+        本仓库尊重每一位原作者的权利。请认真填写下方信息，我们会在收到后 24–48 小时内处理。
+
+        **📋 处理结果是什么？**
+        1. 对应 noteId 标记 `removeRequested=true`，所有导出脚本自动过滤。
+        2. **物理删除** `images/full/<noteId>/` 目录下的全部图片（不可恢复）。
+        3. `provenance/manifest.csv` 永久留痕，防止再次误收录。
+        4. 我们会在本 Issue 中回复并 close。
+
+        **⚠️ 关于从 Git 历史中彻底删除**
+        由于 Git 的分布式特性，从所有 fork / 镜像中彻底擦除历史是做不到的。
+        我们默认只保证：**当前 HEAD 版本 + 未来版本** 中不再包含您的内容。
+        若您有额外要求（例如联系 GitHub 官方处理），可在下方补充说明。
+
+  - type: input
+    id: note_url
+    attributes:
+      label: "🔗 待下架的笔记 URL (必填)"
+      description: "请粘贴小红书的原始笔记链接。例如：https://www.xiaohongshu.com/explore/abc123def456"
+      placeholder: "https://www.xiaohongshu.com/explore/..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proof
+    attributes:
+      label: "🆔 作者身份证明 (强烈建议提供，加速审核)"
+      description: |
+        请提供**任何一种**可以证明你是这条笔记原作者的材料：
+        - 1. 小红书 App 内「我 → 对应笔记」的截图（截图中清晰可见你的头像昵称和该条笔记）
+        - 2. 或者：从你登录的账号里，发一条临时的动态/评论包含本 Issue 的编号，我们去验证
+        - 3. 或者：你有其他有力证据（如原图文件、发布前的草稿）
+        
+        （没有证明我们也会处理，但响应速度可能会慢一点以防止他人恶意下架。）
+      placeholder: "在这里粘贴图片链接 / 文字说明…"
+    validations:
+      required: false
+
+  - type: input
+    id: contact
+    attributes:
+      label: "📧 联系方式 (必填)"
+      description: "邮箱或其他我们能联系到你确认的方式。不会公开，仅用于沟通。"
+      placeholder: "you@example.com 或 微信号"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: reason
+    attributes:
+      label: "📝 下架原因 (必填)"
+      description: "简单告诉我们原因，帮助改进。"
+      multiple: false
+      options:
+        - "我是原作者，不希望公开 UGC 被第三方索引"
+        - "内容包含隐私/未成年肖像/个人信息（请在补充说明里标注）"
+        - "内容已过时，担心误导其他旅行者"
+        - "其他（请在补充说明里写明）"
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: "💬 补充说明 (可选)"
+      description: "任何其他想告诉我们的内容，例如：希望从历史提交中擦除、有多条笔记需要批量下架、联系方式非公开等。"
+      placeholder: "其他想说的话…"
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: "✅ 声明"
+      options:
+        - label: "我声明我是该笔记的原作者或有权代表原作者提出下架请求，提供的信息真实。"
+          required: true
+        - label: "我理解从所有 Git 历史副本中彻底擦除是不可能完全做到的，且接受仅在 HEAD 和未来版本中下架。"
+          required: true

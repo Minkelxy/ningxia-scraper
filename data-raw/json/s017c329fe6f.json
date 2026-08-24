@@ -1,0 +1,47 @@
+{
+  "noteId": "s017c329fe6f",
+  "source_id": "xhs:s017c329fe6f",
+  "fetchedAt": "2026-03-24",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s017c329fe6f",
+  "sourcePlatform": "xhs",
+  "authorNickname": "周末去哪儿-宁夏站 1499",
+  "title": "[半人工占位] 宁夏4日游攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "自驾宁夏4日游经验：从银川出发约4小时，沿途吃吴忠早茶。建议清明假期出发，避开正午阳光。加油要提前加满，山路信号差。",
+  "publishedAt": "2026-03-22",
+  "topics": [
+    "宁夏4日游",
+    "宁夏4天"
+  ],
+  "geoHint": {
+    "cityName": "中卫市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 3596,
+  "collectCount": 1451,
+  "commentCount": 7,
+  "images": [
+    {
+      "sha256": "dd48fd0199d4afc2013de1eb2afd760a2b158c33ced54b2cfb1f3b044bbf2271",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s017c329fe6f-0.webp",
+      "localPath": "/images/full/s017c329fe6f/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "7ee5c2c631957c9f4060fc3617e0bd75",
+    "bodySimhash": "5961e2430a4144b2",
+    "firstImagePerceptualHash": [
+      "dd48fd0199d4afc2"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

@@ -1,0 +1,57 @@
+{
+  "noteId": "s0471097bac5",
+  "source_id": "xhs:s0471097bac5",
+  "fetchedAt": "2026-06-19",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s0471097bac5",
+  "sourcePlatform": "xhs",
+  "authorNickname": "摄影师大漠 8516",
+  "title": "[半人工占位] 徒步露营攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "自驾徒步露营经验：从银川出发约4小时，沿途逛夜市。建议清明假期出发，避开正午阳光。加油要提前加满，山路信号差。",
+  "publishedAt": "2026-06-16",
+  "topics": [
+    "徒步露营",
+    "徒步"
+  ],
+  "geoHint": {
+    "cityName": "中卫市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 1280,
+  "collectCount": 102,
+  "commentCount": 479,
+  "images": [
+    {
+      "sha256": "b417a6e7c92303d9f7268190ac3c44e139182fcf00ca75ae1edd309ba9942bd3",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0471097bac5-0.webp",
+      "localPath": "/images/full/s0471097bac5/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    },
+    {
+      "sha256": "aeb268d889bc78eb3fe1c285228f6bf2eec93c4749b39a742c6698acd750d8a2",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0471097bac5-1.webp",
+      "localPath": "/images/full/s0471097bac5/img-002.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": "徒步露营实拍",
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "268a27dcffaf34fe063a4638a31c493e",
+    "bodySimhash": "6df0620380605c31",
+    "firstImagePerceptualHash": [
+      "b417a6e7c92303d9",
+      "aeb268d889bc78eb"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

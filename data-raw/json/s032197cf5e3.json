@@ -1,0 +1,47 @@
+{
+  "noteId": "s032197cf5e3",
+  "source_id": "xhs:s032197cf5e3",
+  "fetchedAt": "2026-04-04",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s032197cf5e3",
+  "sourcePlatform": "xhs",
+  "authorNickname": "人文旅行者A 5734",
+  "title": "[半人工占位] 沙坡头旅游区攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "三天两夜沙坡头旅游区深度游路线：第一天登城墙，第二天吃手抓羊肉，第三天爬贺兰山。如果是清明假期去，记得带墨镜+驱蚊液。预算大概150左右就够，别在景区门口买东西。",
+  "publishedAt": "2026-04-03",
+  "topics": [
+    "沙坡头",
+    "中卫沙坡头"
+  ],
+  "geoHint": {
+    "cityName": "中卫市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 2411,
+  "collectCount": 819,
+  "commentCount": 405,
+  "images": [
+    {
+      "sha256": "9ea35193b2ee3a0f156e822e60d66a2817ec5e441205d2ecbbc4b0349e97fc20",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s032197cf5e3-0.webp",
+      "localPath": "/images/full/s032197cf5e3/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": "沙坡头旅游区实拍",
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "523d71c43ee7ca4c4177a72028ef87ae",
+    "bodySimhash": "d685339ee9e1467b",
+    "firstImagePerceptualHash": [
+      "9ea35193b2ee3a0f"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

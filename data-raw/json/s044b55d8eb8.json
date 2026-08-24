@@ -1,0 +1,47 @@
+{
+  "noteId": "s044b55d8eb8",
+  "source_id": "xhs:s044b55d8eb8",
+  "fetchedAt": "2026-06-20",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s044b55d8eb8",
+  "sourcePlatform": "xhs",
+  "authorNickname": "家庭旅行笔记 4309",
+  "title": "[半人工占位] 宁夏5日游攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "我周末去了宁夏5日游，整体体验很治愈，给大家分享一下。早上酒庄品酒，中午喝八宝茶，下午看实景演出，景色非常舒服。交通方面中卫南站下车打车20分钟，住宿推荐黄河边上的连锁酒店，性价比不错。",
+  "publishedAt": "2026-06-18",
+  "topics": [
+    "宁夏5日游",
+    "宁夏5天"
+  ],
+  "geoHint": {
+    "cityName": "固原市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 3095,
+  "collectCount": 797,
+  "commentCount": 89,
+  "images": [
+    {
+      "sha256": "c7d83abecc8df6bf0fd9ea73063eda91775f218df13deacb606449cbb7000fc6",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s044b55d8eb8-0.webp",
+      "localPath": "/images/full/s044b55d8eb8/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "a118d364e90e45770d46ceabe44272b4",
+    "bodySimhash": "284c95c1f6c8987c",
+    "firstImagePerceptualHash": [
+      "c7d83abecc8df6bf"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

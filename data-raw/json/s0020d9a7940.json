@@ -1,0 +1,47 @@
+{
+  "noteId": "s0020d9a7940",
+  "source_id": "xhs:s0020d9a7940",
+  "fetchedAt": "2026-02-28",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s0020d9a7940",
+  "sourcePlatform": "xhs",
+  "authorNickname": "家庭旅行笔记 9169",
+  "title": "[半人工占位] 石嘴山市攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "带娃去石嘴山市攻略：小朋友最喜欢看石窟，骑马可以让孩子接触自然。吃饭尽量景区门口民宿附近解决，省时省力。一定要带舒适的运动鞋。",
+  "publishedAt": "2026-02-26",
+  "topics": [
+    "石嘴山",
+    "石嘴山市"
+  ],
+  "geoHint": {
+    "cityName": "银川市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 1552,
+  "collectCount": 674,
+  "commentCount": 326,
+  "images": [
+    {
+      "sha256": "4afb909c6d900a397618f2053d23b371505b945307d150b233a5c5a8be2052df",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0020d9a7940-0.webp",
+      "localPath": "/images/full/s0020d9a7940/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "fe75f50a23a95475e3a17ea6b98484f8",
+    "bodySimhash": "3c42e2822bed504f",
+    "firstImagePerceptualHash": [
+      "4afb909c6d900a39"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

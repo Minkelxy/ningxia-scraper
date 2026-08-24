@@ -1,0 +1,47 @@
+{
+  "noteId": "s006197cf5e3",
+  "source_id": "xhs:s006197cf5e3",
+  "fetchedAt": "2026-07-02",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s006197cf5e3",
+  "sourcePlatform": "xhs",
+  "authorNickname": "贺兰山下的猫 6972",
+  "title": "[半人工占位] 中卫攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "自驾中卫经验：从银川出发约4小时，沿途看实景演出。建议9月中下旬出发，避开正午阳光。加油要提前加满，山路信号差。",
+  "publishedAt": "2026-07-01",
+  "topics": [
+    "沙坡头",
+    "中卫沙坡头"
+  ],
+  "geoHint": {
+    "cityName": "固原市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 578,
+  "collectCount": 1874,
+  "commentCount": 379,
+  "images": [
+    {
+      "sha256": "c0439d19a2c3760efaa4421c135a680046ba8c9dedf61578637cfa351d7a4722",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s006197cf5e3-0.webp",
+      "localPath": "/images/full/s006197cf5e3/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": "中卫实拍",
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "c22dba853c79028d4f61c40cb492606d",
+    "bodySimhash": "49f103638061cc32",
+    "firstImagePerceptualHash": [
+      "c0439d19a2c3760e"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}

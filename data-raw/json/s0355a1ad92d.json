@@ -1,0 +1,47 @@
+{
+  "noteId": "s0355a1ad92d",
+  "source_id": "xhs:s0355a1ad92d",
+  "fetchedAt": "2026-06-09",
+  "sourceUrl": "https://www.xiaohongshu.com/explore/s0355a1ad92d",
+  "sourcePlatform": "xhs",
+  "authorNickname": "宁夏旅行研究所 9903",
+  "title": "[半人工占位] 旧石器攻略经验分享",
+  "bodyHtml": null,
+  "bodyPlainText": "带娃去旧石器攻略：小朋友最喜欢走玻璃桥，吃手抓羊肉可以让孩子接触自然。吃饭尽量市区商圈附近公寓附近解决，省时省力。一定要带舒适的运动鞋。",
+  "publishedAt": "2026-06-06",
+  "topics": [
+    "水洞沟",
+    "水洞沟遗址"
+  ],
+  "geoHint": {
+    "cityName": "固原市",
+    "attractionName": null,
+    "lat": null,
+    "lng": null
+  },
+  "likeCount": 4992,
+  "collectCount": 391,
+  "commentCount": 406,
+  "images": [
+    {
+      "sha256": "8f21757f2181c3b6853abd55e93b99021e8ff0538f0a59cacc8902da53a0daa6",
+      "originalUrl": "https://sns-img.xiaohongshu.com/placeholder/s0355a1ad92d-0.webp",
+      "localPath": "/images/full/s0355a1ad92d/img-001.webp",
+      "width": 1080,
+      "height": 1440,
+      "captionFromNote": null,
+      "license": "for-reference-only"
+    }
+  ],
+  "ingestQuality": "partial",
+  "verificationLevelHint": "reported",
+  "dedupeSignatures": {
+    "titleMd5": "6bb93871f969d7dc758a21b12159c6fd",
+    "bodySimhash": "7f40e4827bac1146",
+    "firstImagePerceptualHash": [
+      "8f21757f2181c3b6"
+    ]
+  },
+  "removeRequested": false,
+  "_meta": {}
+}
