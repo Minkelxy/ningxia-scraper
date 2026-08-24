@@ -13,7 +13,9 @@ import { z } from "zod";
 
 // ===== Enums =====
 export const LICENSE = "for-reference-only" as const;
-export const SOURCE_PLATFORM = "xhs" as const;
+export const SUPPORTED_PLATFORMS = ["xhs", "weibo", "ctrip"] as const;
+export type Platform = (typeof SUPPORTED_PLATFORMS)[number];
+export const SOURCE_PLATFORM: Platform = "xhs";
 export const VERIFICATION_HINT = "reported" as const;
 export const INGEST_QUALITIES = ["full", "partial", "images-only"] as const;
 
@@ -100,12 +102,9 @@ export const XhsNoteSchema = z.object({
     .string()
     .min(1, "sourceUrl 不能为空")
     .url("sourceUrl 必须是合法 URL")
-    .refine(
-      (u) => /^https:\/\/(www\.)?xiaohongshu\.com\//i.test(u),
-      "sourceUrl 必须是 xiaohongshu.com 的 https 链接"
-    ),
-  sourcePlatform: z.literal(SOURCE_PLATFORM, {
-    errorMap: () => ({ message: "sourcePlatform 只能是 'xhs'" }),
+    .refine((u) => u.startsWith("https://"), "sourceUrl 必须走 https"),
+  sourcePlatform: z.enum(SUPPORTED_PLATFORMS, {
+    errorMap: () => ({ message: "sourcePlatform 只能是 xhs / weibo / ctrip 之一" }),
   }),
   authorNickname: z
     .string()
@@ -138,9 +137,27 @@ export const XhsNoteSchema = z.object({
   dedupeSignatures: DedupeSignaturesSchema,
   removeRequested: RemoveRequestedSchema.default(false),
   _meta: FetchMetaSchema.default({}),
+}).superRefine((data, ctx) => {
+  const domainPatterns: Record<Platform, RegExp[]> = {
+    xhs: [/^https:\/\/(www\.)?xiaohongshu\.com\//i],
+    weibo: [
+      /^https:\/\/([a-z0-9-]+\.)?weibo\.com\//i,
+      /^https:\/\/m\.weibo\.cn\//i,
+    ],
+    ctrip: [/^https:\/\/([a-z0-9-]+\.)?ctrip\.com\//i],
+  };
+  const patterns = domainPatterns[data.sourcePlatform];
+  if (!patterns.some((re) => re.test(data.sourceUrl))) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: `sourceUrl 域名与 sourcePlatform=${data.sourcePlatform} 不匹配`,
+      path: ["sourceUrl"],
+    });
+  }
 });
 
 export type XhsNote = z.infer<typeof XhsNoteSchema>;
 
 // ===== Helper：生成 source_id =====
-export const makeSourceId = (noteId: string) => `${SOURCE_PLATFORM}:${noteId}`;
+export const makeSourceId = (noteId: string, platform: Platform = "xhs") =>
+  `${platform}:${noteId}`;

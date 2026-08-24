@@ -244,3 +244,103 @@ describe("ingestFromHtml end-to-end", () => {
     expect(fs.existsSync(raw)).toBe(false);
   });
 });
+
+describe("weibo ingest 端到端", () => {
+  let tmp: string;
+  const FIXTURE = path.join(__dirname, "fixtures", "weibo-sample.html");
+
+  beforeEach(() => {
+    tmp = buildTmpRoot();
+    nock.cleanAll();
+    nock.disableNetConnect();
+    // fixture 里 3 张 https 图：og:image (sample-wb-001) + pic_infos 的 002/003
+    for (const p of ["sample-wb-001", "sample-wb-002", "sample-wb-003"]) {
+      nock("https://img.weibo.cn")
+        .get(new RegExp(`/${p}\\.jpg`))
+        .reply(200, makeFakeWebpBytes(1080, 1440), { "Content-Type": "image/webp" });
+    }
+  });
+
+  afterEach(() => {
+    nock.cleanAll();
+    nock.enableNetConnect();
+    fs.rmSync(tmp, { recursive: true, force: true });
+  });
+
+  it("weibo fixture → raw json / ndjson / index / provenance / 3 张图，sourcePlatform=weibo", async () => {
+    const r = await ingestFromHtml(FIXTURE, { root: tmp, platform: "weibo" });
+    expect(r.ok).toBe(true);
+    expect(r.exitCode).toBe(0);
+    expect(r.noteId).toBe("4987654321098765");
+    expect(r.imagesDownloaded).toBe(3);
+
+    const rawJson = path.join(tmp, "data-raw", "json", "4987654321098765.json");
+    expect(fs.existsSync(rawJson)).toBe(true);
+    const note = JSON.parse(fs.readFileSync(rawJson, "utf8"));
+    expect(note.sourcePlatform).toBe("weibo");
+    expect(note.source_id).toBe("weibo:4987654321098765");
+    expect(note.sourceUrl).toMatch(/^https:\/\/m\.weibo\.cn\/detail\/4987654321098765/);
+    expect(note.images).toHaveLength(3);
+    for (const img of note.images) {
+      expect(img.license).toBe("for-reference-only");
+      expect(img.originalUrl).toMatch(/^https:\/\//);
+    }
+
+    const csv = fs.readFileSync(path.join(tmp, "provenance", "manifest.csv"), "utf8");
+    expect(csv).toContain("4987654321098765");
+    expect(csv).toContain("ACTIVE");
+  });
+
+  it("嗅探：不传 platform 也能识别 weibo", async () => {
+    const r = await ingestFromHtml(FIXTURE, { root: tmp });
+    expect(r.ok).toBe(true);
+    expect(r.noteId).toBe("4987654321098765");
+  });
+});
+
+describe("ctrip ingest 端到端", () => {
+  let tmp: string;
+  const FIXTURE = path.join(__dirname, "fixtures", "ctrip-sample.html");
+
+  beforeEach(() => {
+    tmp = buildTmpRoot();
+    nock.cleanAll();
+    nock.disableNetConnect();
+    // fixture 里 3 张 https 图：og:image (sample-ct-cover) + ImageList 的 001/002
+    for (const p of ["sample-ct-cover", "sample-ct-001", "sample-ct-002"]) {
+      nock("https://dimg04.c-ctrip.com")
+        .get(new RegExp(`/${p}\\.jpg`))
+        .reply(200, makeFakeWebpBytes(1080, 1440), { "Content-Type": "image/webp" });
+    }
+  });
+
+  afterEach(() => {
+    nock.cleanAll();
+    nock.enableNetConnect();
+    fs.rmSync(tmp, { recursive: true, force: true });
+  });
+
+  it("ctrip fixture → raw json / ndjson / index / provenance / 3 张图，sourcePlatform=ctrip", async () => {
+    const r = await ingestFromHtml(FIXTURE, { root: tmp, platform: "ctrip" });
+    expect(r.ok).toBe(true);
+    expect(r.exitCode).toBe(0);
+    expect(r.noteId).toBe("3987654");
+    expect(r.imagesDownloaded).toBe(3);
+
+    const rawJson = path.join(tmp, "data-raw", "json", "3987654.json");
+    expect(fs.existsSync(rawJson)).toBe(true);
+    const note = JSON.parse(fs.readFileSync(rawJson, "utf8"));
+    expect(note.sourcePlatform).toBe("ctrip");
+    expect(note.source_id).toBe("ctrip:3987654");
+    expect(note.sourceUrl).toMatch(/you\.ctrip\.com/);
+    expect(note.images).toHaveLength(3);
+    for (const img of note.images) {
+      expect(img.license).toBe("for-reference-only");
+      expect(img.originalUrl).toMatch(/^https:\/\//);
+    }
+
+    const csv = fs.readFileSync(path.join(tmp, "provenance", "manifest.csv"), "utf8");
+    expect(csv).toContain("3987654");
+    expect(csv).toContain("ACTIVE");
+  });
+});

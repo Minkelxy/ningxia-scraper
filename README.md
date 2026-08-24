@@ -17,7 +17,7 @@
 
 本仓库建立一条「公开内容 → 标准化 JSON → 去重 → 合规 provenance → 与主项目对接」的可复用采集链路。目的是为宁夏旅游主项目的**亲历游记 / 探店 / 专题编辑**提供可追溯的 UGC 素材候选池，不直接生产发布级内容。
 
-当前支持小红书（XHS），未来将逐步整合微博 / 携程等文字图片内容平台的爬虫。
+当前支持小红书（XHS）/ 微博（weibo）/ 携程（ctrip）三个平台的图文 UGC 采集。
 
 ## ⚙️ 快速开始 (5 分钟上手)
 
@@ -79,11 +79,16 @@ ningxia-xhs-scraper/
 │   ├── validate-dataset.ts       ← 数据集合规校验 (Zod Schema + provenance)
 │   ├── dedupe.ts                 ← 去重 (noteId / simhash / 图 sha256 / 感知哈希)
 │   ├── export-topics.ts          ← 覆盖率报告 + 关键词热度榜
-│   ├── xhs-to-content-kit.ts     ← → 主项目草稿生成 (绝不泄漏原文)
+│   ├── content-kit.ts            ← 多平台草稿生成 (xhs/weibo/ctrip，绝不泄漏原文)
+│   ├── xhs-to-content-kit.ts     ← XHS 专用草稿生成 (兼容旧入口)
 │   ├── mark-removed.ts           ← 标记下架 + 物理删图 + provenance 留痕
 │   └── list-top.py               ← 极简 CLI 浏览 (Python 3 标准库无依赖)
 │
 ├── src/
+│   ├── lib/
+│   │   ├── html-parser.ts        ← 统一 HTML 解析入口 (按平台分派 + 嗅探)
+│   │   ├── ctrip-parser.ts       ← 携程游记 HTML 解析
+│   │   └── weibo-parser.ts       ← 微博 HTML 解析
 │   └── schema/note.ts            ← Zod Schema 定义 (FR-2 完整字段)
 │
 ├── config/
@@ -117,8 +122,13 @@ XHS 反爬严格，自动化成功率有限，因此我们提供**两种模式**
 # Step 2: 交给脚本解析
 npm run ingest:one -- --html ./data-raw/html/sample-note.html
 
+# 指定平台 (xhs/weibo/ctrip)：
+npm run ingest:one -- --platform weibo --html ./data-raw/html/weibo-sample.html
+# 不传 --platform 时脚本会从 HTML 内容自动嗅探平台
+
 # 或批量解析一个目录:
 npm run ingest:batch -- --html-dir ./data-raw/html/
+# 输入清单每行可用 `<platform>:<path|url>` 前缀指定平台，如 `weibo:./data-raw/html/x.html`；无前缀则用 --platform 默认值或自动嗅探
 ```
 
 ### 模式 B：Playwright 浏览器自动化 (可选 · 需登录态)

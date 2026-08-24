@@ -22,14 +22,14 @@ import sharp from "sharp";
 import {
   XhsNoteSchema,
   LICENSE,
-  SOURCE_PLATFORM,
   VERIFICATION_HINT,
   makeSourceId,
   type XhsNote,
   type ImageAsset,
+  type Platform,
 } from "../src/schema/note.js";
-import { parseXhsHtml, toYYYYMMDD } from "../src/lib/html-parser.js";
-import { md5, bodySimhash, sha256Buffer, dHashFromImageBuffer } from "../src/lib/hashes.js";
+import { parseHtml, sniffPlatform, toYYYYMMDD } from "../src/lib/html-parser.js";
+import { md5, bodySimhash, dHashFromImageBuffer } from "../src/lib/hashes.js";
 import {
   downloadImage,
   ImageDownloadError,
@@ -40,8 +40,6 @@ import {
   ensureDirs,
   DEFAULT_ROOT,
 } from "../src/lib/storage.js";
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export type IngestResult = {
   ok: boolean;
@@ -59,10 +57,11 @@ export type IngestResult = {
 export async function ingestFromHtml(
   htmlPath: string,
   opts: {
-    dryRun?: boolean;
-    root?: string;
-    hintNoteId?: string;
-    minImageWidth?: number;
+    dryRun?: boolean | undefined;
+    root?: string | undefined;
+    hintNoteId?: string | undefined;
+    minImageWidth?: number | undefined;
+    platform?: Platform | undefined;
   } = {}
 ): Promise<IngestResult> {
   const root = opts.root ?? DEFAULT_ROOT;
@@ -84,7 +83,19 @@ export async function ingestFromHtml(
   if (!dryRun) ensureDirs(root);
 
   const html = fs.readFileSync(htmlPath, "utf8");
-  const parsed = parseXhsHtml(html, opts.hintNoteId);
+  let platform: Platform | undefined = opts.platform;
+  if (!platform) {
+    const sniffed = sniffPlatform(html);
+    if (!sniffed) {
+      return {
+        ok: false, filesWritten, imagesDownloaded: 0,
+        fetchErrors: ["无法从 HTML 嗅探平台（未命中 xhs/weibo/ctrip 标志）；请用 --platform <xhs|weibo|ctrip> 显式指定"],
+        exitCode: 2,
+      };
+    }
+    platform = sniffed;
+  }
+  const parsed = parseHtml(html, platform, opts.hintNoteId);
 
   if (!parsed.noteId) {
     // 最后兜底：用文件名 (去掉 .html) 做 noteId
@@ -175,17 +186,21 @@ export async function ingestFromHtml(
     quality = "full";
   }
 
-  // 如果 sourceUrl 还没拿到，补一个合成的
-  const sourceUrl = parsed.sourceUrl ?? `https://www.xiaohongshu.com/explore/${parsed.noteId}`;
+  // 如果 sourceUrl 还没拿到，按平台补一个合成的兜底
+  const fallbackUrl =
+    platform === "weibo" ? `https://m.weibo.cn/detail/${parsed.noteId}`
+    : platform === "ctrip" ? `https://you.ctrip.com/TravelBlogs/${parsed.noteId}.html`
+    : `https://www.xiaohongshu.com/explore/${parsed.noteId}`;
+  const sourceUrl = parsed.sourceUrl ?? fallbackUrl;
 
   // 构造 note 对象
   const bodyForSig = parsed.bodyPlainText ?? parsed.title ?? "";
   const note: XhsNote = {
     noteId: parsed.noteId,
-    source_id: makeSourceId(parsed.noteId),
+    source_id: makeSourceId(parsed.noteId, platform),
     fetchedAt: toYYYYMMDD(new Date()),
     sourceUrl,
-    sourcePlatform: SOURCE_PLATFORM,
+    sourcePlatform: platform,
     authorNickname: parsed.authorNickname ?? "未知作者",
     title: parsed.title,
     bodyHtml: parsed.bodyHtml,
@@ -272,6 +287,10 @@ export function main(argv: string[] = process.argv): number {
     .option("--dry-run", "仅解析并打印将要写入的文件，不落盘", false)
     .option("--min-image-width <px>", "过滤掉宽度小于此值的图片（默认 200）", (v) => Number(v), 200)
     .option("--root <dir>", "素材库根目录（默认脚本上级目录）", DEFAULT_ROOT)
+    .option("--platform <p>", "目标平台 xhs | weibo | ctrip；不传则自动嗅探 HTML", (v: string) => {
+      if (v !== "xhs" && v !== "weibo" && v !== "ctrip") throw new Error(`未知 --platform: ${v}（仅支持 xhs/weibo/ctrip）`);
+      return v as Platform;
+    })
     .action(async () => {
       const opts = program.opts<{
         html?: string;
@@ -280,6 +299,7 @@ export function main(argv: string[] = process.argv): number {
         dryRun?: boolean;
         minImageWidth?: number;
         root?: string;
+        platform?: Platform;
       }>();
 
       if (!opts.html && !opts.url) {
@@ -294,16 +314,17 @@ export function main(argv: string[] = process.argv): number {
           root: opts.root,
           hintNoteId: opts.hintNoteId,
           minImageWidth: opts.minImageWidth,
+          platform: opts.platform,
         });
       } else {
         // 模式 B (--url) 是 Task 4 的工作，MVP 阶段先提供清晰错误
         console.error(
           [
-            "--url 模式（Playwright 自动化）将在 Task 4 阶段实现。",
+            "--url 模式（Playwright 自动化）将在后续版本实现。",
             "当前请使用 --html 模式：",
-            "  1) 在浏览器里打开小红书笔记",
+            "  1) 在浏览器里打开对应平台笔记",
             "  2) Ctrl+S → 另存为完整 HTML",
-            "  3) npm run ingest:one -- --html /path/to/saved.html",
+            "  3) npm run ingest:one -- --platform <xhs|weibo|ctrip> --html /path/to/saved.html",
           ].join("\n")
         );
         process.exit(2);

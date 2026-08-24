@@ -18,6 +18,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { ingestFromHtml, type IngestResult } from "./ingest-one.js";
+import { type Platform } from "../src/schema/note.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -29,12 +30,19 @@ export type BatchReport = {
   failedCount: number;
   failures: Array<{
     input: string;
-    noteId?: string;
+    noteId?: string | undefined;
     error: string;
     retryable: boolean;
     exitCode: number;
+    platform?: Platform | undefined;
   }>;
-  successes: Array<{ input: string; noteId: string; quality: string; images: number }>;
+  successes: Array<{
+    input: string;
+    noteId: string;
+    quality: string;
+    images: number;
+    platform?: Platform | undefined;
+  }>;
   rateLimitMs: number;
   concurrency: number;
 };
@@ -44,11 +52,18 @@ function sleep(ms: number): Promise<void> {
 }
 
 function collectInputs(opts: {
-  urlsFile?: string;
-  htmlDir?: string;
+  urlsFile?: string | undefined;
+  htmlDir?: string | undefined;
   root: string;
-}): Array<{ type: "html"; path: string } | { type: "url"; url: string }> {
-  const inputs: Array<{ type: "html"; path: string } | { type: "url"; url: string }> = [];
+  defaultPlatform?: Platform | undefined;
+}): Array<
+  { type: "html"; path: string; platform?: Platform | undefined } |
+  { type: "url"; url: string; platform?: Platform | undefined }
+> {
+  const inputs: Array<
+    { type: "html"; path: string; platform?: Platform | undefined } |
+    { type: "url"; url: string; platform?: Platform | undefined }
+  > = [];
   if (opts.urlsFile) {
     if (!fs.existsSync(opts.urlsFile)) {
       throw new Error(`urls-file 不存在: ${opts.urlsFile}`);
@@ -59,13 +74,21 @@ function collectInputs(opts: {
       .map((l) => l.trim())
       .filter((l) => l && !l.startsWith("#"));
     for (const l of lines) {
-      if (/^https?:\/\//i.test(l)) {
-        inputs.push({ type: "url", url: l });
-      } else if (l.endsWith(".html") || l.endsWith(".htm")) {
-        inputs.push({ type: "html", path: path.resolve(l) });
+      // 平台前缀：xhs:|weibo:|ctrip:
+      let platform: Platform | undefined = opts.defaultPlatform;
+      let rest = l;
+      const m = /^(xhs|weibo|ctrip):(.+)$/.exec(l);
+      if (m) {
+        platform = m[1] as Platform;
+        rest = m[2] ?? "";
+      }
+      if (/^https?:\/\//i.test(rest)) {
+        inputs.push({ type: "url", url: rest, platform });
+      } else if (rest.endsWith(".html") || rest.endsWith(".htm")) {
+        inputs.push({ type: "html", path: path.resolve(rest), platform });
       } else {
         // 尝试当路径
-        if (fs.existsSync(l)) inputs.push({ type: "html", path: path.resolve(l) });
+        if (fs.existsSync(rest)) inputs.push({ type: "html", path: path.resolve(rest), platform });
       }
     }
   }
@@ -74,13 +97,13 @@ function collectInputs(opts: {
     if (!fs.existsSync(d)) throw new Error(`html-dir 不存在: ${d}`);
     for (const f of fs.readdirSync(d)) {
       if (!/\.(html?)$/i.test(f)) continue;
-      inputs.push({ type: "html", path: path.join(d, f) });
+      inputs.push({ type: "html", path: path.join(d, f), platform: opts.defaultPlatform });
     }
   }
-  // 去重
+  // 去重：平台 + 路径/URL 联合 key，避免不同平台同路径被误去重
   const seen = new Set<string>();
   return inputs.filter((i) => {
-    const k = i.type === "html" ? i.path : i.url;
+    const k = (i.platform ?? "") + "|" + (i.type === "html" ? i.path : i.url);
     if (seen.has(k)) return false;
     seen.add(k);
     return true;
@@ -89,12 +112,12 @@ function collectInputs(opts: {
 
 export async function runBatch(params: {
   inputs: ReturnType<typeof collectInputs>;
-  concurrency?: number;
-  rateLimitMs?: number;
-  root?: string;
-  dryRun?: boolean;
-  minImageWidth?: number;
-  reportPath?: string;
+  concurrency?: number | undefined;
+  rateLimitMs?: number | undefined;
+  root?: string | undefined;
+  dryRun?: boolean | undefined;
+  minImageWidth?: number | undefined;
+  reportPath?: string | undefined;
 }): Promise<BatchReport> {
   const concurrency = Math.min(2, Math.max(1, params.concurrency ?? 1));
   const rateLimitMs = Math.max(1000, params.rateLimitMs ?? 3000);
@@ -134,6 +157,7 @@ export async function runBatch(params: {
             root,
             dryRun: params.dryRun,
             minImageWidth: params.minImageWidth,
+            platform: input.platform,
           });
         } else {
           // url 模式：MVP 占位，直接记录失败
@@ -163,6 +187,7 @@ export async function runBatch(params: {
           noteId: res.noteId ?? "(unknown)",
           quality: res.quality ?? "partial",
           images: res.imagesDownloaded,
+          platform: input.platform,
         });
       } else {
         report.failedCount++;
@@ -172,6 +197,7 @@ export async function runBatch(params: {
           error: res.fetchErrors.join(" ; ") || "未知错误",
           retryable: res.exitCode === 3,
           exitCode: res.exitCode,
+          platform: input.platform,
         });
       }
     }
@@ -215,6 +241,15 @@ export function main(argv: string[] = process.argv): number {
       "--report-path <file>",
       "报告输出路径（默认 <root>/_batch_report.json）"
     )
+    .option(
+      "--platform <p>",
+      "默认平台 xhs|weibo|ctrip；清单行无前缀时用此值，否则自动嗅探",
+      (v: string) => {
+        if (v !== "xhs" && v !== "weibo" && v !== "ctrip")
+          throw new Error(`未知 --platform: ${v}`);
+        return v as Platform;
+      }
+    )
     .action(async () => {
       const opts = program.opts<{
         urlsFile?: string;
@@ -225,6 +260,7 @@ export function main(argv: string[] = process.argv): number {
         minImageWidth: number;
         root: string;
         reportPath?: string;
+        platform?: Platform;
       }>();
 
       let c = opts.concurrency;
@@ -239,7 +275,7 @@ export function main(argv: string[] = process.argv): number {
 
       let inputs: Awaited<ReturnType<typeof collectInputs>>;
       try {
-        inputs = collectInputs(opts);
+        inputs = collectInputs({ ...opts, defaultPlatform: opts.platform });
       } catch (e) {
         console.error((e as Error).message);
         process.exit(2);

@@ -14,6 +14,9 @@
 
 import * as cheerio from "cheerio";
 import { md5 } from "./hashes.js";
+import { parseWeiboHtml } from "./weibo-parser.js";
+import { parseCtripHtml } from "./ctrip-parser.js";
+import { type Platform } from "../schema/note.js";
 
 export type ParsedHtmlNote = {
   noteId: string | null;
@@ -437,3 +440,67 @@ function cleanTag(s: string): string {
 
 // 导出 md5 给其他模块复用
 export { md5 };
+
+// parseHtml 是新的统一调度入口：按 platform 分派到对应平台 parser；
+// 原 parseXhsHtml 保持不动，维持向后兼容。
+
+/**
+ * 嗅探 HTML 来源平台（xhs / weibo / ctrip），无法识别返回 null。
+ * 规则按命中先后，返回第一个匹配；在小写化后的文本里查子串，避免大正则。
+ */
+export function sniffPlatform(html: string): Platform | null {
+  const t = html.toLowerCase();
+  // xhs: xiaohongshu.com，或 __NEXT_DATA__ 且 noteDetailMap
+  if (t.includes("xiaohongshu.com")) return "xhs";
+  if (t.includes("__next_data__") && t.includes("notedetailmap")) return "xhs";
+  // weibo: m.weibo.cn / weibo.com / weibo.cn，或 ($render_data / __INITIAL_STATE__) 且 (pic_ids / screen_name)
+  if (
+    t.includes("m.weibo.cn") ||
+    t.includes("weibo.com") ||
+    t.includes("weibo.cn")
+  ) {
+    return "weibo";
+  }
+  if (
+    (t.includes("$render_data") || t.includes("__initial_state__")) &&
+    (t.includes("pic_ids") || t.includes("screen_name"))
+  ) {
+    return "weibo";
+  }
+  // ctrip: you.ctrip.com / m.ctrip.com / ctrip.com，或 window.pageInfo 且 (PublishTitle / TravelId)
+  if (
+    t.includes("you.ctrip.com") ||
+    t.includes("m.ctrip.com") ||
+    t.includes("ctrip.com")
+  ) {
+    return "ctrip";
+  }
+  if (
+    t.includes("window.pageinfo") &&
+    (t.includes("publishtitle") || t.includes("travelid"))
+  ) {
+    return "ctrip";
+  }
+  return null;
+}
+
+/**
+ * 统一 HTML 解析入口：按 platform 分派到对应平台 parser。
+ * @param html Raw HTML string（完整另存 HTML 或局部都行）
+ * @param platform 目标平台（可用 sniffPlatform 先嗅探）
+ * @param hintNoteId 调用方可提供 noteId；HTML 里找不到时兜底
+ */
+export function parseHtml(
+  html: string,
+  platform: Platform,
+  hintNoteId?: string
+): ParsedHtmlNote {
+  switch (platform) {
+    case "xhs":
+      return parseXhsHtml(html, hintNoteId);
+    case "weibo":
+      return parseWeiboHtml(html, hintNoteId);
+    case "ctrip":
+      return parseCtripHtml(html, hintNoteId);
+  }
+}

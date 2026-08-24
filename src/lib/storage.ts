@@ -133,6 +133,13 @@ export function persistNote(
 
   // 2. 更新 data/notes.ndjson
   const map = readNdjson(root);
+  const existing = map.get(note.noteId);
+  if (existing?.note && existing.note.sourcePlatform !== note.sourcePlatform) {
+    throw new Error(
+      `noteId 冲突：已存在 ${existing.note.sourcePlatform}:${note.noteId}，` +
+      `无法写入 ${note.sourcePlatform}:${note.noteId}。请用 --hint-note-id 给新条目加平台前缀后重试。`
+    );
+  }
   map.set(note.noteId, { text: JSON.stringify(note), note });
   const orderedLines: string[] = [];
   const allNotes: XhsNote[] = [];

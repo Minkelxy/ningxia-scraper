@@ -12,7 +12,7 @@
     "validate:data": "tsx scripts/validate-dataset.ts",
     "dedupe": "tsx scripts/dedupe.ts",
     "export:topics": "tsx scripts/export-topics.ts",
-    "content:kit": "tsx scripts/xhs-to-content-kit.ts",
+    "content:kit": "tsx scripts/content-kit.ts",
     "mark:removed": "tsx scripts/mark-removed.ts",
     "list:top": "python3 scripts/list-top.py",
     "seed": "tsx scripts/seed-data.ts",

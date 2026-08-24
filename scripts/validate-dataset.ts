@@ -156,12 +156,13 @@ export function validateAll(): {
       continue;
     }
     // source_id 格式校验
-    if (res.data.source_id !== makeSourceId(res.data.noteId)) {
+    const expectedSourceId = makeSourceId(res.data.noteId, res.data.sourcePlatform);
+    if (res.data.source_id !== expectedSourceId) {
       problems.push({
         severity: "error",
         category: "consistency",
         noteId,
-        message: `source_id 应该是 'xhs:${res.data.noteId}'，实际是 '${res.data.source_id}'`,
+        message: `source_id 应该是 '${expectedSourceId}'（平台 ${res.data.sourcePlatform}），实际是 '${res.data.source_id}'`,
       });
     }
     // 作者黑名单

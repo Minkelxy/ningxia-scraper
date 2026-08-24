@@ -30,6 +30,11 @@ import {
   longestHanRun,
 } from "../scripts/xhs-to-content-kit.js";
 import {
+  buildDraftMd as buildDraftMdMulti,
+  similarity as similarityMulti,
+  longestHanRun as longestHanRunMulti,
+} from "../scripts/content-kit.js";
+import {
   XhsNoteSchema,
   makeSourceId,
   LICENSE,
@@ -444,5 +449,94 @@ describe("TR-6.2 · 黑名单作者 → validate报错", () => {
     } finally {
       fs.rmSync(tmp, { recursive: true, force: true });
     }
+  });
+});
+
+describe("content-kit 跨平台脱敏 · weibo 草稿不泄漏原文", () => {
+  it("weibo note → buildDraftMd 正文相似度<30% 且连续汉字<20", () => {
+    const body =
+      "中卫3日游超全攻略来啦！Day1 抵达中卫，傍晚黄河宫看日落。Day2 沙坡头玩一整天，套票285元记得买，不要单买！Day3 66号公路+北长滩古村，包车约300元。#中卫旅游# #沙坡头# #宁夏旅行# 住宿推荐中卫某民宿，服务超棒。";
+    expect(Array.from(body).length).toBeGreaterThan(80);
+
+    const note: XhsNote = {
+      noteId: "test123",
+      source_id: "weibo:test123",
+      fetchedAt: "2026-01-22",
+      sourceUrl: "https://m.weibo.cn/detail/test123",
+      sourcePlatform: "weibo",
+      authorNickname: "测试作者",
+      title: "中卫沙坡头三日游",
+      bodyHtml: `<p>${body}</p>`,
+      bodyPlainText: body,
+      publishedAt: "2025-07-20",
+      topics: ["#中卫旅游", "#沙坡头", "#宁夏旅行"],
+      geoHint: { cityName: "中卫", attractionName: "沙坡头", lat: null, lng: null },
+      likeCount: 320,
+      collectCount: 12,
+      commentCount: 45,
+      images: [],
+      ingestQuality: "full",
+      verificationLevelHint: "reported",
+      dedupeSignatures: {
+        titleMd5: md5("中卫沙坡头三日游"),
+        bodySimhash: bodySimhash(body),
+        firstImagePerceptualHash: [],
+      },
+      removeRequested: false,
+      _meta: { fetchErrors: [], suspectedDuplicateOf: [], retryCount: 0, ingestMode: "html" },
+    };
+
+    const draft = buildDraftMdMulti(note);
+    const bodyPart = draft.split("---").slice(2).join("---");
+    expect(similarityMulti(bodyPart, body)).toBeLessThan(0.30);
+    expect(longestHanRunMulti(bodyPart)).toBeLessThan(20);
+  });
+});
+
+describe("makeSourceId 按平台 + XhsNoteSchema 接受 weibo/ctrip", () => {
+  it("makeSourceId 按平台生成前缀（默认 xhs）", () => {
+    expect(makeSourceId("123", "weibo")).toBe("weibo:123");
+    expect(makeSourceId("456", "ctrip")).toBe("ctrip:456");
+    expect(makeSourceId("789")).toBe("xhs:789");
+  });
+
+  it("XhsNoteSchema 接受最小合法 weibo note", () => {
+    const weiboNote = {
+      noteId: "w1",
+      source_id: "weibo:w1",
+      fetchedAt: "2025-01-01",
+      sourceUrl: "https://m.weibo.cn/detail/w1",
+      sourcePlatform: "weibo",
+      authorNickname: "t",
+      verificationLevelHint: "reported",
+      dedupeSignatures: {
+        titleMd5: "00000000000000000000000000000000",
+        bodySimhash: "0000000000000000",
+        firstImagePerceptualHash: [],
+      },
+      removeRequested: false,
+      _meta: {},
+    };
+    expect(XhsNoteSchema.safeParse(weiboNote).success).toBe(true);
+  });
+
+  it("XhsNoteSchema 接受最小合法 ctrip note", () => {
+    const ctripNote = {
+      noteId: "c1",
+      source_id: "ctrip:c1",
+      fetchedAt: "2025-01-01",
+      sourceUrl: "https://you.ctrip.com/TravelBlogs/c1.html",
+      sourcePlatform: "ctrip",
+      authorNickname: "t",
+      verificationLevelHint: "reported",
+      dedupeSignatures: {
+        titleMd5: "00000000000000000000000000000000",
+        bodySimhash: "0000000000000000",
+        firstImagePerceptualHash: [],
+      },
+      removeRequested: false,
+      _meta: {},
+    };
+    expect(XhsNoteSchema.safeParse(ctripNote).success).toBe(true);
   });
 });
