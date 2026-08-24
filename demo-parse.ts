@@ -1,0 +1,50 @@
+import fs from "fs";
+import { parseWeiboHtml } from "./src/lib/weibo-parser.js";
+import { parseCtripHtml } from "./src/lib/ctrip-parser.js";
+import { sniffPlatform, parseHtml } from "./src/lib/html-parser.js";
+
+console.log("=".repeat(60));
+console.log(" 多平台爬虫解析演示 / Multi-platform Parser Demo");
+console.log("=".repeat(60));
+
+const weiboHtml = fs.readFileSync("tests/fixtures/weibo-sample.html", "utf8");
+const weiboResult = parseWeiboHtml(weiboHtml);
+console.log("\n📱 【微博】解析结果 / Weibo Parsed Result:");
+console.log("  ├── noteId          :", weiboResult.noteId);
+console.log("  ├── 平台自动嗅探      :", sniffPlatform(weiboHtml));
+console.log("  ├── 标题             :", weiboResult.title ?? "(无)");
+console.log("  ├── 作者             :", weiboResult.authorNickname ?? "(无)");
+console.log("  ├── 发布时间         :", weiboResult.publishedAt ?? "(无)");
+console.log("  ├── 话题             :", weiboResult.topics?.join("、") ?? "(无)");
+console.log("  ├── 图片数           :", weiboResult.imageUrls?.length ?? 0);
+console.log("  ├── 点赞/评论/转发   :", `like=${weiboResult.interaction?.likeCount ?? "N/A"} comment=${weiboResult.interaction?.commentCount ?? "N/A"} repost=${weiboResult.interaction?.repostCount ?? "N/A"}`);
+console.log("  ├── 地理位置         :", JSON.stringify(weiboResult.geoHint));
+console.log("  ├── 来源URL          :", weiboResult.sourceUrl ?? "(无)");
+console.log("  └── 正文预览(前150字):", (weiboResult.bodyPlainText ?? "").slice(0, 150).replace(/\n/g, "⏎") + "...");
+
+const ctripHtml = fs.readFileSync("tests/fixtures/ctrip-sample.html", "utf8");
+console.log("\n" + "=".repeat(60));
+console.log("\n✈️ 【携程】解析结果 (parseHtml 统一调度, platform=ctrip) / Ctrip Parsed Result:");
+const ctripResult = parseHtml(ctripHtml, "ctrip");
+console.log("  ├── noteId          :", ctripResult.noteId);
+console.log("  ├── 平台自动嗅探      :", sniffPlatform(ctripHtml));
+console.log("  ├── 标题             :", ctripResult.title ?? "(无)");
+console.log("  ├── 作者             :", ctripResult.authorNickname ?? "(无)");
+console.log("  ├── 发布时间         :", ctripResult.publishedAt ?? "(无)");
+console.log("  ├── 话题             :", ctripResult.topics?.join("、") ?? "(无)");
+console.log("  ├── 图片数           :", ctripResult.imageUrls?.length ?? 0);
+console.log("  ├── 点赞/评论/收藏   :", `like=${ctripResult.interaction?.likeCount ?? "N/A"} comment=${ctripResult.interaction?.commentCount ?? "N/A"} collect=${ctripResult.interaction?.collectCount ?? "N/A"}`);
+console.log("  ├── 地理位置         :", JSON.stringify(ctripResult.geoHint));
+console.log("  ├── 来源URL          :", ctripResult.sourceUrl ?? "(无)");
+console.log("  └── 正文预览(前150字):", (ctripResult.bodyPlainText ?? "").slice(0, 150).replace(/\n/g, "⏎") + "...");
+
+console.log("\n" + "=".repeat(60));
+console.log("\n🔍 【自动嗅探测试】Platform Auto-Sniff Test:");
+const xhsMarker = '<html><body><div class="note-container">xiaohongshu test</div></body></html>';
+const weiboMarker = '<html><head>$render_data</head><body>weibo m.weibo.cn status</body></html>';
+const ctripMarker = '<html><body><a href="https://you.ctrip.com/travels/test">trip</a></body></html>';
+const unknown = '<html><body>hello world</body></html>';
+console.log("  xhs 标志 HTML    →", sniffPlatform(xhsMarker) ?? "null (无法识别)");
+console.log("  weibo 标志 HTML  →", sniffPlatform(weiboMarker) ?? "null (无法识别)");
+console.log("  ctrip 标志 HTML  →", sniffPlatform(ctripMarker) ?? "null (无法识别)");
+console.log("  任意杂项 HTML    →", sniffPlatform(unknown) ?? "null (无法识别)");
