@@ -70,7 +70,9 @@ export function parseCtripHtml(html: string, hintNoteId?: string): ParsedHtmlNot
   const ogUrl = $('meta[property="og:url"]').attr("content") || "";
   const u = canonical || ogUrl;
   if (u) {
-    const m = u.match(/(?:travelogs|travelblogs|travels)\/(\d+)/i);
+    // 携程 URL 常见两种：/travelblogs/<id>.html 与 /travels/<place-id>/<id>.html（place 可为字母+数字组合，如 zhongwei1077）
+    let m = u.match(/(?:travelogs|travelblogs|travels)\/(?:[^\/?#]+\/)?(\d+)\.html/i);
+    if (!m) m = u.match(/(?:travelogs|travelblogs|travels)\/(\d+)/i);
     if (m) {
       const g = m[1];
       if (g) noteId = g;
@@ -143,9 +145,15 @@ export function parseCtripHtml(html: string, hintNoteId?: string): ParsedHtmlNot
     }
   }
   if (bodyPlainText) {
-    const tagRe = /#([^#\s…]{1,30})#/g;
+    // 携程正文里的 #话题 通常写作「#宁夏自驾 #沙坡头攻略」空格结尾（单井号），同时兼容微博式「#话题#」双井号
+    const dualRe = /#([^#\s…]{1,30})#/g;
+    const singleRe = /#([^#\s…]{1,30})(?=\s|#|$|[，。！？,?!；;])/g;
     let m: RegExpExecArray | null;
-    while ((m = tagRe.exec(bodyPlainText)) !== null) {
+    while ((m = dualRe.exec(bodyPlainText)) !== null) {
+      const g = m[1];
+      if (g) topics.add("#" + cleanTag(g));
+    }
+    while ((m = singleRe.exec(bodyPlainText)) !== null) {
       const g = m[1];
       if (g) topics.add("#" + cleanTag(g));
     }

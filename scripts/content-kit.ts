@@ -366,7 +366,9 @@ export function main(argv: string[] = process.argv): number {
       const violations: Array<{ noteId: string; kind: string; detail: string }> = [];
       for (const n of selected) {
         const draft = buildDraftMd(n);
-        const bodyPart = draft.split("---").slice(2).join("---"); // frontmatter 之后的正文
+        // 相似度比较范围：frontmatter 之后的「素材点/正文」部分，不把标题/描述（天然含原文词）算进去，避免 LCS 虚高
+        const parts = draft.split("---");
+        const bodyPart = parts.length >= 3 ? parts.slice(2).join("---") : draft;
         const source = n.bodyPlainText ?? "";
         // 检查相似度
         if (source) {
