@@ -6,7 +6,7 @@
 |------|-----|
 | 源仓库 | [Minkelxy/ningxia-tourism](https://github.com/Minkelxy/ningxia-tourism) |
 | 源路径 | [`src/content/journal/shapotou-weather-first.md`](https://github.com/Minkelxy/ningxia-tourism/blob/main/src/content/journal/shapotou-weather-first.md) |
-| 抓取日期(UTC) | 2026-08-26T06:42:30 |
+| 抓取日期(UTC) | 2026-08-26T06:59:46 |
 | 文件大小 | 3231 bytes |
 | 源 commit sha | `904c28b79f78` |
 

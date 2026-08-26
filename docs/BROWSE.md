@@ -1,6 +1,6 @@
 # 📚 宁夏旅游 素材库 · 浏览总览
 
-> 由 GitHub Actions [`Daily Ingest & Publish`](../.github/workflows/daily-ingest-publish.yml) 自动维护 · 最后更新于 `2026-08-26 06:42 UTC`
+> 由 GitHub Actions [`Daily Ingest & Publish`](../.github/workflows/daily-ingest-publish.yml) 自动维护 · 最后更新于 `2026-08-26 07:00 UTC`
 
 ## 📊 数据规模
 
@@ -8,6 +8,7 @@
 |------|------|
 | 真实网站爬取内容(姊妹仓库) | 23 篇 |
 | Wikipedia 宁夏相关词条 | 56 篇 |
+| 微博宁夏相关帖(人工辅助登录 cookie) | 0 条 |
 | XHS 笔记总数 | 50 |
 | 话题覆盖率 | 100% |
 | 本次新增 XHS(本次 run) | 0 |
@@ -26,6 +27,12 @@
 **来源**:[Minkelxy/ningxia-tourism](https://github.com/Minkelxy/ningxia-tourism) 姊妹仓库的宁夏旅游 journal。
 
 → 入口:[docs/crawled/INDEX.md](./crawled/INDEX.md)(共 23 篇真实内容,点任意条目直接看正文)
+
+### C. 微博(m.weibo.cn + 人工辅助登录 cookie)
+
+**来源**:[m.weibo.cn](https://m.weibo.cn) 关键词搜索(宁夏旅游/沙坡头/西夏王陵/贺兰山/银川/中卫/沙湖/六盘山/镇北堡/水洞沟)。cookie 由人工登录导出存为 GitHub Secret,脚本用 fetch+cookie 抓正文+图片,版权归原作者。
+
+→ 入口:[docs/weibo/INDEX.md](./weibo/INDEX.md)(共 0 条微博,图片下载到本地引用)
 
 ## 🔥 Top 20 按点赞数(XHS 笔记)
 
@@ -63,7 +70,7 @@
 > ningxia-scraper@0.1.0 export:topics
 > tsx scripts/export-topics.ts --coverage
 
-# 关键词类目覆盖率报告 · 2026-08-26T06:42:56.136Z
+# 关键词类目覆盖率报告 · 2026-08-26T07:00:02.120Z
 
 总类目数: 26
 已覆盖类目: 26
@@ -105,6 +112,7 @@
 ## 🧭 如何浏览
 
 - 🌐 **Wikipedia 宁夏相关词条(主)**:[docs/wikipedia/INDEX.md](./wikipedia/INDEX.md) — 真爬 zh.wikipedia.org 的宁夏词条全文 + 首图
+- 🌐 **微博宁夏相关帖**:[docs/weibo/INDEX.md](./weibo/INDEX.md) — 人工辅助登录 cookie 抓 m.weibo.cn 正文+图片
 - 🌐 **姊妹仓库 journal**:[docs/crawled/INDEX.md](./crawled/INDEX.md) — 宁夏旅游 journal 镜像,可直接浏览
 - 📖 XHS 笔记可浏览页:[docs/notes/INDEX.md](./notes/INDEX.md) → 点 noteId 进入,正文+图片都在
 - 本仓库(原始数据 + 索引):https://github.com/Minkelxy/ningxia-scraper

@@ -6,7 +6,7 @@
 |------|-----|
 | 源仓库 | [Minkelxy/ningxia-tourism](https://github.com/Minkelxy/ningxia-tourism) |
 | 源路径 | [`docs/content/CONTENT_AUDIT.md`](https://github.com/Minkelxy/ningxia-tourism/blob/main/docs/content/CONTENT_AUDIT.md) |
-| 抓取日期(UTC) | 2026-08-26T06:42:30 |
+| 抓取日期(UTC) | 2026-08-26T06:59:46 |
 | 文件大小 | 21162 bytes |
 | 源 commit sha | `7a07a9d8f58d` |
 
