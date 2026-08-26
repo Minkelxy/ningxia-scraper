@@ -20,6 +20,8 @@
     "crawl:wikipedia": "tsx scripts/crawl-wikipedia.ts",
     "crawl:weibo": "tsx scripts/crawl-weibo.ts",
     "crawl:xhs": "tsx scripts/crawl-xhs.ts",
+    "login:weibo": "tsx scripts/login-playwright.ts -- weibo",
+    "login:xhs": "tsx scripts/login-playwright.ts -- xhs",
     "seed": "tsx scripts/seed-data.ts",
     "check": "tsc -b --noEmit",
     "lint": "eslint scripts/ src/ tests/",

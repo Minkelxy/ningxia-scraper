@@ -327,10 +327,18 @@ async function main() {
   const rawDir = path.resolve(root, opts.rawDir);
   const imgDir = path.resolve(root, opts.imgDir);
 
-  const cookie = process.env.XHS_COOKIE ?? "";
+  // cookie 来源优先级:本地 Playwright 登录产物 > 环境变量(CI Secret / export)
+  const cookieFile = path.resolve(root, "config/secrets/xhs-cookie.txt");
+  let cookie = process.env.XHS_COOKIE ?? "";
+  if (!cookie && fs.existsSync(cookieFile)) {
+    cookie = fs.readFileSync(cookieFile, "utf-8").trim();
+    console.log(`[crawl-xhs] 已读取本地 cookie:${path.relative(root, cookieFile)}`);
+  }
   if (!cookie) {
     console.error(
-      "[crawl-xhs] ❌ XHS_COOKIE 环境变量为空。请登录 www.xiaohongshu.com 后导出 Cookie,设为 GitHub Secret XHS_COOKIE 或本地 export。"
+      "[crawl-xhs] ❌ 未找到 cookie。两种方式任选其一:\n" +
+        "  1) 本地: npm run login:xhs   (Playwright 弹出浏览器,登录后自动存盘到 config/secrets/xhs-cookie.txt)\n" +
+        "  2) CI/环境: 登录 www.xiaohongshu.com 导出 Cookie,设为 GitHub Secret XHS_COOKIE 或 export XHS_COOKIE=..."
     );
     process.exit(2);
   }

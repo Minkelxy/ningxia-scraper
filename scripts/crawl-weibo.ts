@@ -270,10 +270,18 @@ async function main() {
   const maxPosts = parseInt(opts.maxPosts, 10);
   const maxPerKw = parseInt(opts.maxPerKeyword, 10);
 
-  const cookie = process.env.WEIBO_COOKIE ?? "";
+  // cookie 来源优先级:本地 Playwright 登录产物 > 环境变量(CI Secret / export)
+  const cookieFile = path.resolve(ROOT, "config/secrets/weibo-cookie.txt");
+  let cookie = process.env.WEIBO_COOKIE ?? "";
+  if (!cookie && fs.existsSync(cookieFile)) {
+    cookie = fs.readFileSync(cookieFile, "utf-8").trim();
+    console.log(`[crawl-weibo] 已读取本地 cookie:${path.relative(ROOT, cookieFile)}`);
+  }
   if (!cookie) {
     console.error(
-      "[crawl-weibo] ❌ WEIBO_COOKIE 环境变量为空。请登录 m.weibo.cn 后导出 Cookie,设为 GitHub Secret WEIBO_COOKIE 或本地 export。"
+      "[crawl-weibo] ❌ 未找到 cookie。两种方式任选其一:\n" +
+        "  1) 本地: npm run login:weibo   (Playwright 弹出浏览器,登录后自动存盘到 config/secrets/weibo-cookie.txt)\n" +
+        "  2) CI/环境: 登录 m.weibo.cn 导出 Cookie,设为 GitHub Secret WEIBO_COOKIE 或 export WEIBO_COOKIE=..."
     );
     process.exit(2);
   }
@@ -341,15 +349,16 @@ async function main() {
     const imgPaths: string[] = [];
     if (opts.images && p.picUrls.length > 0) {
       for (let i = 0; i < p.picUrls.length; i++) {
+        const picUrl = p.picUrls[i] ?? "";
         const dest = path.join(imgDir, slug, `pic-${i + 1}.jpg`);
         try {
-          await downloadImage(p.picUrls[i], dest);
+          await downloadImage(picUrl, dest);
           imgPaths.push(relImagePath(p.mid, i + 1));
           imgOk++;
         } catch (e) {
           imgFail++;
           // 下载失败就用热链兜底
-          imgPaths.push(p.picUrls[i]);
+          imgPaths.push(picUrl);
         }
       }
     } else if (p.picUrls.length > 0) {
