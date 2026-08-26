@@ -105,7 +105,17 @@ jobs:
           echo "topic_coverage=$COV" >> "$GITHUB_ENV"
           echo "topic_coverage=$COV" >> "$GITHUB_OUTPUT"
 
-      - name: 10. Generate browseable docs/BROWSE.md
+      - name: 10. Publish per-note browsable pages (docs/notes/<id>.md)
+        id: publish
+        shell: bash
+        run: |
+          # 把每条笔记(含正文+图片)渲染成可在 GitHub 直接浏览的 Markdown 页面
+          npm run publish:notes -- --out-dir docs/notes
+          NOTES_PUBLISHED=$(find docs/notes -name '*.md' -type f | wc -l | tr -d ' ')
+          echo "notes_published=$NOTES_PUBLISHED" >> "$GITHUB_OUTPUT"
+          echo "✅ docs/notes/ 共 $NOTES_PUBLISHED 个 .md 文件已就绪"
+
+      - name: 11. Generate browseable docs/BROWSE.md
         shell: bash
         run: |
           mkdir -p docs
@@ -121,6 +131,7 @@ jobs:
             echo "| 笔记总数 | ${{ steps.validate.outputs.note_count }} |"
             echo "| 话题覆盖率 | ${{ steps.export.outputs.topic_coverage }}% |"
             echo "| 本次新增(本次 run) | ${{ steps.ingest.outputs.ingested }} |"
+            echo "| 可浏览笔记页 | ${{ steps.publish.outputs.notes_published }} |"
             echo
             echo "## 🔥 Top 20 按点赞数"
             echo
@@ -142,6 +153,7 @@ jobs:
             echo
             echo "## 🧭 如何浏览"
             echo
+            echo "- 📖 **每条笔记可直接浏览(推荐)**:[docs/notes/INDEX.md](./notes/INDEX.md) → 点任意 noteId 进入,正文+图片都在"
             echo "- 本仓库(原始数据 + 索引):https://github.com/${{ github.repository }}"
             echo "- 索引文件:[data/notes-index.json](../data/notes-index.json)"
             echo "- 全量 NDJSON:[data/notes.ndjson](../data/notes.ndjson)"
@@ -159,39 +171,35 @@ jobs:
           # 同步刷新 TOPICS_RANKING.md(export-topics 的副产品)
           ls -la TOPICS_RANKING.md 2>/dev/null || true
 
-      - name: 11. Commit & push back to main
+      - name: 12. Commit & push back to main
         shell: bash
         run: |
           set -o pipefail
           git add -A
           if git diff --cached --quiet; then
-            echo "✅ 无新增数据,仅刷新 docs/BROWSE.md(若 BROWSE.md 有变也会 commit)"
-            # 强制把 BROWSE.md 加入,即便只有它变了
-            git add docs/BROWSE.md
-            if git diff --cached --quiet; then
-              echo "✅ 今日完全无变更,跳过 commit/push"
-              exit 0
-            fi
+            echo "✅ 今日完全无变更,跳过 commit/push"
+            exit 0
           fi
           TODAY=$(date -u '+%Y-%m-%d')
-          git commit -m "chore(data): daily ingest ${TODAY} — new=${{ steps.ingest.outputs.ingested }} notes=${{ steps.validate.outputs.note_count }}"
+          git commit -m "chore(data): daily ingest ${TODAY} — new=${{ steps.ingest.outputs.ingested }} notes=${{ steps.validate.outputs.note_count }} pages=${{ steps.publish.outputs.notes_published }}"
           git push origin HEAD
           echo "✅ 已推送到 https://github.com/${{ github.repository }}/commit/$(git rev-parse HEAD)"
 
-      - name: 12. Upload reports artifact
+      - name: 13. Upload reports artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: daily-ingest-report-${{ github.run_id }}
           path: |
             docs/BROWSE.md
+            docs/notes/
             /tmp/validate.json
             /tmp/coverage.txt
             TOPICS_RANKING.md
           retention-days: 30
           if-no-files-found: ignore
 
-      - name: 13. Step Summary
+      - name: 14. Step Summary
         if: always()
         shell: bash
         run: |
@@ -203,7 +211,9 @@ jobs:
           | 本次新增笔记 | ${{ steps.ingest.outputs.ingested }} |
           | 笔记总数 | ${{ steps.validate.outputs.note_count }} |
           | 话题覆盖率 | ${{ steps.export.outputs.topic_coverage }}% |
+          | 已发布可浏览页 | ${{ steps.publish.outputs.notes_published }} |
           | 仓库 | https://github.com/${{ github.repository }} |
-          | 浏览入口 | https://github.com/${{ github.repository }}/blob/main/docs/BROWSE.md |
+          | 浏览入口(BROWSE) | https://github.com/${{ github.repository }}/blob/main/docs/BROWSE.md |
+          | 浏览入口(全量目录) | https://github.com/${{ github.repository }}/blob/main/docs/notes/INDEX.md |
 
           EOF

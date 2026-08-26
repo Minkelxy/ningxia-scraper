@@ -15,6 +15,7 @@
     "content:kit": "tsx scripts/xhs-to-content-kit.ts",
     "mark:removed": "tsx scripts/mark-removed.ts",
     "list:top": "python3 scripts/list-top.py",
+    "publish:notes": "tsx scripts/publish-notes.ts",
     "seed": "tsx scripts/seed-data.ts",
     "check": "tsc -b --noEmit",
     "lint": "eslint scripts/ src/ tests/",
