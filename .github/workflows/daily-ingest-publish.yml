@@ -97,6 +97,7 @@ jobs:
           fi
 
       - name: 9. Export topic coverage ranking
+        id: export
         shell: bash
         run: |
           npm run export:topics -- --coverage | tee /tmp/coverage.txt
@@ -118,7 +119,7 @@ jobs:
             echo "| 指标 | 数值 |"
             echo "|------|------|"
             echo "| 笔记总数 | ${{ steps.validate.outputs.note_count }} |"
-            echo "| 话题覆盖率 | ${{ steps.validate.outputs.topic_coverage }}% |"
+            echo "| 话题覆盖率 | ${{ steps.export.outputs.topic_coverage }}% |"
             echo "| 本次新增(本次 run) | ${{ steps.ingest.outputs.ingested }} |"
             echo
             echo "## 🔥 Top 20 按点赞数"
@@ -201,7 +202,7 @@ jobs:
           |------|------|
           | 本次新增笔记 | ${{ steps.ingest.outputs.ingested }} |
           | 笔记总数 | ${{ steps.validate.outputs.note_count }} |
-          | 话题覆盖率 | ${{ steps.validate.outputs.topic_coverage }}% |
+          | 话题覆盖率 | ${{ steps.export.outputs.topic_coverage }}% |
           | 仓库 | https://github.com/${{ github.repository }} |
           | 浏览入口 | https://github.com/${{ github.repository }}/blob/main/docs/BROWSE.md |
 
