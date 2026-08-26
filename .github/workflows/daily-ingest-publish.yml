@@ -94,6 +94,31 @@ jobs:
           echo "wiki=$WIKI_COUNT" >> "$GITHUB_OUTPUT"
           echo "✅ docs/wikipedia/ 共 $WIKI_COUNT 篇真实维基内容已就绪"
 
+      - name: 6c. Crawl Weibo (m.weibo.cn + 人工辅助登录 cookie)
+        id: weibo
+        continue-on-error: true   # cookie 失效/限流不阻断 run
+        shell: bash
+        env:
+          WEIBO_COOKIE: ${{ secrets.WEIBO_COOKIE }}
+        run: |
+          # 用人工辅助登录导出的 cookie 走 m.weibo.cn JSON 接口,
+          # 按关键词搜宁夏旅游相关微博,落 docs/weibo/<mid>.md 可在 GitHub 直接浏览。
+          # secret 未设时优雅跳过(不阻断 run;设置后下次自动生效)。
+          if [ -z "$WEIBO_COOKIE" ]; then
+            echo "⚠️ WEIBO_COOKIE secret 未设置,跳过微博爬取(登录 m.weibo.cn 导出 cookie 设为 secret 后下次自动生效)"
+            echo "weibo=0" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          npm run crawl:weibo -- \
+            --max-posts 60 \
+            --max-per-keyword 20 \
+            --out-dir docs/weibo \
+            --raw-dir data-raw/weibo \
+            --img-dir images/weibo
+          WEIBO_COUNT=$(find docs/weibo -name '*.md' -type f ! -name 'INDEX.md' | wc -l | tr -d ' ')
+          echo "weibo=$WEIBO_COUNT" >> "$GITHUB_OUTPUT"
+          echo "✅ docs/weibo/ 共 $WEIBO_COUNT 条微博已就绪"
+
       - name: 7. Ingest new HTML notes (Mode A · 半人工离线)
         id: ingest
         shell: bash
@@ -164,6 +189,7 @@ jobs:
           NOTES_PUB="${{ steps.publish.outputs.notes_published || '0' }}"
           CRAWLED="${{ steps.crawl.outputs.crawled || '0' }}"
           WIKI="${{ steps.wiki.outputs.wiki || '0' }}"
+          WEIBO="${{ steps.weibo.outputs.weibo || '0' }}"
           {
             echo "# 📚 宁夏旅游 素材库 · 浏览总览"
             echo
@@ -175,6 +201,7 @@ jobs:
             echo "|------|------|"
             echo "| 真实网站爬取内容(姊妹仓库) | $CRAWLED 篇 |"
             echo "| Wikipedia 宁夏相关词条 | $WIKI 篇 |"
+            echo "| 微博宁夏相关帖(人工辅助登录 cookie) | $WEIBO 条 |"
             echo "| XHS 笔记总数 | $NOTE_COUNT |"
             echo "| 话题覆盖率 | $TOPIC_COV% |"
             echo "| 本次新增 XHS(本次 run) | $INGESTED |"
@@ -194,6 +221,12 @@ jobs:
             echo
             echo "→ 入口:[docs/crawled/INDEX.md](./crawled/INDEX.md)(共 $CRAWLED 篇真实内容,点任意条目直接看正文)"
             echo
+            echo "### C. 微博(m.weibo.cn + 人工辅助登录 cookie)"
+            echo
+            echo "**来源**:[m.weibo.cn](https://m.weibo.cn) 关键词搜索(宁夏旅游/沙坡头/西夏王陵/贺兰山/银川/中卫/沙湖/六盘山/镇北堡/水洞沟)。cookie 由人工登录导出存为 GitHub Secret,脚本用 fetch+cookie 抓正文+图片,版权归原作者。"
+            echo
+            echo "→ 入口:[docs/weibo/INDEX.md](./weibo/INDEX.md)(共 $WEIBO 条微博,图片下载到本地引用)"
+            echo
             echo "## 🔥 Top 20 按点赞数(XHS 笔记)"
             echo
             echo '```'
@@ -209,6 +242,7 @@ jobs:
             echo "## 🧭 如何浏览"
             echo
             echo "- 🌐 **Wikipedia 宁夏相关词条(主)**:[docs/wikipedia/INDEX.md](./wikipedia/INDEX.md) — 真爬 zh.wikipedia.org 的宁夏词条全文 + 首图"
+            echo "- 🌐 **微博宁夏相关帖**:[docs/weibo/INDEX.md](./weibo/INDEX.md) — 人工辅助登录 cookie 抓 m.weibo.cn 正文+图片"
             echo "- 🌐 **姊妹仓库 journal**:[docs/crawled/INDEX.md](./crawled/INDEX.md) — 宁夏旅游 journal 镜像,可直接浏览"
             echo "- 📖 XHS 笔记可浏览页:[docs/notes/INDEX.md](./notes/INDEX.md) → 点 noteId 进入,正文+图片都在"
             echo "- 本仓库(原始数据 + 索引):https://github.com/${{ github.repository }}"
@@ -240,7 +274,7 @@ jobs:
             exit 0
           fi
           TODAY=$(date -u '+%Y-%m-%d')
-          git commit -m "chore(data): daily ingest+crawl ${TODAY} — crawled=${{ steps.crawl.outputs.crawled || 0 }} wiki=${{ steps.wiki.outputs.wiki || 0 }} new=${{ steps.ingest.outputs.ingested || 0 }} notes=${{ steps.validate.outputs.note_count || 0 }}"
+          git commit -m "chore(data): daily ingest+crawl ${TODAY} — crawled=${{ steps.crawl.outputs.crawled || 0 }} wiki=${{ steps.wiki.outputs.wiki || 0 }} weibo=${{ steps.weibo.outputs.weibo || 0 }} new=${{ steps.ingest.outputs.ingested || 0 }} notes=${{ steps.validate.outputs.note_count || 0 }}"
           git push origin HEAD
           echo "✅ 已推送到 https://github.com/${{ github.repository }}/commit/$(git rev-parse HEAD)"
 
@@ -254,6 +288,7 @@ jobs:
             docs/notes/
             docs/crawled/
             docs/wikipedia/
+            docs/weibo/
             /tmp/validate.json
             /tmp/coverage.txt
             TOPICS_RANKING.md
@@ -271,6 +306,7 @@ jobs:
           |------|------|
           | 真实网站爬取内容(姊妹仓库) | ${{ steps.crawl.outputs.crawled || 0 }} 篇 |
           | Wikipedia 宁夏相关词条 | ${{ steps.wiki.outputs.wiki || 0 }} 篇 |
+          | 微博宁夏相关帖(cookie) | ${{ steps.weibo.outputs.weibo || 0 }} 条 |
           | 本次新增 XHS 笔记 | ${{ steps.ingest.outputs.ingested || 0 }} |
           | XHS 笔记总数 | ${{ steps.validate.outputs.note_count || 0 }} |
           | 话题覆盖率 | ${{ steps.export.outputs.topic_coverage || 0 }}% |
@@ -278,6 +314,7 @@ jobs:
           | 仓库 | https://github.com/${{ github.repository }} |
           | 浏览入口(BROWSE) | https://github.com/${{ github.repository }}/blob/main/docs/BROWSE.md |
           | 浏览入口(Wikipedia 目录) | https://github.com/${{ github.repository }}/blob/main/docs/wikipedia/INDEX.md |
+          | 浏览入口(微博目录) | https://github.com/${{ github.repository }}/blob/main/docs/weibo/INDEX.md |
           | 浏览入口(姊妹仓库目录) | https://github.com/${{ github.repository }}/blob/main/docs/crawled/INDEX.md |
           | 浏览入口(XHS 目录) | https://github.com/${{ github.repository }}/blob/main/docs/notes/INDEX.md |
 
