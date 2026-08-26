@@ -4,5 +4,7 @@
 Daily Ingest & Publish 工作流会自动扫到这里的新文件并触发 ingest:batch → dedupe → validate → export-topics → 生成 docs/BROWSE.md → push 回 main。
 
 > 触发器:`push` 到 main 且 `data-raw/html/**` 路径有变更,或每日 09:00 北京时间定时。
+>
+> 最近一次触发检查:2026-08-26(验证 publish:notes step 在 CI 中正确生成 docs/notes/*.md)。
 
 详见 [.github/workflows/daily-ingest-publish.yml](../../.github/workflows/daily-ingest-publish.yml)。
