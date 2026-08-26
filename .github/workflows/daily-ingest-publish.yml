@@ -58,7 +58,43 @@ jobs:
           npm ci --ignore-scripts
           python3 -m pip install --quiet --user pyyaml
 
-      - name: 6. Ingest new HTML notes (Mode A · 半人工离线)
+      - name: 6. Crawl real website (Minkelxy/ningxia-tourism 姊妹仓库)
+        id: crawl
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # 真爬真实网站(GitHub 公有仓库 Minkelxy/ningxia-tourism)的真实宁夏旅游内容,
+          # 落到 data-raw/crawled/ + 渲染成 docs/crawled/<slug>.md 可在 GitHub 直接浏览。
+          # 注:在 Actions 里 GITHUB_TOKEN 默认只有当前仓库读权限,跨仓读取公开内容
+          #     需要不带 token 的匿名请求。脚本里 gh api 在无 GH_TOKEN 时会回退匿名。
+          unset GH_TOKEN
+          npm run crawl:github -- \
+            --source-repo Minkelxy/ningxia-tourism \
+            --paths src/content/journal README.md XHS-SCRAPER-REFERENCE.md docs/content \
+            --out-dir docs/crawled \
+            --raw-dir data-raw/crawled
+          CRAWLED_COUNT=$(find docs/crawled -name '*.md' -type f ! -name 'INDEX.md' | wc -l | tr -d ' ')
+          echo "crawled=$CRAWLED_COUNT" >> "$GITHUB_OUTPUT"
+          echo "✅ docs/crawled/ 共 $CRAWLED_COUNT 篇真实内容已就绪"
+
+      - name: 6b. Crawl Wikipedia (zh.wikipedia.org 宁夏相关词条)
+        id: wiki
+        continue-on-error: true   # Wikipedia 偶发限流不应阻断整个 run
+        shell: bash
+        run: |
+          # 真爬真实网站 zh.wikipedia.org 的宁夏相关词条(行政区划/地理/景点/交通等),
+          # 落到 data-raw/wikipedia/ + 渲染成 docs/wikipedia/<slug>.md 可在 GitHub 直接浏览。
+          # Wikipedia 文本 CC BY-SA 3.0,每页脚注标注原作者与原文链接。
+          npm run crawl:wikipedia -- \
+            --max-articles 60 \
+            --out-dir docs/wikipedia \
+            --raw-dir data-raw/wikipedia
+          WIKI_COUNT=$(find docs/wikipedia -name '*.md' -type f ! -name 'INDEX.md' | wc -l | tr -d ' ')
+          echo "wiki=$WIKI_COUNT" >> "$GITHUB_OUTPUT"
+          echo "✅ docs/wikipedia/ 共 $WIKI_COUNT 篇真实维基内容已就绪"
+
+      - name: 7. Ingest new HTML notes (Mode A · 半人工离线)
         id: ingest
         shell: bash
         run: |
@@ -79,11 +115,11 @@ jobs:
           echo "ingested=$succ" >> "$GITHUB_OUTPUT"
           echo "本次成功入库条数: $succ"
 
-      - name: 7. Dedupe (noteId / simhash / image sha256 / pHash)
+      - name: 8. Dedupe (noteId / simhash / image sha256 / pHash)
         shell: bash
         run: npm run dedupe
 
-      - name: 8. Validate dataset (gate · 失败则不 commit)
+      - name: 9. Validate dataset (gate · 失败则不 commit 半成品 XHS 数据,但已爬 docs/crawled/ 仍会 commit)
         id: validate
         shell: bash
         run: |
@@ -92,12 +128,13 @@ jobs:
           NOTE_COUNT=$(node -e "const r=require('/tmp/validate.json');process.stdout.write(String(r.counts?.rawJson ?? 0))")
           echo "note_count=$NOTE_COUNT" >> "$GITHUB_OUTPUT"
           if [ "$(node -e "const r=require('/tmp/validate.json');process.stdout.write(r.ok?'1':'0')")" = "0" ]; then
-            echo "❌ validate 失败,停止(不会 commit 半成品)"
+            echo "❌ validate 失败,停止后续 XHS 处理(但已爬 docs/crawled/ 仍会随本次 commit 推送)"
             exit 1
           fi
 
-      - name: 9. Export topic coverage ranking
+      - name: 10. Export topic coverage ranking
         id: export
+        if: success() || steps.validate.outcome == 'success'
         shell: bash
         run: |
           npm run export:topics -- --coverage | tee /tmp/coverage.txt
@@ -105,22 +142,30 @@ jobs:
           echo "topic_coverage=$COV" >> "$GITHUB_ENV"
           echo "topic_coverage=$COV" >> "$GITHUB_OUTPUT"
 
-      - name: 10. Publish per-note browsable pages (docs/notes/<id>.md)
+      - name: 11. Publish per-note browsable pages (docs/notes/<id>.md)
         id: publish
+        if: success() || steps.validate.outcome == 'success'
         shell: bash
         run: |
-          # 把每条笔记(含正文+图片)渲染成可在 GitHub 直接浏览的 Markdown 页面
+          # 把每条 XHS 笔记(含正文+图片)渲染成可在 GitHub 直接浏览的 Markdown 页面
           npm run publish:notes -- --out-dir docs/notes
           NOTES_PUBLISHED=$(find docs/notes -name '*.md' -type f | wc -l | tr -d ' ')
           echo "notes_published=$NOTES_PUBLISHED" >> "$GITHUB_OUTPUT"
           echo "✅ docs/notes/ 共 $NOTES_PUBLISHED 个 .md 文件已就绪"
 
-      - name: 11. Generate browseable docs/BROWSE.md
+      - name: 12. Generate browseable docs/BROWSE.md
+        if: always()
         shell: bash
         run: |
           mkdir -p docs
+          NOTE_COUNT="${{ steps.validate.outputs.note_count || '0' }}"
+          TOPIC_COV="${{ steps.export.outputs.topic_coverage || '0' }}"
+          INGESTED="${{ steps.ingest.outputs.ingested || '0' }}"
+          NOTES_PUB="${{ steps.publish.outputs.notes_published || '0' }}"
+          CRAWLED="${{ steps.crawl.outputs.crawled || '0' }}"
+          WIKI="${{ steps.wiki.outputs.wiki || '0' }}"
           {
-            echo "# 📚 宁夏旅游 XHS 素材库 · 浏览总览"
+            echo "# 📚 宁夏旅游 素材库 · 浏览总览"
             echo
             echo "> 由 GitHub Actions [\`Daily Ingest & Publish\`](../.github/workflows/daily-ingest-publish.yml) 自动维护 · 最后更新于 \`$(date -u '+%Y-%m-%d %H:%M UTC')\`"
             echo
@@ -128,37 +173,48 @@ jobs:
             echo
             echo "| 指标 | 数值 |"
             echo "|------|------|"
-            echo "| 笔记总数 | ${{ steps.validate.outputs.note_count }} |"
-            echo "| 话题覆盖率 | ${{ steps.export.outputs.topic_coverage }}% |"
-            echo "| 本次新增(本次 run) | ${{ steps.ingest.outputs.ingested }} |"
-            echo "| 可浏览笔记页 | ${{ steps.publish.outputs.notes_published }} |"
+            echo "| 真实网站爬取内容(姊妹仓库) | $CRAWLED 篇 |"
+            echo "| Wikipedia 宁夏相关词条 | $WIKI 篇 |"
+            echo "| XHS 笔记总数 | $NOTE_COUNT |"
+            echo "| 话题覆盖率 | $TOPIC_COV% |"
+            echo "| 本次新增 XHS(本次 run) | $INGESTED |"
+            echo "| 可浏览 XHS 笔记页 | $NOTES_PUB |"
             echo
-            echo "## 🔥 Top 20 按点赞数"
+            echo "## 🌐 真实网站爬取内容"
+            echo
+            echo "### A. Wikipedia 宁夏相关词条(真爬 zh.wikipedia.org)"
+            echo
+            echo "**来源**:[zh.wikipedia.org](https://zh.wikipedia.org) 的宁夏行政区划、地理、景点、交通、文化等词条(全文纯文本 + 首图热链)。CC BY-SA 3.0,每页脚注标注原作者与原文链接。"
+            echo
+            echo "→ 入口:[docs/wikipedia/INDEX.md](./wikipedia/INDEX.md)(共 $WIKI 篇词条,点任意条目直接看全文)"
+            echo
+            echo "### B. 姊妹仓库 journal(Minkelxy/ningxia-tourism)"
+            echo
+            echo "**来源**:[Minkelxy/ningxia-tourism](https://github.com/Minkelxy/ningxia-tourism) 姊妹仓库的宁夏旅游 journal。"
+            echo
+            echo "→ 入口:[docs/crawled/INDEX.md](./crawled/INDEX.md)(共 $CRAWLED 篇真实内容,点任意条目直接看正文)"
+            echo
+            echo "## 🔥 Top 20 按点赞数(XHS 笔记)"
             echo
             echo '```'
-            python3 scripts/list-top.py -n 20 --sort likeCount
-            echo '```'
-            echo
-            echo "## ⭐ Top 20 按收藏数"
-            echo
-            echo '```'
-            python3 scripts/list-top.py -n 20 --sort collectCount
+            python3 scripts/list-top.py -n 20 --sort likeCount 2>/dev/null || echo "(XHS 数据校验未通过,跳过)"
             echo '```'
             echo
             echo "## 🏷️ 话题覆盖率报告"
             echo
             echo '```'
-            cat /tmp/coverage.txt
+            cat /tmp/coverage.txt 2>/dev/null || echo "(无)"
             echo '```'
             echo
             echo "## 🧭 如何浏览"
             echo
-            echo "- 📖 **每条笔记可直接浏览(推荐)**:[docs/notes/INDEX.md](./notes/INDEX.md) → 点任意 noteId 进入,正文+图片都在"
+            echo "- 🌐 **Wikipedia 宁夏相关词条(主)**:[docs/wikipedia/INDEX.md](./wikipedia/INDEX.md) — 真爬 zh.wikipedia.org 的宁夏词条全文 + 首图"
+            echo "- 🌐 **姊妹仓库 journal**:[docs/crawled/INDEX.md](./crawled/INDEX.md) — 宁夏旅游 journal 镜像,可直接浏览"
+            echo "- 📖 XHS 笔记可浏览页:[docs/notes/INDEX.md](./notes/INDEX.md) → 点 noteId 进入,正文+图片都在"
             echo "- 本仓库(原始数据 + 索引):https://github.com/${{ github.repository }}"
+            echo "- 原始爬取落盘:[data-raw/crawled/](../data-raw/crawled/)"
             echo "- 索引文件:[data/notes-index.json](../data/notes-index.json)"
             echo "- 全量 NDJSON:[data/notes.ndjson](../data/notes.ndjson)"
-            echo "- 原始单条 JSON:[data-raw/json/](../data-raw/json/)"
-            echo "- 原图(Git LFS):[images/full/](../images/full/)"
             echo "- 话题热度榜:[TOPICS_RANKING.md](../TOPICS_RANKING.md)"
             echo
             echo "本地浏览(无需 Node):"
@@ -168,24 +224,27 @@ jobs:
             echo '```'
           } > docs/BROWSE.md
           echo "✅ docs/BROWSE.md 已生成"
-          # 同步刷新 TOPICS_RANKING.md(export-topics 的副产品)
           ls -la TOPICS_RANKING.md 2>/dev/null || true
 
-      - name: 12. Commit & push back to main
+      - name: 13. Commit & push back to main
+        if: always()
         shell: bash
         run: |
           set -o pipefail
+          # 配置 git identity (steps.2 已设过,但 if:always 兜底)
+          git config user.name  "github-actions[bot]" 2>/dev/null || true
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com" 2>/dev/null || true
           git add -A
           if git diff --cached --quiet; then
             echo "✅ 今日完全无变更,跳过 commit/push"
             exit 0
           fi
           TODAY=$(date -u '+%Y-%m-%d')
-          git commit -m "chore(data): daily ingest ${TODAY} — new=${{ steps.ingest.outputs.ingested }} notes=${{ steps.validate.outputs.note_count }} pages=${{ steps.publish.outputs.notes_published }}"
+          git commit -m "chore(data): daily ingest+crawl ${TODAY} — crawled=${{ steps.crawl.outputs.crawled || 0 }} wiki=${{ steps.wiki.outputs.wiki || 0 }} new=${{ steps.ingest.outputs.ingested || 0 }} notes=${{ steps.validate.outputs.note_count || 0 }}"
           git push origin HEAD
           echo "✅ 已推送到 https://github.com/${{ github.repository }}/commit/$(git rev-parse HEAD)"
 
-      - name: 13. Upload reports artifact
+      - name: 14. Upload reports artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -193,13 +252,15 @@ jobs:
           path: |
             docs/BROWSE.md
             docs/notes/
+            docs/crawled/
+            docs/wikipedia/
             /tmp/validate.json
             /tmp/coverage.txt
             TOPICS_RANKING.md
           retention-days: 30
           if-no-files-found: ignore
 
-      - name: 14. Step Summary
+      - name: 15. Step Summary
         if: always()
         shell: bash
         run: |
@@ -208,12 +269,16 @@ jobs:
 
           | 项目 | 数值 |
           |------|------|
-          | 本次新增笔记 | ${{ steps.ingest.outputs.ingested }} |
-          | 笔记总数 | ${{ steps.validate.outputs.note_count }} |
-          | 话题覆盖率 | ${{ steps.export.outputs.topic_coverage }}% |
-          | 已发布可浏览页 | ${{ steps.publish.outputs.notes_published }} |
+          | 真实网站爬取内容(姊妹仓库) | ${{ steps.crawl.outputs.crawled || 0 }} 篇 |
+          | Wikipedia 宁夏相关词条 | ${{ steps.wiki.outputs.wiki || 0 }} 篇 |
+          | 本次新增 XHS 笔记 | ${{ steps.ingest.outputs.ingested || 0 }} |
+          | XHS 笔记总数 | ${{ steps.validate.outputs.note_count || 0 }} |
+          | 话题覆盖率 | ${{ steps.export.outputs.topic_coverage || 0 }}% |
+          | 已发布 XHS 可浏览页 | ${{ steps.publish.outputs.notes_published || 0 }} |
           | 仓库 | https://github.com/${{ github.repository }} |
           | 浏览入口(BROWSE) | https://github.com/${{ github.repository }}/blob/main/docs/BROWSE.md |
-          | 浏览入口(全量目录) | https://github.com/${{ github.repository }}/blob/main/docs/notes/INDEX.md |
+          | 浏览入口(Wikipedia 目录) | https://github.com/${{ github.repository }}/blob/main/docs/wikipedia/INDEX.md |
+          | 浏览入口(姊妹仓库目录) | https://github.com/${{ github.repository }}/blob/main/docs/crawled/INDEX.md |
+          | 浏览入口(XHS 目录) | https://github.com/${{ github.repository }}/blob/main/docs/notes/INDEX.md |
 
           EOF
