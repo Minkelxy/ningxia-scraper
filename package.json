@@ -18,6 +18,7 @@
     "publish:notes": "tsx scripts/publish-notes.ts",
     "crawl:github": "tsx scripts/crawl-github-journal.ts",
     "crawl:wikipedia": "tsx scripts/crawl-wikipedia.ts",
+    "crawl:weibo": "tsx scripts/crawl-weibo.ts",
     "seed": "tsx scripts/seed-data.ts",
     "check": "tsc -b --noEmit",
     "lint": "eslint scripts/ src/ tests/",
