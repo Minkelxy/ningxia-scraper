@@ -1,12 +1,12 @@
 # 📚 宁夏旅游 素材库 · 浏览总览
 
-> 由 GitHub Actions [`Daily Ingest & Publish`](../.github/workflows/daily-ingest-publish.yml) 自动维护 · 最后更新于 `2026-08-26 06:31 UTC`
+> 由 GitHub Actions [`Daily Ingest & Publish`](../.github/workflows/daily-ingest-publish.yml) 自动维护 · 最后更新于 `2026-08-26 06:42 UTC`
 
 ## 📊 数据规模
 
 | 指标 | 数值 |
 |------|------|
-| 真实网站爬取内容(姊妹仓库) | 0 篇 |
+| 真实网站爬取内容(姊妹仓库) | 23 篇 |
 | Wikipedia 宁夏相关词条 | 56 篇 |
 | XHS 笔记总数 | 50 |
 | 话题覆盖率 | 100% |
@@ -25,7 +25,7 @@
 
 **来源**:[Minkelxy/ningxia-tourism](https://github.com/Minkelxy/ningxia-tourism) 姊妹仓库的宁夏旅游 journal。
 
-→ 入口:[docs/crawled/INDEX.md](./crawled/INDEX.md)(共 0 篇真实内容,点任意条目直接看正文)
+→ 入口:[docs/crawled/INDEX.md](./crawled/INDEX.md)(共 23 篇真实内容,点任意条目直接看正文)
 
 ## 🔥 Top 20 按点赞数(XHS 笔记)
 
@@ -63,7 +63,7 @@
 > ningxia-scraper@0.1.0 export:topics
 > tsx scripts/export-topics.ts --coverage
 
-# 关键词类目覆盖率报告 · 2026-08-26T06:31:09.516Z
+# 关键词类目覆盖率报告 · 2026-08-26T06:42:56.136Z
 
 总类目数: 26
 已覆盖类目: 26
