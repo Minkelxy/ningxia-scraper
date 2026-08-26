@@ -22,7 +22,6 @@
  *   npm run crawl:github -- --paths src/content/journal README.md docs/content
  */
 import { Command } from "commander";
-import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -45,13 +44,21 @@ type GhFileContent = GhContentEntry & {
   encoding?: "base64" | "utf-8" | null;
 };
 
-function ghApi<T = unknown>(endpoint: string): T {
-  // gh api 已通过 GH_TOKEN 认证;CI 里用内置 GITHUB_TOKEN 也可
-  const out = execFileSync("gh", ["api", "-H", "Accept: application/vnd.github+json", endpoint], {
-    maxBuffer: 64 * 1024 * 1024,
-    encoding: "utf-8",
-  });
-  return JSON.parse(out) as T;
+async function ghApi<T = unknown>(endpoint: string): Promise<T> {
+  // 直接用 fetch 调 GitHub API,公共仓库无需 token(沙盒/CI/本地通用)。
+  // 若 GH_TOKEN 存在则带上以提高速率限额(匿名 60/小时,带 token 5000/小时)。
+  const url = endpoint.startsWith("http")
+    ? endpoint
+    : `https://api.github.com/${endpoint.replace(/^\//, "")}`;
+  const headers: Record<string, string> = {
+    Accept: "application/vnd.github+json",
+    "User-Agent":
+      "MinkelxyNingxiaCrawler/1.0 (+https://github.com/Minkelxy/ningxia-tourism)",
+  };
+  if (process.env.GH_TOKEN) headers.Authorization = `Bearer ${process.env.GH_TOKEN}`;
+  const r = await fetch(url, { headers, signal: AbortSignal.timeout(30_000) });
+  if (!r.ok) throw new Error(`HTTP ${r.status} on ${endpoint}`);
+  return (await r.json()) as T;
 }
 
 function decodeBase64(s: string): string {
@@ -78,7 +85,7 @@ function escapeShellPath(s: string): string {
 
 async function listFilesRecursive(repo: string, p: string): Promise<GhContentEntry[]> {
   const endpoint = `repos/${repo}/contents/${escapeShellPath(p)}`;
-  const data = ghApi<GhContentEntry[] | GhFileContent>(endpoint);
+  const data = await ghApi<GhContentEntry[] | GhFileContent>(endpoint);
   if (!Array.isArray(data)) {
     // 单文件 endpoint
     return [data];
@@ -95,12 +102,33 @@ async function listFilesRecursive(repo: string, p: string): Promise<GhContentEnt
   return out;
 }
 
-function fetchFileContent(repo: string, p: string): { content: string; sha: string; html_url: string } {
-  const data = ghApi<GhFileContent>(`repos/${repo}/contents/${escapeShellPath(p)}`);
-  if (typeof data.content !== "string" || data.encoding !== "base64") {
-    throw new Error(`${p} 不是 base64 编码的文件 (encoding=${data.encoding})`);
+async function fetchFileContent(
+  repo: string,
+  p: string
+): Promise<{ content: string; sha: string; html_url: string; size: number }> {
+  const data = await ghApi<GhFileContent>(`repos/${repo}/contents/${escapeShellPath(p)}`);
+  // 小文件:Contents API 内联返回 base64
+  if (typeof data.content === "string" && data.encoding === "base64") {
+    return {
+      content: decodeBase64(data.content),
+      sha: data.sha,
+      html_url: data.html_url,
+      size: data.size,
+    };
   }
-  return { content: decodeBase64(data.content), sha: data.sha, html_url: data.html_url };
+  // 大文件(>1MB):encoding="none",需用 download_url 拉 raw
+  if (data.download_url) {
+    const r = await fetch(data.download_url, {
+      headers: {
+        "User-Agent":
+          "MinkelxyNingxiaCrawler/1.0 (+https://github.com/Minkelxy/ningxia-tourism)",
+      },
+      signal: AbortSignal.timeout(30_000),
+    });
+    if (!r.ok) throw new Error(`HTTP ${r.status} on raw ${p}`);
+    return { content: await r.text(), sha: data.sha, html_url: data.html_url, size: data.size };
+  }
+  throw new Error(`${p} 无法获取内容 (encoding=${data.encoding}, 无 download_url)`);
 }
 
 type CrawledDoc = {
@@ -226,7 +254,7 @@ async function main() {
   let failCount = 0;
   for (const entry of mdEntries) {
     try {
-      const { content, sha, html_url } = fetchFileContent(opts.sourceRepo, entry.path);
+      const { content, sha, html_url } = await fetchFileContent(opts.sourceRepo, entry.path);
       const slug = slugify(entry.path);
       const doc: CrawledDoc = {
         sourcePath: entry.path,

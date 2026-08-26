@@ -13,6 +13,8 @@ on:
     branches: [main]
     paths:
       - "data-raw/html/**"
+      - "scripts/**"
+      - ".github/workflows/**"
 
 concurrency:
   group: daily-ingest-${{ github.ref }}
@@ -66,9 +68,7 @@ jobs:
         run: |
           # 真爬真实网站(GitHub 公有仓库 Minkelxy/ningxia-tourism)的真实宁夏旅游内容,
           # 落到 data-raw/crawled/ + 渲染成 docs/crawled/<slug>.md 可在 GitHub 直接浏览。
-          # 注:在 Actions 里 GITHUB_TOKEN 默认只有当前仓库读权限,跨仓读取公开内容
-          #     需要不带 token 的匿名请求。脚本里 gh api 在无 GH_TOKEN 时会回退匿名。
-          unset GH_TOKEN
+          # 脚本用 fetch 直连 GitHub Contents API,公共仓库无需 token;GH_TOKEN 存在则带上提高限额。
           npm run crawl:github -- \
             --source-repo Minkelxy/ningxia-tourism \
             --paths src/content/journal README.md XHS-SCRAPER-REFERENCE.md docs/content \

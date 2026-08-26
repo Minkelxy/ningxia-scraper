@@ -121,35 +121,43 @@ type WikiArticle = {
 
 async function fetchArticles(titles: string[], fetchedAt: string): Promise<WikiArticle[]> {
   const out: WikiArticle[] = [];
-  // 分批,每批最多 20 个 title(Wikipedia 单次 titles 上限 50,20 更稳)
-  for (let i = 0; i < titles.length; i += 20) {
-    const batch = titles.slice(i, i + 20);
-    const j = await apiGet({
-      action: "query",
-      prop: "extracts|pageimages|info",
-      titles: batch.join("|"),
-      explaintext: "1",
-      exsectionformat: "wiki", // 保留 == 段名 == 标记便于转 Markdown
-      piprop: "thumbnail|original",
-      pithumbsize: "1200",
-      inprop: "url",
-    });
-    const pages: any[] = j?.query?.pages ?? [];
-    for (const p of pages) {
-      if (!p || p.missing) continue;
-      out.push({
-        title: p.title,
-        pageid: p.pageid,
-        extract: p.extract ?? "",
-        thumbUrl: p.thumbnail?.source ?? p.original?.source ?? null,
-        thumbWidth: p.thumbnail?.width ?? p.original?.width ?? null,
-        thumbHeight: p.thumbnail?.height ?? p.original?.height ?? null,
-        canonicalUrl:
-          p.fullurl ?? `https://zh.wikipedia.org/wiki/${encodeURIComponent(p.title)}`,
-        touched: p.touched ?? "",
-        lastrev: p.lastrevid ?? null,
-        fetchedAt,
+  // ⚠️ TextExtracts 在一次请求里抓多条 title 时,extract 总量有上限,
+  // 超限后会静默返回空 extract(实测 20 条/批时 53/56 条正文为空)。
+  // 因此这里逐条请求(每次只查 1 个 title),确保每条都返回正文。
+  // 代价:60 条 × ~100ms ≈ 6-10s,可接受。
+  for (const title of titles) {
+    try {
+      const j = await apiGet({
+        action: "query",
+        prop: "extracts|pageimages|info",
+        titles: title,
+        explaintext: "1",
+        exsectionformat: "wiki", // 保留 == 段名 == 标记便于转 Markdown
+        piprop: "thumbnail|original",
+        pithumbsize: "1200",
+        inprop: "url",
       });
+      const pages: any[] = j?.query?.pages ?? [];
+      for (const p of pages) {
+        if (!p || p.missing) continue;
+        out.push({
+          title: p.title,
+          pageid: p.pageid,
+          extract: p.extract ?? "",
+          thumbUrl: p.thumbnail?.source ?? p.original?.source ?? null,
+          thumbWidth: p.thumbnail?.width ?? p.original?.width ?? null,
+          thumbHeight: p.thumbnail?.height ?? p.original?.height ?? null,
+          canonicalUrl:
+            p.fullurl ?? `https://zh.wikipedia.org/wiki/${encodeURIComponent(p.title)}`,
+          touched: p.touched ?? "",
+          lastrev: p.lastrevid ?? null,
+          fetchedAt,
+        });
+      }
+    } catch (e) {
+      console.warn(
+        `[crawl-wikipedia] 抓取 "${title}" 失败: ${e instanceof Error ? e.message : e}`
+      );
     }
     await sleep(100); // 礼貌限速
   }
@@ -194,10 +202,10 @@ function renderArticle(a: WikiArticle): string {
 
   if (a.thumbUrl) {
     const dim =
-      a.thumbWidth && a.thumbHeight ? ` (${a.thumbWidth}×${a.thumbHeight})` : "";
+      a.thumbWidth && a.thumbHeight ? ` · 尺寸 ${a.thumbWidth}×${a.thumbHeight}` : "";
     lines.push(`![${a.title} 首图](${a.thumbUrl})`);
     lines.push("");
-    lines.push(`<sub>首图来源:${a.thumbUrl} · 遵循原作者授权</sub>`);
+    lines.push(`<sub>首图来源:${a.thumbUrl}${dim} · 遵循原作者授权</sub>`);
     lines.push("");
   }
 
