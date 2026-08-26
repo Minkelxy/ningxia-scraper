@@ -119,21 +119,40 @@ jobs:
           echo "weibo=$WEIBO_COUNT" >> "$GITHUB_OUTPUT"
           echo "✅ docs/weibo/ 共 $WEIBO_COUNT 条微博已就绪"
 
-      - name: 6d. Crawl XHS (www.xiaohongshu.com + 人工辅助登录 cookie)
+      - name: 6d. Search XHS noteIds (Playwright headless + cookie 注入,远端自动搜)
+        id: xhs_search
+        continue-on-error: true   # cookie 失效/被风控/无浏览器不阻断 run
+        shell: bash
+        env:
+          XHS_COOKIE: ${{ secrets.XHS_COOKIE }}
+        run: |
+          # 远端用 XHS_COOKIE 注入到 Playwright context(headless),自动搜宁夏
+          # 关键词滚动收集 noteId,追加写 data-raw/xhs/note-ids.txt。
+          # 绕过小红书 x-s 签名(真实浏览器渲染搜索结果页,从 DOM 提取 noteId)。
+          # 本地也可用 npm run login:xhs 持久化登录态后跑(无 cookie 走 user-data-dir)。
+          if [ -z "$XHS_COOKIE" ]; then
+            echo "⚠️ XHS_COOKIE secret 未设置,跳过搜索(本地 npm run login:xhs 导出 cookie 设为 secret 后下次自动生效)"
+            echo "xhs_search=0" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          # 装 Playwright 浏览器(headless 需 chromium-headless-shell,install chromium 含两者)
+          npx playwright install --with-deps chromium 2>&1 | tail -2 || npx playwright install chromium 2>&1 | tail -2
+          npm run search:xhs -- --headless
+          IDS=$(grep -cvE '^\s*(#|$)' data-raw/xhs/note-ids.txt 2>/dev/null || echo 0)
+          echo "xhs_search=$IDS" >> "$GITHUB_OUTPUT"
+          echo "✅ data-raw/xhs/note-ids.txt 共 $IDS 个 noteId(供 6e 抓取)"
+
+      - name: 6e. Crawl XHS (www.xiaohongshu.com + cookie,读 note-ids.txt 抓笔记)
         id: xhs
         continue-on-error: true   # cookie 失效/限流不阻断 run
         shell: bash
         env:
           XHS_COOKIE: ${{ secrets.XHS_COOKIE }}
         run: |
-          # 用人工辅助登录导出的 cookie 走 www.xiaohongshu.com,
-          # 从 explore 页 HTML 解析 __INITIAL_STATE__ 抓笔记+图片,落 docs/xhs/<noteId>.md。
-          # 小红书 web 搜索 API 需要 x-s 签名(脚本难复现),故采用 noteId 列表方式:
-          # 你在浏览器里浏览宁夏相关笔记,从 URL 末段取 noteId 写入
-          # data-raw/xhs/note-ids.txt(每行一个,# 注释),CI 自动读取。
-          # secret 未设时优雅跳过(不阻断 run;设置后下次自动生效)。
+          # 读 6d 搜到的 noteId(或本地手填) + cookie 抓 explore 页,
+          # 解析 __INITIAL_STATE__ 抓笔记+图片,落 docs/xhs/<noteId>.md。
           if [ -z "$XHS_COOKIE" ]; then
-            echo "⚠️ XHS_COOKIE secret 未设置,跳过小红书爬取(登录 www.xiaohongshu.com 导出 cookie 设为 secret 后下次自动生效)"
+            echo "⚠️ XHS_COOKIE secret 未设置,跳过抓取"
             echo "xhs=0" >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -142,7 +161,7 @@ jobs:
           if [ -f "$IDS_FILE" ]; then
             ARGS+=("--note-ids-file" "$IDS_FILE")
           else
-            echo "ℹ️ $IDS_FILE 不存在,请在浏览器浏览宁夏笔记后把 noteId 写入该文件(每行一个)。本次跳过。"
+            echo "ℹ️ $IDS_FILE 不存在(6d 搜索未产出/本地未填),跳过抓取"
             echo "xhs=0" >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -349,6 +368,7 @@ jobs:
           | 真实网站爬取内容(姊妹仓库) | ${{ steps.crawl.outputs.crawled || 0 }} 篇 |
           | Wikipedia 宁夏相关词条 | ${{ steps.wiki.outputs.wiki || 0 }} 篇 |
           | 微博宁夏相关帖(cookie) | ${{ steps.weibo.outputs.weibo || 0 }} 条 |
+          | 小红书 noteId 搜索数(cookie) | ${{ steps.xhs_search.outputs.xhs_search || 0 }} 个 |
           | 小红书宁夏相关笔记(cookie) | ${{ steps.xhs.outputs.xhs || 0 }} 篇 |
           | 本次新增 XHS 笔记 | ${{ steps.ingest.outputs.ingested || 0 }} |
           | XHS 笔记总数 | ${{ steps.validate.outputs.note_count || 0 }} |

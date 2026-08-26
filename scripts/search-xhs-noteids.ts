@@ -18,7 +18,7 @@
  *   npm run search:xhs -- --headless   # 已登录态,后台自动跑
  *   npm run search:xhs -- --keywords 沙坡头 贺兰山 --scrolls 5
  */
-import { chromium, type Page } from "playwright";
+import { chromium, type Page, type Browser, type BrowserContext } from "playwright";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -46,6 +46,32 @@ const DEFAULT_KEYWORDS = [
 
 const DATA_DIR = path.resolve(ROOT, "playwright/user-data-dir/xhs");
 const IDS_FILE = path.resolve(ROOT, "data-raw/xhs/note-ids.txt");
+const COOKIE_FILE = path.resolve(ROOT, "config/secrets/xhs-cookie.txt");
+
+// 把 Cookie 请求头("a=1; b=2")解析成 Playwright Cookie 对象(用于 CI 注入模式)
+function parseCookieHeader(header: string): { name: string; value: string; domain: string; path: string }[] {
+  return header
+    .split(";")
+    .map((p) => p.trim())
+    .filter(Boolean)
+    .map((p) => {
+      const i = p.indexOf("=");
+      const name = i > 0 ? p.slice(0, i).trim() : p.trim();
+      const value = i > 0 ? p.slice(i + 1) : "";
+      return { name, value, domain: ".xiaohongshu.com", path: "/" };
+    })
+    .filter((c) => c.name);
+}
+
+// cookie 来源优先级:env(CI Secret) > 本地 login:xhs 产物文件 > 无(走持久化 user-data-dir)
+function resolveCookieHeader(): string {
+  const env = process.env.XHS_COOKIE ?? "";
+  if (env) return env;
+  if (fs.existsSync(COOKIE_FILE)) {
+    return fs.readFileSync(COOKIE_FILE, "utf-8").trim();
+  }
+  return "";
+}
 
 // 从现有 note-ids.txt 读已收集的 noteId(# 注释行忽略),返回 {ids, lines}
 function readExisting(): { ids: Set<string>; lines: string[] } {
@@ -122,21 +148,32 @@ async function main() {
   fs.mkdirSync(DATA_DIR, { recursive: true });
   fs.mkdirSync(path.dirname(IDS_FILE), { recursive: true });
 
-  console.log(
-    `[search-xhs] 模式:${headless ? "headless" : "headed"}  关键词:${keywords.length} 个  每词滚动:${scrolls} 次`
-  );
-  console.log(`[search-xhs] user-data-dir:${path.relative(ROOT, DATA_DIR)}`);
+  // cookie 注入模式(CI/有 cookie):普通 launch + addCookies,不依赖 user-data-dir
+  // 无 cookie(本地已用 login:xhs 持久化登录态):launchPersistentContext 复用登录态
+  const cookieHeader = resolveCookieHeader();
+  const useInject = cookieHeader.length > 0;
 
-  const ctx = await chromium.launchPersistentContext(DATA_DIR, {
-    headless,
-    viewport: { width: 1280, height: 900 },
-    userAgent: UA,
-    args: ["--no-sandbox", "--disable-blink-features=AutomationControlled"],
-  });
+  console.log(
+    `[search-xhs] 模式:${headless ? "headless" : "headed"}  登录态:${useInject ? "cookie 注入" : "持久化 user-data-dir"}  关键词:${keywords.length} 个  每词滚动:${scrolls} 次`
+  );
+
+  const launchArgs = ["--no-sandbox", "--disable-blink-features=AutomationControlled"];
+  const ctxOpts = { viewport: { width: 1280, height: 900 }, userAgent: UA };
+  let browser: Browser | null = null;
+  let ctx: BrowserContext;
+  if (useInject) {
+    browser = await chromium.launch({ headless, args: launchArgs });
+    ctx = await browser.newContext(ctxOpts);
+    await ctx.addCookies(parseCookieHeader(cookieHeader));
+    console.log(`[search-xhs] 已注入 ${parseCookieHeader(cookieHeader).length} 条 cookie(XHS_COOKIE/本地文件)`);
+  } else {
+    console.log(`[search-xhs] user-data-dir:${path.relative(ROOT, DATA_DIR)}(未提供 cookie,复用 login:xhs 登录态)`);
+    ctx = await chromium.launchPersistentContext(DATA_DIR, { headless, ...ctxOpts, args: launchArgs });
+  }
 
   let totalNotFound = 0; // 完全搜不到 noteId 的关键词数(可能未登录/被风控)
   try {
-    const page = ctx.pages()[0] ?? (await ctx.newPage());
+    const page: Page = ctx.pages()[0] ?? (await ctx.newPage());
     const all = new Set<string>();
     for (const kw of keywords) {
       try {
@@ -190,6 +227,7 @@ async function main() {
     console.log(`[search-xhs] 下一步:npm run crawl:xhs`);
   } finally {
     await ctx.close();
+    if (browser) await browser.close();
   }
 }
 
