@@ -1,0 +1,208 @@
+name: Daily Ingest & Publish
+
+# 持续爬取入口:当用户向 data-raw/html/ 提交新 XHS 笔记 HTML,或每天 09:00 北京时间,
+# 自动跑 ingest → dedupe → validate → export-topics,生成 docs/BROWSE.md 浏览报告并推回 main。
+# 所有逻辑跑在 GitHub Actions 上,不依赖任何外部 TRAE 会话或凭据。
+
+on:
+  schedule:
+    # 每天 01:00 UTC = 09:00 北京时间
+    - cron: "0 1 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "data-raw/html/**"
+
+concurrency:
+  group: daily-ingest-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write   # 用于把 ingest 结果和 docs/BROWSE.md 推回 main
+  pull-requests: write
+
+jobs:
+  ingest-and-publish:
+    name: Ingest · Validate · Publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: 1. Checkout (with LFS for images)
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 0   # 需要 history 才能正确 diff / commit
+
+      - name: 2. Configure git identity for commit-back
+        shell: bash
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: 3. Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: 4. Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 5. Install dependencies
+        shell: bash
+        run: |
+          npm ci --ignore-scripts
+          python3 -m pip install --quiet --user pyyaml
+
+      - name: 6. Ingest new HTML notes (Mode A · 半人工离线)
+        id: ingest
+        shell: bash
+        run: |
+          set -o pipefail
+          if ! compgen -G "data-raw/html/*.html" > /dev/null; then
+            echo "📭 data-raw/html/ 无 *.html 文件,跳过 ingest,仅刷新报告。"
+            echo "ingested=0" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "📥 发现 HTML 文件,开始批量入库..."
+          npm run ingest:batch -- --html-dir ./data-raw/html/ --concurrency 1
+          # ingest-batch 写 _batch_report.json,从里面读 successCount
+          if [ -f data-raw/_batch_report.json ]; then
+            succ=$(node -e "const r=require('./data-raw/_batch_report.json');process.stdout.write(String(r.successCount ?? 0))")
+          else
+            succ="?"
+          fi
+          echo "ingested=$succ" >> "$GITHUB_OUTPUT"
+          echo "本次成功入库条数: $succ"
+
+      - name: 7. Dedupe (noteId / simhash / image sha256 / pHash)
+        shell: bash
+        run: npm run dedupe
+
+      - name: 8. Validate dataset (gate · 失败则不 commit)
+        id: validate
+        shell: bash
+        run: |
+          set -o pipefail
+          npx tsx scripts/validate-dataset.ts --format json | tee /tmp/validate.json
+          NOTE_COUNT=$(node -e "const r=require('/tmp/validate.json');process.stdout.write(String(r.counts?.rawJson ?? 0))")
+          echo "note_count=$NOTE_COUNT" >> "$GITHUB_OUTPUT"
+          if [ "$(node -e "const r=require('/tmp/validate.json');process.stdout.write(r.ok?'1':'0')")" = "0" ]; then
+            echo "❌ validate 失败,停止(不会 commit 半成品)"
+            exit 1
+          fi
+
+      - name: 9. Export topic coverage ranking
+        shell: bash
+        run: |
+          npm run export:topics -- --coverage | tee /tmp/coverage.txt
+          COV=$(grep -oP '覆盖率: +\K[0-9]+' /tmp/coverage.txt || echo 0)
+          echo "topic_coverage=$COV" >> "$GITHUB_ENV"
+          echo "topic_coverage=$COV" >> "$GITHUB_OUTPUT"
+
+      - name: 10. Generate browseable docs/BROWSE.md
+        shell: bash
+        run: |
+          mkdir -p docs
+          {
+            echo "# 📚 宁夏旅游 XHS 素材库 · 浏览总览"
+            echo
+            echo "> 由 GitHub Actions [\`Daily Ingest & Publish\`](../.github/workflows/daily-ingest-publish.yml) 自动维护 · 最后更新于 \`$(date -u '+%Y-%m-%d %H:%M UTC')\`"
+            echo
+            echo "## 📊 数据规模"
+            echo
+            echo "| 指标 | 数值 |"
+            echo "|------|------|"
+            echo "| 笔记总数 | ${{ steps.validate.outputs.note_count }} |"
+            echo "| 话题覆盖率 | ${{ steps.validate.outputs.topic_coverage }}% |"
+            echo "| 本次新增(本次 run) | ${{ steps.ingest.outputs.ingested }} |"
+            echo
+            echo "## 🔥 Top 20 按点赞数"
+            echo
+            echo '```'
+            python3 scripts/list-top.py -n 20 --sort likeCount
+            echo '```'
+            echo
+            echo "## ⭐ Top 20 按收藏数"
+            echo
+            echo '```'
+            python3 scripts/list-top.py -n 20 --sort collectCount
+            echo '```'
+            echo
+            echo "## 🏷️ 话题覆盖率报告"
+            echo
+            echo '```'
+            cat /tmp/coverage.txt
+            echo '```'
+            echo
+            echo "## 🧭 如何浏览"
+            echo
+            echo "- 本仓库(原始数据 + 索引):https://github.com/${{ github.repository }}"
+            echo "- 索引文件:[data/notes-index.json](../data/notes-index.json)"
+            echo "- 全量 NDJSON:[data/notes.ndjson](../data/notes.ndjson)"
+            echo "- 原始单条 JSON:[data-raw/json/](../data-raw/json/)"
+            echo "- 原图(Git LFS):[images/full/](../images/full/)"
+            echo "- 话题热度榜:[TOPICS_RANKING.md](../TOPICS_RANKING.md)"
+            echo
+            echo "本地浏览(无需 Node):"
+            echo '```bash'
+            echo "python3 scripts/list-top.py -n 20 --sort likeCount"
+            echo "python3 scripts/list-top.py --topic 沙坡头 --sort collectCount"
+            echo '```'
+          } > docs/BROWSE.md
+          echo "✅ docs/BROWSE.md 已生成"
+          # 同步刷新 TOPICS_RANKING.md(export-topics 的副产品)
+          ls -la TOPICS_RANKING.md 2>/dev/null || true
+
+      - name: 11. Commit & push back to main
+        shell: bash
+        run: |
+          set -o pipefail
+          git add -A
+          if git diff --cached --quiet; then
+            echo "✅ 无新增数据,仅刷新 docs/BROWSE.md(若 BROWSE.md 有变也会 commit)"
+            # 强制把 BROWSE.md 加入,即便只有它变了
+            git add docs/BROWSE.md
+            if git diff --cached --quiet; then
+              echo "✅ 今日完全无变更,跳过 commit/push"
+              exit 0
+            fi
+          fi
+          TODAY=$(date -u '+%Y-%m-%d')
+          git commit -m "chore(data): daily ingest ${TODAY} — new=${{ steps.ingest.outputs.ingested }} notes=${{ steps.validate.outputs.note_count }}"
+          git push origin HEAD
+          echo "✅ 已推送到 https://github.com/${{ github.repository }}/commit/$(git rev-parse HEAD)"
+
+      - name: 12. Upload reports artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-ingest-report-${{ github.run_id }}
+          path: |
+            docs/BROWSE.md
+            /tmp/validate.json
+            /tmp/coverage.txt
+            TOPICS_RANKING.md
+          retention-days: 30
+          if-no-files-found: ignore
+
+      - name: 13. Step Summary
+        if: always()
+        shell: bash
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<EOF
+          ## 📋 Daily Ingest & Publish 摘要
+
+          | 项目 | 数值 |
+          |------|------|
+          | 本次新增笔记 | ${{ steps.ingest.outputs.ingested }} |
+          | 笔记总数 | ${{ steps.validate.outputs.note_count }} |
+          | 话题覆盖率 | ${{ steps.validate.outputs.topic_coverage }}% |
+          | 仓库 | https://github.com/${{ github.repository }} |
+          | 浏览入口 | https://github.com/${{ github.repository }}/blob/main/docs/BROWSE.md |
+
+          EOF
