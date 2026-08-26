@@ -1,6 +1,6 @@
 # 📚 宁夏旅游 XHS 素材库 · 浏览总览
 
-> 由 GitHub Actions [`Daily Ingest & Publish`](../.github/workflows/daily-ingest-publish.yml) 自动维护 · 最后更新于 `2026-08-26 04:32 UTC`
+> 由 GitHub Actions [`Daily Ingest & Publish`](../.github/workflows/daily-ingest-publish.yml) 自动维护 · 最后更新于 `2026-08-26 06:05 UTC`
 
 ## 📊 数据规模
 
@@ -9,6 +9,7 @@
 | 笔记总数 | 50 |
 | 话题覆盖率 | 100% |
 | 本次新增(本次 run) | 0 |
+| 可浏览笔记页 | 51 |
 
 ## 🔥 Top 20 按点赞数
 
@@ -75,7 +76,7 @@
 > ningxia-scraper@0.1.0 export:topics
 > tsx scripts/export-topics.ts --coverage
 
-# 关键词类目覆盖率报告 · 2026-08-26T04:32:56.881Z
+# 关键词类目覆盖率报告 · 2026-08-26T06:05:47.340Z
 
 总类目数: 26
 已覆盖类目: 26
@@ -116,6 +117,7 @@
 
 ## 🧭 如何浏览
 
+- 📖 **每条笔记可直接浏览(推荐)**:[docs/notes/INDEX.md](./notes/INDEX.md) → 点任意 noteId 进入,正文+图片都在
 - 本仓库(原始数据 + 索引):https://github.com/Minkelxy/ningxia-scraper
 - 索引文件:[data/notes-index.json](../data/notes-index.json)
 - 全量 NDJSON:[data/notes.ndjson](../data/notes.ndjson)
