@@ -6,7 +6,7 @@
 |------|-----|
 | 源仓库 | [Minkelxy/ningxia-tourism](https://github.com/Minkelxy/ningxia-tourism) |
 | 源路径 | [`src/content/journal/shahu-half-or-full-day.md`](https://github.com/Minkelxy/ningxia-tourism/blob/main/src/content/journal/shahu-half-or-full-day.md) |
-| 抓取日期(UTC) | 2026-08-28T12:31:44 |
+| 抓取日期(UTC) | 2026-08-29T07:41:00 |
 | 文件大小 | 5009 bytes |
 | 源 commit sha | `dc6aeaaf2e1a` |
 
