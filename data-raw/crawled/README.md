@@ -26,10 +26,10 @@
 - **行前指南**：四季建议、跨城原则、装备清单与易变信息核对提醒
 - **PWA 离线支持**：首次访问后可在弱网下继续浏览已访问页面和地图数据
 - **构建期强校验门禁**：180 天核实周期、占位文本、模板电话、跨引用完整性、图片多格式完整性
-- **移动端适配**：响应式布局、底部预览面板、兴趣卡横向滑动、搜索与路线筛选入口优化
-- **收藏与对比**：基于 localStorage 的景点/路线收藏；最多 3 景点横向对比
+- **移动端适配**：响应式布局、底部预览面板、兴趣卡横向滑动、搜索与路线筛选入口优化，选择控件、筛选面板、路线筛选、行前清单、搜索清空、地图图层选中态、地图层级、清除筛选、首页探索、搜索快捷词、内容卡片、阅读入口、资料目录、手记栏目、详情操作、收藏按钮、对比按钮与深色头图按钮聚焦状态统一；桌面与移动导航同步标记当前页面
+- **收藏与对比**：基于 localStorage 的景点/路线收藏；最多 3 景点横向对比，并保持加入、已选和禁用状态清晰可辨
 - **统一搜索页**：`/search` 一键检索景点、美食、城市、路线与旅行专题
-- **统一视觉示例**：首页、路线、美食、指南、手记、搜索和 404 页面使用成套 AI 编辑插画，并明确标注非实景 / 非实拍
+- **来源清晰的配图**：景点、路线、美食、指南、手记、搜索和 404 页面优先使用网络实拍或官方公开图片，并保留来源与许可记录
 
 ---
 
@@ -140,7 +140,7 @@ ningxia-tourism/
 │   │   │   ├── config.ts          # 地图配置、政府标记、键盘工具
 │   │   │   ├── MapRegionLayer.tsx # 行政区域图层
 │   │   │   ├── AttractionLayer.tsx# 景点图层（role=button，可交互）
-│   │   │   ├── FoodLayer.tsx      # 美食图层
+│   │   │   ├── FoodLayer.tsx      # 美食图层（有 onSelect 时可交互）
 │   │   │   ├── TransportLayer.tsx # 交通枢纽图层（role=img，纯展示）
 │   │   │   ├── GovernmentLayer.tsx# 政府标记图层（role=img，纯展示）
 │   │   │   ├── MapControls.tsx    # 图层开关控件
@@ -287,7 +287,7 @@ docs/
 │   └── optimization-7rounds-plan.md  历史 7 轮优化计划（归档）
 ├── content/                    内容与资产文档
 │   ├── CONTENT_AUDIT.md           内容分级审计（景点 / 美食 / 枢纽 / 手记）
-│   ├── IMAGE_PROVENANCE.md        AI 编辑插画来源与提示词记录
+│   ├── IMAGE_PROVENANCE.md        实拍/官方图片来源、许可与处理记录
 │   ├── MAINTENANCE.md             内容维护日常准则
 │   └── attraction-template.json   新增景点数据模板
 └── templates/                  内容创建模板（不参与发布）
@@ -302,7 +302,7 @@ docs/
 ## 📄 许可
 
 - 代码：MIT License（详见 [`LICENSE`](./LICENSE)）
-- 内容数据：保留来源署名与核实日期；编辑插画均已标注非实景，提示词记录见 [docs/content/IMAGE_PROVENANCE.md](docs/content/IMAGE_PROVENANCE.md)
+- 内容数据：保留来源署名、许可与核实日期；参考图会在 alt 文本中说明，图片规则见 [docs/content/IMAGE_PROVENANCE.md](docs/content/IMAGE_PROVENANCE.md)
 
 ---
 

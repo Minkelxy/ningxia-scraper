@@ -6,7 +6,7 @@
 |------|-----|
 | 源仓库 | [Minkelxy/ningxia-tourism](https://github.com/Minkelxy/ningxia-tourism) |
 | 源路径 | [`src/content/journal/shizuishan-beyond-shahu.md`](https://github.com/Minkelxy/ningxia-tourism/blob/main/src/content/journal/shizuishan-beyond-shahu.md) |
-| 抓取日期(UTC) | 2026-08-31T06:43:16 |
+| 抓取日期(UTC) | 2026-09-01T06:03:06 |
 | 文件大小 | 2986 bytes |
 | 源 commit sha | `9a63b5f4d2ed` |
 
