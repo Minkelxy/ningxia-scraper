@@ -1,6 +1,6 @@
 # 📚 真实网站爬取内容目录
 
-> 来源:[Minkelxy/ningxia-tourism](https://github.com/Minkelxy/ningxia-tourism) · 共 23 篇 · 抓取于 2026-09-01T06:03:06 UTC
+> 来源:[Minkelxy/ningxia-tourism](https://github.com/Minkelxy/ningxia-tourism) · 共 23 篇 · 抓取于 2026-09-02T05:29:29 UTC
 
 所有页面已镜像到本仓库,无需访问外网即可在 GitHub 上直接浏览。
 
@@ -24,9 +24,9 @@
 | 16 | `src-content-journal-yinchuan-zhongwei-transport-choice` | 银川到中卫，铁路和包车怎么分工更省心 | `src/content/journal/yinchuan-zhongwei-transport-choice.md` | 2569B | [查看](./src-content-journal-yinchuan-zhongwei-transport-choice.md) |
 | 17 | `src-content-journal-zhongwei-sand-water-choice` | 沙坡头和金沙岛怎么选：中卫两种沙水体验 | `src/content/journal/zhongwei-sand-water-choice.md` | 5380B | [查看](./src-content-journal-zhongwei-sand-water-choice.md) |
 | 18 | `src-content-journal-zhongwei-shapotou-sample` | 中卫沙坡头两日——黄河与沙漠之间（示例） | `src/content/journal/zhongwei-shapotou-sample.md` | 1980B | [查看](./src-content-journal-zhongwei-shapotou-sample.md) |
-| 19 | `README` | 塞上江南 · 宁夏旅行地图 | `README.md` | 17917B | [查看](./README.md) |
+| 19 | `README` | 塞上江南 · 宁夏旅行地图 | `README.md` | 20638B | [查看](./README.md) |
 | 20 | `XHS-SCRAPER-REFERENCE` | 小红书素材库 · 主项目对接手册 (XHS-SCRAPER-REFERENCE) | `XHS-SCRAPER-REFERENCE.md` | 10716B | [查看](./XHS-SCRAPER-REFERENCE.md) |
-| 21 | `docs-content-CONTENT_AUDIT` | 宁夏旅行地图内容审计 | `docs/content/CONTENT_AUDIT.md` | 22148B | [查看](./docs-content-CONTENT_AUDIT.md) |
+| 21 | `docs-content-CONTENT_AUDIT` | 宁夏旅行地图内容审计 | `docs/content/CONTENT_AUDIT.md` | 29275B | [查看](./docs-content-CONTENT_AUDIT.md) |
 | 22 | `docs-content-IMAGE_PROVENANCE` | 图片来源与许可 | `docs/content/IMAGE_PROVENANCE.md` | 2560B | [查看](./docs-content-IMAGE_PROVENANCE.md) |
 | 23 | `docs-content-MAINTENANCE` | 内容维护说明 | `docs/content/MAINTENANCE.md` | 3300B | [查看](./docs-content-MAINTENANCE.md) |
 
