@@ -6,7 +6,7 @@
 |------|-----|
 | 源仓库 | [Minkelxy/ningxia-tourism](https://github.com/Minkelxy/ningxia-tourism) |
 | 源路径 | [`docs/content/IMAGE_PROVENANCE.md`](https://github.com/Minkelxy/ningxia-tourism/blob/main/docs/content/IMAGE_PROVENANCE.md) |
-| 抓取日期(UTC) | 2026-09-02T05:29:29 |
+| 抓取日期(UTC) | 2026-09-03T05:30:20 |
 | 文件大小 | 2560 bytes |
 | 源 commit sha | `2462740beae2` |
 
