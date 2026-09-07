@@ -6,7 +6,7 @@
 |------|-----|
 | 源仓库 | [Minkelxy/ningxia-tourism](https://github.com/Minkelxy/ningxia-tourism) |
 | 源路径 | [`README.md`](https://github.com/Minkelxy/ningxia-tourism/blob/main/README.md) |
-| 抓取日期(UTC) | 2026-09-06T05:33:28 |
+| 抓取日期(UTC) | 2026-09-07T05:44:08 |
 | 文件大小 | 24082 bytes |
 | 源 commit sha | `bbd9489b0694` |
 
