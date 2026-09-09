@@ -6,7 +6,7 @@
 |------|-----|
 | 源仓库 | [Minkelxy/ningxia-tourism](https://github.com/Minkelxy/ningxia-tourism) |
 | 源路径 | [`src/content/journal/guyuan-two-day-split.md`](https://github.com/Minkelxy/ningxia-tourism/blob/main/src/content/journal/guyuan-two-day-split.md) |
-| 抓取日期(UTC) | 2026-09-08T05:39:24 |
+| 抓取日期(UTC) | 2026-09-09T05:44:58 |
 | 文件大小 | 2570 bytes |
 | 源 commit sha | `6fd34ae66aa5` |
 
