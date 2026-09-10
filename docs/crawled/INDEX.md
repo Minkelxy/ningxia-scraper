@@ -1,6 +1,6 @@
 # 📚 真实网站爬取内容目录
 
-> 来源:[Minkelxy/ningxia-tourism](https://github.com/Minkelxy/ningxia-tourism) · 共 23 篇 · 抓取于 2026-09-09T05:44:58 UTC
+> 来源:[Minkelxy/ningxia-tourism](https://github.com/Minkelxy/ningxia-tourism) · 共 23 篇 · 抓取于 2026-09-10T05:39:35 UTC
 
 所有页面已镜像到本仓库,无需访问外网即可在 GitHub 上直接浏览。
 
