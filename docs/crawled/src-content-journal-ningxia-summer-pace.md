@@ -6,7 +6,7 @@
 |------|-----|
 | 源仓库 | [Minkelxy/ningxia-tourism](https://github.com/Minkelxy/ningxia-tourism) |
 | 源路径 | [`src/content/journal/ningxia-summer-pace.md`](https://github.com/Minkelxy/ningxia-tourism/blob/main/src/content/journal/ningxia-summer-pace.md) |
-| 抓取日期(UTC) | 2026-09-13T05:42:29 |
+| 抓取日期(UTC) | 2026-09-14T05:51:25 |
 | 文件大小 | 2630 bytes |
 | 源 commit sha | `1dcc513e4c93` |
 
