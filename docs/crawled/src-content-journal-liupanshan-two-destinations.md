@@ -6,7 +6,7 @@
 |------|-----|
 | 源仓库 | [Minkelxy/ningxia-tourism](https://github.com/Minkelxy/ningxia-tourism) |
 | 源路径 | [`src/content/journal/liupanshan-two-destinations.md`](https://github.com/Minkelxy/ningxia-tourism/blob/main/src/content/journal/liupanshan-two-destinations.md) |
-| 抓取日期(UTC) | 2026-09-16T05:40:18 |
+| 抓取日期(UTC) | 2026-09-17T05:48:36 |
 | 文件大小 | 3503 bytes |
 | 源 commit sha | `33a608e1790e` |
 
