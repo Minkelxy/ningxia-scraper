@@ -6,7 +6,7 @@
 |------|-----|
 | 源仓库 | [Minkelxy/ningxia-tourism](https://github.com/Minkelxy/ningxia-tourism) |
 | 源路径 | [`src/content/journal/yinchuan-local-food-sample.md`](https://github.com/Minkelxy/ningxia-tourism/blob/main/src/content/journal/yinchuan-local-food-sample.md) |
-| 抓取日期(UTC) | 2026-09-19T05:31:14 |
+| 抓取日期(UTC) | 2026-09-20T05:46:55 |
 | 文件大小 | 2007 bytes |
 | 源 commit sha | `416f404a26c8` |
 

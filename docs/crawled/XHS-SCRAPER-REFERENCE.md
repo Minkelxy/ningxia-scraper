@@ -6,7 +6,7 @@
 |------|-----|
 | 源仓库 | [Minkelxy/ningxia-tourism](https://github.com/Minkelxy/ningxia-tourism) |
 | 源路径 | [`XHS-SCRAPER-REFERENCE.md`](https://github.com/Minkelxy/ningxia-tourism/blob/main/XHS-SCRAPER-REFERENCE.md) |
-| 抓取日期(UTC) | 2026-09-19T05:31:14 |
+| 抓取日期(UTC) | 2026-09-20T05:46:55 |
 | 文件大小 | 10716 bytes |
 | 源 commit sha | `df92b93f2394` |
 
