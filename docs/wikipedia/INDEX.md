@@ -1,6 +1,6 @@
 # 📚 Wikipedia · 宁夏相关词条目录
 
-> 来源:[zh.wikipedia.org](https://zh.wikipedia.org) · 共 56 条 · 抓取于 2026-09-20T05:46:59 UTC · CC BY-SA 3.0
+> 来源:[zh.wikipedia.org](https://zh.wikipedia.org) · 共 56 条 · 抓取于 2026-09-21T05:56:29 UTC · CC BY-SA 3.0
 
 所有页面已镜像到本仓库,无需访问外网即可在 GitHub 上直接浏览。每页含首图(热链 upload.wikimedia.org)与全文纯文本。
 

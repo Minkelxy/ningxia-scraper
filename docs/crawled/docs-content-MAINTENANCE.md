@@ -6,7 +6,7 @@
 |------|-----|
 | 源仓库 | [Minkelxy/ningxia-tourism](https://github.com/Minkelxy/ningxia-tourism) |
 | 源路径 | [`docs/content/MAINTENANCE.md`](https://github.com/Minkelxy/ningxia-tourism/blob/main/docs/content/MAINTENANCE.md) |
-| 抓取日期(UTC) | 2026-09-20T05:46:55 |
+| 抓取日期(UTC) | 2026-09-21T05:56:24 |
 | 文件大小 | 3300 bytes |
 | 源 commit sha | `13dfc13ee9f6` |
 
