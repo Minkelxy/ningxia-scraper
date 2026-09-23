@@ -12,7 +12,7 @@
 
 在线访问：**[https://minkelxy.github.io/ningxia-tourism/](https://minkelxy.github.io/ningxia-tourism/)**
 
-当前发布快照为 v0.3.137；验收命令与数据规模见 [docs/RELEASE_STATUS.md](docs/RELEASE_STATUS.md)。
+当前发布快照为 v0.3.139；验收命令与数据规模见 [docs/RELEASE_STATUS.md](docs/RELEASE_STATUS.md)。
 
 ---
 

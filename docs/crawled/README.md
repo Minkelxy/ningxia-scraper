@@ -6,9 +6,9 @@
 |------|-----|
 | 源仓库 | [Minkelxy/ningxia-tourism](https://github.com/Minkelxy/ningxia-tourism) |
 | 源路径 | [`README.md`](https://github.com/Minkelxy/ningxia-tourism/blob/main/README.md) |
-| 抓取日期(UTC) | 2026-09-22T05:53:51 |
-| 文件大小 | 24253 bytes |
-| 源 commit sha | `6d203c5a0e08` |
+| 抓取日期(UTC) | 2026-09-23T05:32:47 |
+| 文件大小 | 23952 bytes |
+| 源 commit sha | `95df2ff76321` |
 
 ---
 
@@ -26,7 +26,7 @@
 
 在线访问：**[https://minkelxy.github.io/ningxia-tourism/](https://minkelxy.github.io/ningxia-tourism/)**
 
-当前发布快照为 v0.3.137；验收命令与数据规模见 [docs/RELEASE_STATUS.md](docs/RELEASE_STATUS.md)。
+当前发布快照为 v0.3.139；验收命令与数据规模见 [docs/RELEASE_STATUS.md](docs/RELEASE_STATUS.md)。
 
 ---
 
