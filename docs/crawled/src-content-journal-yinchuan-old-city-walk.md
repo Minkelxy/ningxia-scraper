@@ -6,7 +6,7 @@
 |------|-----|
 | 源仓库 | [Minkelxy/ningxia-tourism](https://github.com/Minkelxy/ningxia-tourism) |
 | 源路径 | [`src/content/journal/yinchuan-old-city-walk.md`](https://github.com/Minkelxy/ningxia-tourism/blob/main/src/content/journal/yinchuan-old-city-walk.md) |
-| 抓取日期(UTC) | 2026-09-27T06:18:56 |
+| 抓取日期(UTC) | 2026-09-28T06:21:19 |
 | 文件大小 | 4860 bytes |
 | 源 commit sha | `8611302f0c66` |
 
