@@ -6,7 +6,7 @@
 |------|-----|
 | 源仓库 | [Minkelxy/ningxia-tourism](https://github.com/Minkelxy/ningxia-tourism) |
 | 源路径 | [`src/content/journal/zhongwei-shapotou-sample.md`](https://github.com/Minkelxy/ningxia-tourism/blob/main/src/content/journal/zhongwei-shapotou-sample.md) |
-| 抓取日期(UTC) | 2026-10-18T05:29:01 |
+| 抓取日期(UTC) | 2026-10-19T05:47:20 |
 | 文件大小 | 1980 bytes |
 | 源 commit sha | `f6084a8380c0` |
 
