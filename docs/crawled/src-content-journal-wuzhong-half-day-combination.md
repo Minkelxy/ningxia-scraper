@@ -6,7 +6,7 @@
 |------|-----|
 | 源仓库 | [Minkelxy/ningxia-tourism](https://github.com/Minkelxy/ningxia-tourism) |
 | 源路径 | [`src/content/journal/wuzhong-half-day-combination.md`](https://github.com/Minkelxy/ningxia-tourism/blob/main/src/content/journal/wuzhong-half-day-combination.md) |
-| 抓取日期(UTC) | 2026-10-22T05:47:43 |
+| 抓取日期(UTC) | 2026-10-23T05:46:47 |
 | 文件大小 | 2651 bytes |
 | 源 commit sha | `fbef65a6afcf` |
 
