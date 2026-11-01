@@ -1,6 +1,6 @@
 # 📚 宁夏旅游 素材库 · 浏览总览
 
-> 由 GitHub Actions [`Daily Ingest & Publish`](../.github/workflows/daily-ingest-publish.yml) 自动维护 · 最后更新于 `2026-10-31 06:41 UTC`
+> 由 GitHub Actions [`Daily Ingest & Publish`](../.github/workflows/daily-ingest-publish.yml) 自动维护 · 最后更新于 `2026-11-01 07:11 UTC`
 
 ## 📊 数据规模
 
@@ -70,7 +70,7 @@
 > ningxia-scraper@0.1.0 export:topics
 > tsx scripts/export-topics.ts --coverage
 
-# 关键词类目覆盖率报告 · 2026-10-31T06:41:48.200Z
+# 关键词类目覆盖率报告 · 2026-11-01T07:11:05.509Z
 
 总类目数: 26
 已覆盖类目: 26
