@@ -6,7 +6,7 @@
 |------|-----|
 | 源仓库 | [Minkelxy/ningxia-tourism](https://github.com/Minkelxy/ningxia-tourism) |
 | 源路径 | [`src/content/journal/zhongwei-sand-water-choice.md`](https://github.com/Minkelxy/ningxia-tourism/blob/main/src/content/journal/zhongwei-sand-water-choice.md) |
-| 抓取日期(UTC) | 2026-11-20T08:08:01 |
+| 抓取日期(UTC) | 2026-11-21T08:02:18 |
 | 文件大小 | 5380 bytes |
 | 源 commit sha | `350e605d8729` |
 
